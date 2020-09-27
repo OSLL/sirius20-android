@@ -22,4 +22,4 @@ class Arithmetic (str: String="0 = 1") {
         this.opers=opers
         this.result=result
     }*/
-}
+}//if i actually need to count 'em, tell me, it won't be too hard
