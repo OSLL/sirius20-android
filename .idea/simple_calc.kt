@@ -31,4 +31,4 @@ fun arithm (s:String): Arithmetic {
     R=N1[0]
     val result=R
     return Arithmetic(nums,opers,result)//constructs a class
-}
+}//does this cost another commit
