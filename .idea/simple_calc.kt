@@ -15,7 +15,9 @@ fun arithm (s:String): Arithmetic {
     var S = s.toCharArray()
     for (i in 0..s.length-1){if (S[i] in "+-*/"){O.add(S[i]);S[i]=' '}}
     var z=S.joinToString(separator="")
-    var Z=z.split(" ")
+    var Z=z.split(delimiter=" ").toMutableList()
+    
+
     for (i in 0..Z.size-1){N.add(Z[i].toInt())}
     var N1=N; var O1=O //we need clones of these to perform calculations
     val opers=O.toCharArray()
