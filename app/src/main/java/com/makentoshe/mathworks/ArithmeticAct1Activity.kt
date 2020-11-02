@@ -2,14 +2,9 @@ package com.makentoshe.mathworks
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings.Global.getString
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_arithmetic_act1.*
-import java.util.*
 
 
 class ArithmeticAct1Activity : AppCompatActivity() {
@@ -30,22 +25,25 @@ class ArithmeticAct1Activity : AppCompatActivity() {
         nextButton.setOnClickListener{
             if (i<taskTypes.size){if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
-                    choice = when {
-                        answerVariant1.isChecked -> variants[0]
-                        answerVariant2.isChecked -> variants[1]
-                        answerVariant3.isChecked -> variants[2]
-                        answerVariant4.isChecked -> variants[3]
-                        else -> 0
-                    }
+                    if (answerVariant1.isChecked) choice=variants[0]
+                    else if (answerVariant2.isChecked) choice=variants[1]
+                    else if (answerVariant3.isChecked) choice=variants[2]
+                    else if (answerVariant4.isChecked) choice=variants[3]
+                    else choice=0
+                    if (choice==nums[0]) score++
                 }
                 if (taskTypes[i]==2){
                     var a = answerNumberInput.toString().toIntOrNull()
-                    if (a!=null) choice = a else choice =0
+                    if (a!=null) if (a==nums[0]) score++
                 }
-                if (choice==nums[0]) score++
                 step++
             }}
             i++
+            answerVariant1.isChecked=false
+            answerVariant2.isChecked=false
+            answerVariant3.isChecked=false
+            answerVariant4.isChecked=false
+            answerNumberInput.setText("")
             if (i==taskNames.size) {
             val intt= Intent(this, ActCompletedActivity::class.java)
                 intt.putExtra("score",score)
@@ -56,14 +54,15 @@ class ArithmeticAct1Activity : AppCompatActivity() {
             else {if (taskTypes[i]!=0) nums = correctNumberMakerForArithmAct1(i)
             when (taskTypes[i]) {
                 0 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.GONE}
-                2 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.VISIBLE;}
-                1 -> {answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility= View.GONE;variants = answerVariantMakerForArithmAct1(nums);
+                2 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.VISIBLE; answerText.text="${nums[0]}"}
+                1 -> {answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility= View.GONE;variants = answerVariantMakerForArithmAct1(nums)
                 answerVariant1.text=variants[0].toString()
                 answerVariant2.text=variants[1].toString()
                 answerVariant3.text=variants[2].toString()
-                answerVariant4.text=variants[3].toString()}
+                answerVariant4.text=variants[3].toString()
+                answerText.text=nums[0].toString()}
             }
-            if(step<=max) progressBar.progress= ((step.toDouble()/max.toDouble())*100.0).toInt()
+            if(step<=max) progressBar.progress=((score.toDouble()/max.toDouble())*100.0).toInt()
             if (i<taskNames.size) {
                 var name=""
                 if (taskQuantity[i]==2)
@@ -94,14 +93,13 @@ fun correctNumberMakerForArithmAct1 (i: Int): Array<Int> {
             num1=(20..99).random(); num2=(10..num1-1).random(); ans=(-num2+2*num1)
         }
         7->{
-            num1=0; num2=0; ans=(200..899).random(); while(2*(num1%10)+ans%10<10||ans%10-(ans+2*num1)%10>-1||ans+2*num1<num2){num1=(10..199).random(); num2=(10..199).random()}; num3=ans+2*num1
+            num1=0; num2=0; ans=(200..499).random(); while((num1%10)+ans%10<10||ans%10-(ans+num1)%10>-1||ans+2*num1<num2){num1=(10..199).random(); num2=(10..199).random()}; num3=ans+num1
         }
         else -> {num1=0; num2=0; ans=0}
     }
     return arrayOf(ans,num1,num2,num3)
 }
 fun answerVariantMakerForArithmAct1 (a: Array<Int>): Array<Int> {
-
     var ans=a[0]
     var b =arrayOf(0,0,0,0)
     b[(0..3).random()]=ans
@@ -109,7 +107,7 @@ fun answerVariantMakerForArithmAct1 (a: Array<Int>): Array<Int> {
         var c=0
         while (c==0) c=(-20..20).random()
         if (b[i]==0) {if (ans+c<=0) b[i]=ans-c else b[i]=ans+c}
-        if (i>0) while(b[i]==b[i-1]){b[i]+=1}
+        if (i>0 && b[i]!=ans) while(b[i]==b[i-1]){b[i]+=1}
     }
     return b
 }

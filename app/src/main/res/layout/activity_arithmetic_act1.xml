@@ -107,7 +107,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/input_txt"
                 android:inputType="number" />
+
+            <TextView
+                android:id="@+id/answerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0" />
         </LinearLayout>
     </ScrollView>
 
