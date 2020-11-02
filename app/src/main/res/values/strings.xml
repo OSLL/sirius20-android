@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MathWorks</string>
+    <string name="Head1_1">Зона 1 АКТ 1</string>
+    <string name="Subhead1_1">Умножение и деление</string>
+    <string name="textMultiple1">Умножение целых чисел есть такое действие, в котором нужно взять одно число слагаемым столько раз, сколько в другом содержится единиц, и найти сумму этих слагаемых</string>
+    <string name="textMultiple2">Умножить 7 на 3 значит взять число 7 слагаемым три раза и найти сумму. Искомая сумма есть 21.</string>
+    <string name="textMultiple3"> 7 · 3 = 7 + 7 + 7 = 21</string>
+    <string name="textMultiple4"> Также при умножении, как и при сложении выполняется правило:</string>
+    <string name="textMultiple5"> Произведение не изменяется от перемены порядка множителей.</string>
+    <string name="textMultiple6"> 7 · 3 = 3 · 7 = 3 + 3 + 3 + 3 + 3 + 3 + 3 = 21</string>
+    <string name="textMultiple7">Так как умножение многозначных чисел построено на умножении однозначных, была создана таблица умножения. С её помошью, можно найти любое произведение однозначных чисел. Например, чтобы найти произведение 5 · 3, нужно найти столбец с 5 и найти пересечение со строй с 3. Число на пересечении и есть произведение. </string>
+    <string name="Continue">Продолжить</string>
+    <string name="textMultipleTask1">Умножь 7 на 3 и напиши ответ</string>
+    <string name="checkMultiple">Проверить</string>>
+    <string name="editTextHint">Пиши здесь</string>>
 </resources>
