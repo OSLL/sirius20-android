@@ -37,8 +37,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:max="10"
-        android:progress="3"
+        android:max="8"
+        android:progress="0"
         android:secondaryProgressTint="@color/colorSubheads"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -73,73 +73,6 @@
                 android:paddingLeft="10sp"
                 android:paddingRight="10sp"
                 android:text="@string/textMultiple1"
-                android:textColor="@color/colorText" />
-
-            <TextView
-                android:id="@+id/textMultiple2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingTop="1sp"
-                android:paddingRight="10sp"
-                android:text="@string/textMultiple2"
-                android:textColor="@color/colorText" />
-
-            <TextView
-                android:id="@+id/textMultiple3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingLeft="10sp"
-                android:paddingTop="1sp"
-                android:paddingRight="10sp"
-                android:text="@string/textMultiple3"
-                android:textColor="@color/colorText"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textMultiple4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingTop="1sp"
-                android:paddingRight="10sp"
-                android:text="@string/textMultiple4"
-                android:textColor="@color/colorText" />
-
-            <TextView
-                android:id="@+id/textMultiple5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingTop="1sp"
-                android:paddingRight="10sp"
-                android:text="@string/textMultiple5"
-                android:textColor="@color/colorText"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textMultiple6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingLeft="10sp"
-                android:paddingTop="1sp"
-                android:paddingRight="10sp"
-                android:text="@string/textMultiple6"
-                android:textColor="@color/colorText"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textMultiple7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingTop="1sp"
-                android:paddingRight="10sp"
-                android:text="@string/textMultiple7"
                 android:textColor="@color/colorText" />
 
             <ImageView
