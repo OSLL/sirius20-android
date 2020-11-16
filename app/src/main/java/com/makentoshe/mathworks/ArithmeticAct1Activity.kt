@@ -14,6 +14,11 @@ class ArithmeticAct1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_arithmetic_act1)
+        zoneName.text=getString(resources.getIdentifier("zone_1_name", "string", packageName))
+        actName.text=getString(resources.getIdentifier("act_1_1_name", "string", packageName))
+        var lives:Int
+        lives=intent.getIntExtra("lives",3)
+        lifeCounterAct.text=lives.toString()
         var score=0
         var taskNames=arrayOf("act_1_1_descr_1","act_1_1_task_1","act_1_1_task_2","act_1_1_task_3","act_1_1_descr_2","act_1_1_task_4","act_1_1_task_5","act_1_1_task_6")
         var taskTypes=arrayOf(0,1,1,2,0,1,1,2)
@@ -28,6 +33,7 @@ class ArithmeticAct1Activity : AppCompatActivity() {
         var choice=0
         var a=""
         var aint=0
+
         answerNumberInput.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
@@ -70,8 +76,8 @@ class ArithmeticAct1Activity : AppCompatActivity() {
                 val intt= Intent(this, ActCompletedActivity::class.java)
                 intt.putExtra("score",score)
                 intt.putExtra("max",max)
+                intt.putExtra("lives",lives)
                 startActivity(intt)
-                finish()
             }
 
             Log.d("Act1","Strings updated")
@@ -98,6 +104,7 @@ class ArithmeticAct1Activity : AppCompatActivity() {
             }
             Log.d("Act1","Variants deployed")
             if(step<=max) progressBar.progress=((score.toDouble()/max.toDouble())*100.0).toInt()
+            if(step<=max) progressStepBar.progress=((step.toDouble()/max.toDouble())*100.0).toInt()
             var name=""
             if (taskQuantity[i]==2)
             {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2])}

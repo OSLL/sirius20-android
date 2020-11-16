@@ -15,8 +15,10 @@ class ActCompletedActivity : AppCompatActivity() {
         var rate=(score.toDouble()/max.toDouble()*100.0).toInt()
         scoreRateBar.progress=rate
         scoreRateText.text= "$rate%"
+        var lives=intent.getIntExtra("lives",3)
         backButton.setOnClickListener {
             val intent= Intent(this,MainActivity::class.java)
+            intent.putExtra("lives",lives)
             startActivity(intent)
         }
     }
