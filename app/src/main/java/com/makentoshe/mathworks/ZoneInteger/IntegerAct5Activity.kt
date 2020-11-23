@@ -1,4 +1,4 @@
-package com.makentoshe.mathworks
+package com.makentoshe.mathworks.ZoneInteger
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,19 +7,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import kotlinx.android.synthetic.main.activity_arithmetic_act1.*
+import com.makentoshe.mathworks.ActCompletedActivity
+import com.makentoshe.mathworks.R
+import kotlinx.android.synthetic.main.activity_integer_act1.*
 
 class ArithmeticAct5Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_arithmetic_act1)
-        zoneName.text=getString(resources.getIdentifier("zone_1_name", "string", packageName))
+        setContentView(R.layout.activity_integer_act1)
+        zoneName.text=getString(resources.getIdentifier("zone_integer_name", "string", packageName))
         actName.text=getString(resources.getIdentifier("boss_name", "string", packageName))
         var score=0
         var lives:Int
         lives=intent.getIntExtra("lives",3)
         lifeCounterAct.text=lives.toString()
-        var taskNames=arrayOf("act_1_5_theory","act_1_5_task_1","act_1_5_task_2","act_1_5_task_3","act_1_5_task_4","act_1_5_task_5")
+        var taskNames=arrayOf("act_integer_5_theory","act_integer_5_task_1","act_integer_5_task_2","act_integer_5_task_3","act_integer_5_task_4","act_integer_5_task_5")
         var taskTypes=arrayOf(0,1,2,2,1,2)
         var taskQuantity=arrayOf(0,2,3,2,1,2)
         var i=0; var step=0
@@ -130,7 +132,7 @@ fun correctNumberMakerForArithmAct5 (i: Int): IntArray {
             num1=(5..9).random(); num2=(11..15).random(); ans=num2*num1
         }
         4->{
-            num1=99; while (!isPrime(num1) or !isPrime(num1+2)){num1=(11..25).random()}; ans=num1+2
+            num1=99; while (!isPrime(num1) or !isPrime(num1 + 2)){num1=(11..25).random()}; ans=num1+2
         }
         5->{
             num1=(10..100).random(); num2=(2..num1).random(); ans=num1%num2

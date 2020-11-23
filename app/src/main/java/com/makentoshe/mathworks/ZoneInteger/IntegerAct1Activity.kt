@@ -1,4 +1,4 @@
-package com.makentoshe.mathworks
+package com.makentoshe.mathworks.ZoneInteger
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,20 +7,22 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_arithmetic_act1.*
+import com.makentoshe.mathworks.ActCompletedActivity
+import com.makentoshe.mathworks.R
+import kotlinx.android.synthetic.main.activity_integer_act1.*
 
 
 class ArithmeticAct1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_arithmetic_act1)
-        zoneName.text=getString(resources.getIdentifier("zone_1_name", "string", packageName))
-        actName.text=getString(resources.getIdentifier("act_1_1_name", "string", packageName))
+        setContentView(R.layout.activity_integer_act1)
+        zoneName.text=getString(resources.getIdentifier("zone_integer_name", "string", packageName))
+        actName.text=getString(resources.getIdentifier("act_integer_1_name", "string", packageName))
         var lives:Int
         lives=intent.getIntExtra("lives",3)
         lifeCounterAct.text=lives.toString()
         var score=0
-        var taskNames=arrayOf("act_1_1_descr_1","act_1_1_task_1","act_1_1_task_2","act_1_1_task_3","act_1_1_descr_2","act_1_1_task_4","act_1_1_task_5","act_1_1_task_6")
+        var taskNames=arrayOf("act_integer_1_descr_1","act_integer_1_task_1","act_integer_1_task_2","act_integer_1_task_3","act_integer_1_descr_2","act_integer_1_task_4","act_integer_1_task_5","act_integer_1_task_6")
         var taskTypes=arrayOf(0,1,1,2,0,1,1,2)
         var taskQuantity=arrayOf(0,2,2,2,0,3,2,3)
         Log.d("Act1","Imported")
