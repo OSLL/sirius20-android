@@ -27,12 +27,12 @@ class MenuActSelect : AppCompatActivity() {
             "complex" -> acts=4
             else -> acts =8
         }
-        val actArray= mutableListOf<String>()
+        val actArray= Array<String>(acts){""}
         for (i in (0..acts-2)){
-            actArray.add(getString(resources.getIdentifier(("act_${zone}_${i+1}_name"), "string", packageName)))
+            actArray[i]=(getString(resources.getIdentifier(("act_${zone}_${i+1}_name"), "string", packageName)))
         }
-        actArray.add("act_${zone}_${acts-1}_name")
-        val adapt= ArrayAdapter<String>(this,R.layout.activity_menu_act_select,actArray)
+        actArray[acts-1]=(getString(resources.getIdentifier(("boss_name"), "string", packageName)))
+        val adapt= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,actArray)
         list.adapter=adapt
         Log.d("ACT_SELECT","Zone name loaded zone_${zone}_name")
         zoneTitle.text=getString(resources.getIdentifier("zone_${zone}_name", "string", packageName))
