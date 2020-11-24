@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val intt=Intent(this,MenuZoneSelect::class.java)
+        val intt=Intent(this, MenuZoneSelect::class.java)
         startActivity(intt)
     }
 }

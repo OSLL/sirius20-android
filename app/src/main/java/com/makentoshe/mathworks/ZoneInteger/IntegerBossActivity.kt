@@ -9,12 +9,12 @@ import android.util.Log
 import android.view.View
 import com.makentoshe.mathworks.ActCompletedActivity
 import com.makentoshe.mathworks.R
-import kotlinx.android.synthetic.main.activity_integer_act1.*
+import kotlinx.android.synthetic.main.activity_act_type1.*
 
-class ArithmeticAct5Activity : AppCompatActivity() {
+class IntegerBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_integer_act1)
+        setContentView(R.layout.activity_act_type1)
         zoneName.text=getString(resources.getIdentifier("zone_integer_name", "string", packageName))
         actName.text=getString(resources.getIdentifier("boss_name", "string", packageName))
         var score=0

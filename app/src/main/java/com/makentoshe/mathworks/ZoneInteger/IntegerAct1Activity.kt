@@ -9,16 +9,16 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.makentoshe.mathworks.ActCompletedActivity
 import com.makentoshe.mathworks.R
-import kotlinx.android.synthetic.main.activity_integer_act1.*
+import kotlinx.android.synthetic.main.activity_act_type1.*
 
 
-class ArithmeticAct1Activity : AppCompatActivity() {
+class IntegerAct1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_integer_act1)
+        setContentView(R.layout.activity_act_type1)
         zoneName.text=getString(resources.getIdentifier("zone_integer_name", "string", packageName))
         actName.text=getString(resources.getIdentifier("act_integer_1_name", "string", packageName))
-        var lives:Int
+        var lives: Int
         lives=intent.getIntExtra("lives",3)
         lifeCounterAct.text=lives.toString()
         var score=0
