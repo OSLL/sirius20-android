@@ -21,7 +21,7 @@ class IntegerBossActivity : AppCompatActivity() {
         var lives:Int
         lives=intent.getIntExtra("lives",3)
         lifeCounterAct.text=lives.toString()
-        var taskNames=arrayOf("act_integer_5_theory","act_integer_5_task_1","act_integer_5_task_2","act_integer_5_task_3","act_integer_5_task_4","act_integer_5_task_5")
+        var taskNames=arrayOf("act_integer_boss_theory","act_integer_boss_task_1","act_integer_boss_task_2","act_integer_boss_task_3","act_integer_boss_task_4","act_integer_boss_task_5")
         var taskTypes=arrayOf(0,1,2,2,1,2)
         var taskQuantity=arrayOf(0,2,3,2,1,2)
         var i=0; var step=0
