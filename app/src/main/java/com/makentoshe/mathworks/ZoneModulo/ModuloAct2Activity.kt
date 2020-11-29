@@ -133,7 +133,7 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
             do {num1=(20..120).random();num2=(20..120).random()} while (num1==num2 || GCD (num1,num2)<10); ans= GCD(num1,num2)
         }
         2->{
-            hid=(2..5).random()*10; num1=(2..9).random()*hid; num2=(2..9).random()*hid; while (num3<2 || ((num1+num2+num3)/GCD(GCD(num1,num2),num3)%2==0)) {num3=(2..9).random()*hid}; ans=(num1+num2+num3)/GCD(GCD(num1,num2),num3)%2;
+            hid=(2..5).random()*10; num1=(2..9).random()*hid; num2=(2..9).random()*hid; while (num3<2 || ((num1+num2+num3)/GCD(GCD(num1,num2),num3)%2==0)) {num3=(2..9).random()*hid}; ans=(num1+num2+num3)/GCD(GCD(num1,num2),num3);
         }
         4->{
             num1=(4..7).random()*20; num2=(2..9).random()*25; num3=(3..8).random()*50; ans=LCM(LCM(num1,num2),num3)
