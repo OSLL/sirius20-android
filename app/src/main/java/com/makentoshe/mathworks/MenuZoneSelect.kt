@@ -3,7 +3,10 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_lobby__main.*
+import kotlinx.android.synthetic.main.activity_menu_act_select.*
 
 class MenuZoneSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,49 +16,17 @@ class MenuZoneSelect : AppCompatActivity() {
         lives=intent.getIntExtra("lives",3)
         val intt=Intent(this,MenuActSelect::class.java)
         intt.putExtra("lives",lives)
-        zoneIntegerWarp.setOnClickListener {
-            intt.putExtra("zone","integer")
-            startActivity(intt)
+        val zoneArray=arrayOf("integer","modulo","combine","stats","float","function","triangle","plain","stereo","deriv","complex")
+        var zoneNameArray= Array<String>(11){ ""}
+        for (i in (0..10)){
+            zoneNameArray[i]=(getString(resources.getIdentifier(("zone_${zoneArray[i]}_name"), "string", packageName)))
         }
-        zoneModuloWarp.setOnClickListener {
-            intt.putExtra("zone","modulo")
-            startActivity(intt)
-        }
-        zoneCombineWarp.setOnClickListener {
-            intt.putExtra("zone","combine")
-            startActivity(intt)
-        }
-        zoneStatsWarp.setOnClickListener {
-            intt.putExtra("zone","stats")
-            startActivity(intt)
-        }
-        zoneFloatWarp.setOnClickListener {
-            intt.putExtra("zone","float")
-            startActivity(intt)
-        }
-        zoneFunctionWarp.setOnClickListener {
-            intt.putExtra("zone","function")
-            startActivity(intt)
-        }
-        zoneTriangleWarp.setOnClickListener {
-            intt.putExtra("zone","triangle")
-            startActivity(intt)
-        }
-        zonePlainWarp.setOnClickListener {
-            intt.putExtra("zone","plain")
-            startActivity(intt)
-        }
-        zoneStereoWarp.setOnClickListener {
-            intt.putExtra("zone","stereo")
-            startActivity(intt)
-        }
-        zoneDerivWarp.setOnClickListener {
-            intt.putExtra("zone","deriv")
-            startActivity(intt)
-        }
-        zoneComplexWarp.setOnClickListener {
-            intt.putExtra("zone","complex")
-            startActivity(intt)
+        val adapt= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,zoneNameArray)
+        list1.adapter=adapt
+        list1.setOnItemClickListener { parent, view, position, id ->
+            val intent= Intent(this,MenuActSelect::class.java)
+            intent.putExtra("zone",zoneArray[position])
+            startActivity(intent)
         }
     }
 }

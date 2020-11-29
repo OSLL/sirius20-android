@@ -29,78 +29,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/menu_zone_select" />
 
-            <Button
-                android:id="@+id/zoneIntegerWarp"
+            <ListView
+                android:id="@+id/list1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_integer_name" />
+                android:layout_height="690dp" />
 
-            <Button
-                android:id="@+id/zoneModuloWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_modulo_name" />
-
-            <Button
-                android:id="@+id/zoneCombineWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_combine_name" />
-
-            <Button
-                android:id="@+id/zoneStatsWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_stats_name" />
-
-            <Button
-                android:id="@+id/zoneFloatWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_float_name" />
-
-            <Button
-                android:id="@+id/zoneFunctionWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_function_name" />
-
-            <Button
-                android:id="@+id/zoneTriangleWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_triangle_name" />
-
-            <Button
-                android:id="@+id/zonePlainWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_plain_name" />
-
-            <Button
-                android:id="@+id/zoneStereoWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_stereo_name" />
-
-            <Button
-                android:id="@+id/zoneDerivWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_deriv_name" />
-
-            <Button
-                android:id="@+id/zoneComplexWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/zone_complex_name" />
-
-            <Button
-                android:id="@+id/zoneFinalWarp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:enabled="false"
-                android:text="@string/zone_final_name" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
