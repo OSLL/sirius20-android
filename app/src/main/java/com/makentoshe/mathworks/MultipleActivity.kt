@@ -18,7 +18,7 @@ class MultipleActivity : AppCompatActivity() {
             val taskS: String = String.format(task)
             textMultiple1.setText(taskS)
         }
-        ContinueMultiple.setOnClickListener {
+        ContinueButtonRes.setOnClickListener {
             val multIntent = Intent(this, Multiple2Activity::class.java)
             multIntent.putExtra("progress", progressBarZone1Act2.progress+1)
             startActivity(multIntent)

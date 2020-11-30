@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">MathWorks</string>
+    <string name="play">Продолжить</string>
+    <string name="exit">Выход</string>
+    <string name="settings">Настройки</string>
+    <string name="RadioButton_1">Верно</string>
+    <string name="TextResult">"Не отчаивайся!\n В следующий раз ты решишь все задачи!"</string>
     <string name="Head1_1">Зона 1 АКТ 2</string>
     <string name="Head1_4">Зона 1 АКТ 4</string>
     <string name="Subhead1_1">Умножение и деление</string>

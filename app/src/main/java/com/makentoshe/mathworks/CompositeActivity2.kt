@@ -3,10 +3,8 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import kotlinx.android.synthetic.main.composite_2.*
 import kotlinx.android.synthetic.main.composite_2.textRes
-import kotlinx.android.synthetic.main.multiple_2.*
 import kotlin.random.Random
 
 var answersComposite: Int = 0
@@ -39,8 +37,8 @@ class CompositeActivity2 : AppCompatActivity() {
         val task: String = this.getString(R.string.CompositeTask)
         val taskS: String = String.format(task, a)
         textCompositeTask.setText(taskS)
-        checkComposite.setOnClickListener {
-            if (checkComposite.text.toString() == "Проверить") {
+        checkButton.setOnClickListener {
+            if (checkButton.text.toString() == "Проверить") {
                 if (progressBarZone1Act2_4.progress == 1) {
                     if (editTextComposite1.getText().toString() == Decomposition(a)) {
                         textRes.setText("Верно")
@@ -71,7 +69,7 @@ class CompositeActivity2 : AppCompatActivity() {
                     }
                 }
             } else {
-                checkComposite.setText("Проверить")
+                checkButton.setText("Проверить")
                 textRes.setText("")
                 editTextComposite1.setText("")
                 if (progressBarZone1Act2_4.progress == 2) {
@@ -96,7 +94,7 @@ class CompositeActivity2 : AppCompatActivity() {
 
             }
             if (textRes.text != "") {
-                checkComposite.setText("Продолжить")
+                checkButton.setText("Продолжить")
                 progressBarZone1Act2_4.progress += 1
                 if (progressBarZone1Act2_4.progress == 5) {
                     val multIntent = Intent(this, CompositeResult::class.java)
