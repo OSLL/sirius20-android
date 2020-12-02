@@ -136,16 +136,16 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
             hid=(2..5).random()*10; num1=(2..9).random()*hid; num2=(2..9).random()*hid; while (num3<2 || ((num1+num2+num3)/GCD(GCD(num1,num2),num3)%2==0)) {num3=(2..9).random()*hid}; ans=(num1+num2+num3)/GCD(GCD(num1,num2),num3);
         }
         4->{
-            num1=(4..7).random()*20; num2=(2..9).random()*25; num3=(3..8).random()*50; ans=LCM(LCM(num1,num2),num3)
+            do {num1=(4..7).random()*25; num2=(2..9).random()*25; num3=(3..8).random()*25;} while ((num1==num2) or (num2==num3) or (num1==num3)); ans=LCM(LCM(num1,num2),num3)
         }
         5->{
-            num1=(5..9).random()*10; num2=num1+(1..4).random()*10; ans=LCM(num1,num2)
+            num2=(5..9).random()*10; num1=num2+(1..4).random()*10; ans=LCM(num1,num2)
         }
         7->{
-            num1=(2..20).random(); do num2=(2..20).random() while (num2==num1); do num3=(2..20).random() while (num2==num3 || num1==num3); ans=LCM(LCM(num1,num2),num3)/GCD(GCD(num1,num2),num3);
+            num1=(2..15).random(); do num2=(2..15).random() while (num2==num1); do num3=(2..15).random() while (num2==num3 || num1==num3); ans=LCM(LCM(num1,num2),num3)/GCD(GCD(num1,num2),num3);
         }
         8->{
-            num1=(10..100).random(); num2=(11..100).random(); ans=num1; while(GCD(num2,ans)>0 && ans<=num1) {ans++}
+            num1=(10..100).random(); num2=(11..100).random(); ans=num1; while(GCD(num2,ans)>1 && ans<=num1) {ans++}
         }
         else -> {num1=0; num2=0; ans=0}
     }
@@ -155,12 +155,11 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
 fun answerVariantMakerForModuloAct2 (a: IntArray): IntArray {
     var ans=a[0]
     var b: MutableList<Int>
-    if (ans>0) b = mutableListOf<Int>(0,(-ans..-1).random(),(1..10).random(),(-ans/2..5).random())
-    else b = mutableListOf<Int>(0,(-abs(ans)-2..-1).random(),(1..10).random(),(-ans/2..5).random())
+    do {b= mutableListOf(0,(-25..25).random(),(-25..25).random(),(-25..25).random())} while (b[1]==0 || b[2]==0 || b[3]==0 || GCD(GCD(b[1],b[2]),b[3])==1)
     var i_corr=0
     if (b[3]==0) b[3]=1
     b.shuffle()
-    for (i in 0..3) {if (b[i]==0) {i_corr=i}; b[i]+=ans; }
+    for (i in 0..3) {if (b[i]==0) {i_corr=i}; b[i]+=ans; b[i]=abs(b[i])}
     var aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
     Log.d("Act1","Answer array returned: ${aa[0]} ${aa[1]} ${aa[2]} ${aa[3]} ${aa[4]}")
     return aa
