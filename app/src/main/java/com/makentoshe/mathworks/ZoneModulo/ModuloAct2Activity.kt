@@ -142,10 +142,10 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
             num2=(5..9).random()*10; num1=num2+(1..4).random()*10; ans=LCM(num1,num2)
         }
         7->{
-            num1=(2..15).random(); do num2=(2..15).random() while (num2==num1); do num3=(2..15).random() while (num2==num3 || num1==num3); ans=LCM(LCM(num1,num2),num3)/GCD(GCD(num1,num2),num3);
+            num1=(2..15).random(); do num2=(2..15).random() while (num2==num1); do num3=(2..15).random() while (num2==num3 || num1==num3); ans=LCM(LCM(num1,num2),num3)*GCD(GCD(num1,num2),num3);
         }
         8->{
-            num1=(10..100).random(); num2=(11..100).random(); ans=num1; while(GCD(num2,ans)>1 && ans<=num1) {ans++}
+            num1=(10..100).random(); num2=(11..100).random(); ans=num1+1; while(GCD(num2,ans)>1 || ans<=num1) {ans++}
         }
         else -> {num1=0; num2=0; ans=0}
     }
@@ -155,7 +155,7 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
 fun answerVariantMakerForModuloAct2 (a: IntArray): IntArray {
     var ans=a[0]
     var b: MutableList<Int>
-    do {b= mutableListOf(0,(-25..25).random(),(-25..25).random(),(-25..25).random())} while (b[1]==0 || b[2]==0 || b[3]==0 || GCD(GCD(b[1],b[2]),b[3])==1)
+    do {b= mutableListOf(0,(-25..25).random(),(-25..25).random(),(-25..25).random())} while (b[1]==0 || b[2]==0 || b[3]==0 || b[1]==b[2] || b[1]==b[3] || b[2]==b[3] )
     var i_corr=0
     if (b[3]==0) b[3]=1
     b.shuffle()
