@@ -120,7 +120,11 @@ class IntegerBossActivity : AppCompatActivity() {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
                 } else if (taskQuantity[i] == 3) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2], nums[3])
-                } else {
+                }
+                else if (taskQuantity[i] == 1) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1])
+                }
+                else {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
                 }
                 taskText.text = name
