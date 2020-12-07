@@ -28,7 +28,7 @@ class ModuloAct2Activity : AppCompatActivity() {
         var taskTypes=arrayOf(0,1,2,0,1,2,0,1,2)
         var taskQuantity=arrayOf(0,2,3,0,3,2,0,3,2)
         var taskNames=arrayOf("act_modulo_2_descr_1","act_modulo_2_task_1","act_modulo_2_task_2","act_modulo_2_descr_2","act_modulo_2_task_3","act_modulo_2_task_4","act_modulo_2_descr_3","act_modulo_2_task_5","act_modulo_2_task_6")
-        taskText.text=getString(resources.getIdentifier(taskNames[0], "string", packageName))
+        descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var variants= IntArray(5)
         var nums=IntArray(4)
         var choice=0
@@ -86,36 +86,43 @@ class ModuloAct2Activity : AppCompatActivity() {
             answerVariant4.isChecked=false
             answerNumberInput.setText("")
             Log.d("Act1","Variants unchecked, input cleaned")
-            if (i<taskTypes.size) {if (taskTypes[i]!=0) nums = correctNumberMakerForModuloAct2(i)
+            if (i<taskTypes.size) {
+                if (taskTypes[i] != 0) nums = correctNumberMakerForModuloAct2(i)
                 variants = answerVariantMakerForModuloAct2(nums)
-                Log.d("Act1","Answer: ${nums[0]}")
-                Log.d("Act1","Variants deployed")
+                Log.d("Act1", "Answer: ${nums[0]}")
+                Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
-                    0 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.GONE}
-                    2 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.VISIBLE; answerText.text="${nums[0]}"}
-                    1 -> {answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility= View.GONE;
-                        answerVariant1.text=variants[0].toString()
-                        answerVariant2.text=variants[1].toString()
-                        answerVariant3.text=variants[2].toString()
-                        answerVariant4.text=variants[3].toString()
-                        answerText.text=nums[0].toString()}
+                    0 -> {
+                        answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                    }
+                    2 -> {
+                        answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility = View.VISIBLE; answerText.text = "${nums[0]}"; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility = View.GONE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
+                        answerVariant1.text = variants[0].toString()
+                        answerVariant2.text = variants[1].toString()
+                        answerVariant3.text = variants[2].toString()
+                        answerVariant4.text = variants[3].toString()
+                        answerText.text = nums[0].toString()
+                    }
                 }
-                Log.d("Act1","Variants deployed")
-                if(step<=max) progressBar.progress=((score.toDouble()/max.toDouble())*100.0).toInt()
-                if(step<=max) progressStepBar.progress=((step.toDouble()/max.toDouble())*100.0).toInt()
-                var name=""
-                if (taskQuantity[i]==2)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2])}
-                else if (taskQuantity[i]==3)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2],nums[3])}
-                else if (taskQuantity[i]==1)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1])}
-                else {name=getString(resources.getIdentifier(taskNames[i], "string", packageName))}
-                taskText.text=name}
+                Log.d("Act1", "Variants deployed")
+                if (step <= max) progressBar.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
+                if (step <= max) progressStepBar.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
+                var name = ""
+                descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
+                if (taskQuantity[i] == 2) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
+                } else if (taskQuantity[i] == 3) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2], nums[3])
+                } else {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
+                }
+                taskText.text = name
+            }
         }
     }
-
-
 }
 fun GCD (A: Int, B: Int): Int {
     var a=A; var b=B; var c: Int;

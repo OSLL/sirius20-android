@@ -13,10 +13,11 @@ class ActCompletedActivity : AppCompatActivity() {
         var score=intent.getIntExtra("score",2)
         var max=intent.getIntExtra("max",5)
         var rate=(score.toDouble()/max.toDouble()*100.0).toInt()
+        if (rate==0) actCompletedTitle.text="Акт не пройден"
         scoreRateBar.progress=rate
         scoreRateText.text= "$rate%"
         var lives=intent.getIntExtra("lives",3)
-        backButton.setOnClickListener {
+        toMainButton.setOnClickListener {
             val intent= Intent(this,MainActivity::class.java)
             intent.putExtra("lives",lives)
             startActivity(intent)

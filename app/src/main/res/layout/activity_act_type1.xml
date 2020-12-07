@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00FFFFFF"
+    android:background="#FFFFFF"
     tools:context=".ZoneInteger.IntegerAct1Activity">
 
     <TextView
@@ -37,7 +37,7 @@
 
     <ProgressBar
         android:id="@+id/progressStepBar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -57,9 +57,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
-        android:background="#00FFFFFF"
+        android:background="#FFF6F6"
         android:backgroundTint="#00FFFFFF"
-        android:progressTint="#26A69A"
+        android:progressTint="#8BC34A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,8 +90,16 @@
                 android:id="@+id/taskText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/act_integer_1_descr_1"
+                android:text=" "
                 android:textAlignment="textStart"
+                android:textColor="#000000"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/descrText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/act_integer_1_descr_1"
                 android:textColor="#000000" />
 
             <RadioGroup

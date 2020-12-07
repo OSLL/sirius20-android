@@ -38,17 +38,18 @@
         android:layout_marginTop="32dp"
         android:progress="80"
         android:progressDrawable="@drawable/circle"
+        android:progressTint="#8BC34A"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actCompletedTitle" />
 
     <Button
-        android:id="@+id/backButton"
+        android:id="@+id/toMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#5C6BC0"
-        android:text="@string/back"
+        android:text="@string/to_main"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

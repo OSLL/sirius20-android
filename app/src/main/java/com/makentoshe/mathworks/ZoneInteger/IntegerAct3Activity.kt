@@ -24,7 +24,7 @@ class IntegerAct3Activity : AppCompatActivity() {
         var taskNames=arrayOf("act_integer_3_descr_1","act_integer_3_task_1","act_integer_3_task_2","act_integer_3_task_3","act_integer_3_task_4","act_integer_3_task_5","act_integer_3_task_6")
         var taskTypes=arrayOf(0,1,1,2,2,2,1)
         var taskQuantity=arrayOf(0,2,2,3,2,2,2)
-        taskText.text=getString(resources.getIdentifier(taskNames[0], "string", packageName))
+        descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var step =0
         var score =0
         var max =6
@@ -87,32 +87,41 @@ class IntegerAct3Activity : AppCompatActivity() {
             Log.d("Act3","Now showing frame $i")
             answerNumberInput.setText("")
             Log.d("Act3","Variants unchecked, input cleaned")
-            if (i<taskTypes.size) {if (taskTypes[i]!=0) nums = correctNumberMakerForIntegerAct3(i)
+            if (i<taskTypes.size) {
+                if (taskTypes[i] != 0) nums = correctNumberMakerForIntegerAct3(i)
                 variants = answerVariantMakerForIntegerAct3(nums)
-                Log.d("Act3","Answer: ${nums[0]}")
-                Log.d("Act3","Variants deployed")
+                Log.d("Act3", "Answer: ${nums[0]}")
+                Log.d("Act3", "Variants deployed")
                 when (taskTypes[i]) {
-                    0 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.GONE}
-                    2 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.VISIBLE; answerText.text="${nums[0]}"}
-                    1 -> {answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility= View.GONE;
-                        answerVariant1.text=variants[0].toString()
-                        answerVariant2.text=variants[1].toString()
-                        answerVariant3.text=variants[2].toString()
-                        answerVariant4.text=variants[3].toString()
-                        answerText.text=nums[0].toString()}
+                    0 -> {
+                        answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                    }
+                    2 -> {
+                        answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility = View.VISIBLE; answerText.text = "${nums[0]}"; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility = View.GONE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
+                        answerVariant1.text = variants[0].toString()
+                        answerVariant2.text = variants[1].toString()
+                        answerVariant3.text = variants[2].toString()
+                        answerVariant4.text = variants[3].toString()
+                        answerText.text = nums[0].toString()
+                    }
                 }
-                Log.d("Act1","Variants deployed")
-                if(step<=max) progressBar.progress=((score.toDouble()/max.toDouble())*100.0).toInt()
-                if(step<=max) progressStepBar.progress=((step.toDouble()/max.toDouble())*100.0).toInt()
-                var name=""
-                if (taskQuantity[i]==2)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2])}
-                else if (taskQuantity[i]==3)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2],nums[3])}
-                else if (taskQuantity[i]==1)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1])}
-                else {name=getString(resources.getIdentifier(taskNames[i], "string", packageName))}
-                taskText.text=name}
+                Log.d("Act1", "Variants deployed")
+                if (step <= max) progressBar.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
+                if (step <= max) progressStepBar.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
+                var name = ""
+                descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
+                if (taskQuantity[i] == 2) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
+                } else if (taskQuantity[i] == 3) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2], nums[3])
+                } else {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
+                }
+                taskText.text = name
+            }
         }
     }
 }
@@ -129,13 +138,13 @@ fun correctNumberMakerForIntegerAct3(i: Int): IntArray {
             num1=(4..10).random()*50; do num2=(5..25).random()*20 while (num2%num1==0 || num1%num2==0); do num3=(5..7).random() while(num3*num1%num2==0); ans=(num3*num1)/num2+1
         }
         4->{
-            num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); if ((num1/num2)%2==0) ans=num1/num2-1 else ans=num2/num1;
+            num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); if ((num1/num2)%2==0) ans=num1/num2-1 else ans=num1/num2;
         }
         5->{
             num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); if ((num1/num2)%2==0) num3=num1/num2-1 else num3=num1/num2; ans=num1-num3*num2;
         }
         6->{
-            num1=(5..15).random(); do{num2=(4..20).random()*5} while(num2%num1==0); ans=num2%num1+num2/num1;
+            num1=(6..15).random(); do{num2=(4..20).random()*5} while(num2%num1==0); ans=num2%num1+num2/num1;
         }
         else -> {num1=0; num2=0; ans=0}
     }
