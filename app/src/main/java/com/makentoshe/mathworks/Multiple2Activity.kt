@@ -3,8 +3,6 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import kotlinx.android.synthetic.main.multiple_1.*
 import kotlinx.android.synthetic.main.multiple_2.*
 import kotlin.random.Random
 
@@ -73,9 +71,6 @@ class Multiple2Activity : AppCompatActivity() {
                         val taskS: String = String.format(task, a, b)
                         textMultipleTask.setText(taskS)
                     } else if (progressBarZone1Act2_2.progress == 4) {
-                        val multIntent = Intent(this, MultipleActivity::class.java)
-                        multIntent.putExtra("progress_2", progressBarZone1Act2_2.progress)
-                        startActivity(multIntent)
                     } else if (progressBarZone1Act2_2.progress == 6) {
                         a = Random.nextInt(2, 10)
                         b = Random.nextInt(2, 10)

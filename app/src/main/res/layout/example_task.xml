@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textHead1_4"
+        android:id="@+id/headTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -20,63 +20,67 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/headCompositeTheoretics4"
+        android:id="@+id/subheadTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:fontFamily="sans-serif"
         android:text="@string/Subhead1_4"
         android:textColor="@color/colorSubheads"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHead1_4" />
+        app:layout_constraintTop_toBottomOf="@+id/headTask" />
 
     <ProgressBar
-        android:id="@+id/progressBarZone1Act2_4"
+        android:id="@+id/progressBarTask"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:max="5"
-        android:progress="1"
+        android:progress="0"
         android:secondaryProgressTint="@color/colorSubheads"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headCompositeTheoretics4" />
+        app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
+
+    <ImageButton
+        android:id="@+id/settingsButtonTask"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/colorWhite"
+        android:contentDescription="@string/settings"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settings_icon" />
 
     <ScrollView
-        android:id="@+id/ScrollZ1A1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
-        android:background="#08141414"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/taskScroll"
+        android:layout_width="406dp"
+        android:layout_height="591dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/continueButtonTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/progressBarTask">
 
         <LinearLayout
-            android:id="@+id/linearZ1A1"
+            android:id="@+id/taskLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textCompositeTask"
+                android:id="@+id/taskText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingTop="5sp"
-                android:paddingRight="10sp"
-                android:text="@string/MultipleTask"
-                android:textColor="@color/colorText" />
+                android:text="@string/task"
+                android:textSize="24sp" />
 
             <EditText
-                android:id="@+id/editTextComposite1"
+                android:id="@+id/editTextTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -88,41 +92,21 @@
                 android:labelFor="@id/textMultipleTask" />
 
             <TextView
-                android:id="@+id/textRes"
+                android:id="@+id/textResultTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10sp"
-                android:paddingTop="5sp"
-                android:paddingRight="10sp"
-                android:textColor="@color/colorText" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/RadioButton_1" />
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/RadioButton_1" />
-            </RadioGroup>
+                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/checkButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/continueButtonTask"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorBackButton"
         android:paddingLeft="10sp"
         android:paddingRight="10sp"
-        android:text="@string/checkMultiple"
+        android:text="@string/check"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"

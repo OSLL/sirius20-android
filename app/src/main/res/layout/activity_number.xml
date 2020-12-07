@@ -66,7 +66,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textCompositeTask"
+                android:id="@+id/textNumberTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10sp"
@@ -84,7 +84,6 @@
                 android:hint="@string/editTextHint"
                 android:importantForAccessibility="no"
                 android:importantForAutofill="no"
-                android:inputType="number"
                 android:labelFor="@id/textMultipleTask" />
 
             <TextView

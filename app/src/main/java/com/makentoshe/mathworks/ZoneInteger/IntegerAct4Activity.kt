@@ -1,11 +1,13 @@
-package com.makentoshe.mathworks
+package com.makentoshe.mathworks.ZoneInteger
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.makentoshe.mathworks.CompositeActivity2
+import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.multiple_1.*
 
-class CompositeActivity : AppCompatActivity() {
+class IntegerAct4Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.composite_1)
