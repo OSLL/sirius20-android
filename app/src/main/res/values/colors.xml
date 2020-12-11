@@ -9,4 +9,5 @@
     <color name="colorText">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBackButton">#006496</color>
+    <color name="colorRedProgress">#990000</color>
 </resources>

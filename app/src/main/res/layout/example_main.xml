@@ -33,12 +33,12 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <Button
-        android:id="@+id/achieveButton"
+        android:id="@+id/settingsButton"
         android:layout_width="220dp"
         android:layout_height="70dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/colorBackButton"
-        android:text="@string/achievements"
+        android:text="@string/settings"
         android:textColor="@color/colorWhite"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,37 +46,16 @@
         app:layout_constraintTop_toBottomOf="@+id/continueButton" />
 
     <Button
-        android:id="@+id/exitButton"
+        android:id="@+id/infoButton"
         android:layout_width="220dp"
         android:layout_height="70dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/colorBackButton"
-        android:text="@string/exit"
+        android:text="@string/info"
         android:textColor="@color/colorWhite"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/achieveButton" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
 
-    <ImageButton
-        android:id="@+id/infoButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="@color/colorWhite"
-        android:contentDescription="@string/info"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/info_icon" />
-
-    <ImageButton
-        android:id="@+id/settingsButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="@color/colorWhite"
-        android:contentDescription="@string/settings"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

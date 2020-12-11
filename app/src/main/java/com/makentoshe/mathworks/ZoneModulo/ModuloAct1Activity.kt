@@ -3,11 +3,7 @@ package com.makentoshe.mathworks.ZoneModulo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.makentoshe.mathworks.R
-import kotlinx.android.synthetic.main.activity_number.*
-import kotlinx.android.synthetic.main.activity_number.checkButton
-import kotlinx.android.synthetic.main.activity_number.editTextComposite1
-import kotlinx.android.synthetic.main.activity_number.progressBarZone1Act2_4
-import kotlinx.android.synthetic.main.activity_number.textRes
+import kotlinx.android.synthetic.main.example_task.*
 import kotlin.random.Random.Default.nextInt as nextInt
 
 var answersCompositeNum: Int = 0
@@ -142,52 +138,39 @@ fun sum(a: String = "", b: String = "", degree: Int = 2): String{
 class NumberActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_number)
+        setContentView(R.layout.example_task)
         val task: String = this.getString(R.string.NumberTask)
         var degree: Int = nextInt(2, 16)
         var x: String = number(degree, nextInt(3, 5))
         var y: String = number(degree, nextInt(3, 5))
         val taskS: String = String.format(task, x, y, degree)
-        textNumberTask.text = taskS
-        checkButton.setOnClickListener {
-            if (checkButton.text.toString() == "Проверить") {
-                when (progressBarZone1Act2_4.progress) {
-                    1 -> {
-                        if (editTextComposite1.text.toString() == sum(x, y, degree)) {
-                            textRes.text = "Верно"
-                            answersCompositeNum += 1
-                        } else {
-                            textRes.text = "Неверно"
-                        }
-                    }
-                    2 -> {
-                        if (editTextComposite1.text.toString() == y) {
-                            textRes.text = "Верно"
-                            answersCompositeNum += 1
-                        } else {
-                            textRes.text = "Неверно"
-                        }
+        taskText.text = taskS
+        continueButtonTask.setOnClickListener {
+            when (progressBarTask.progress) {
+                1 -> {
+                    if (editTextTask.text.toString() == sum(x, y, degree)) {
+                        answersCompositeNum += 1
                     }
                 }
-            } else {
-                checkButton.text = "Проверить"
-                textRes.text = ""
-                editTextComposite1.setText("")
-                when (progressBarZone1Act2_4.progress) {
-                    2-> {
-                        degree = nextInt(2, 16)
-                        x = number(degree, nextInt(3, 5))
-                        y = number(degree, nextInt(3, 5))
-                        val task: String = this.getString(R.string.Number2Task)
-                        val taskS: String = String.format(task, degree, sum(x, y, degree), x)
-                        textNumberTask.text = taskS
+                2 -> {
+                    if (editTextTask.text.toString() == y) {
+                        answersCompositeNum += 1
                     }
                 }
             }
-            if (textRes.text != "") {
-                checkButton.text = "Продолжить"
-                progressBarZone1Act2_4.progress += 1
+            editTextTask.setText("")
+
+            progressBarTask.progress += 1
+            when (progressBarTask.progress) {
+                2 -> {
+                    degree = nextInt(2, 16)
+                    x = number(degree, nextInt(3, 5))
+                    y = number(degree, nextInt(3, 5))
+                    val task: String = this.getString(R.string.Number2Task)
+                    val taskS: String = String.format(task, degree, sum(x, y, degree), x)
+                    taskText.text = taskS
                 }
+            }
         }
     }
 }
