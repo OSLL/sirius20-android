@@ -3,6 +3,7 @@ package com.makentoshe.mathworks.ZoneInteger
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.makentoshe.mathworks.Result
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.example_task.*
@@ -13,9 +14,19 @@ var a: Int = Random.nextInt(2, 10)
 var b: Int = Random.nextInt(2, 10)
 
 class Multiple2Activity : AppCompatActivity() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        return if (id == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_task)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         headTask.text = this.getString(R.string.Head1)
         subheadTask.text = this.getString(R.string.Subhead1_1)
         if (intent.getIntExtra("progress", 0) != 0) {

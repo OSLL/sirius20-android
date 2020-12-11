@@ -3,13 +3,24 @@ package com.makentoshe.mathworks.ZoneInteger
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.example_theory.*
 
 class IntegerAct4Activity : AppCompatActivity() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        return if (id == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_theory)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val H: String = this.getString(R.string.Head1_4)
         val subH: String = this.getString(R.string.Subhead1_4)
         head.text = H

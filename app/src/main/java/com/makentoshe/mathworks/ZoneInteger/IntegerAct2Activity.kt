@@ -2,6 +2,7 @@ package com.makentoshe.mathworks.ZoneInteger
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.makentoshe.mathworks.R
@@ -10,9 +11,19 @@ import kotlinx.android.synthetic.main.example_theory.*
 
 
 class IntegerAct2Activity : AppCompatActivity() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        return if (id == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_theory)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (intent.getIntExtra("progress", 0) != 0) {
             progressBarTheory.progress = intent.getIntExtra("progress", 0)
             progressBarTheoryTrue.progress = intent.getIntExtra("progress_true", 0)

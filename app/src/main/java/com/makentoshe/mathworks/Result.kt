@@ -15,6 +15,10 @@ class Result : AppCompatActivity() {
         subheadResult.text = intent.getStringExtra("subh")
         resultProgressBar.progress = intent.getIntExtra("answers", 0)
         numTask = intent.getIntExtra("tasks", 0)
+        if (intent.getIntExtra("answers", 0) == numTask) {
+            textCongratulations.text = this.getString(R.string.TextResultGood)
+        }
+        resultProgressBar.max = numTask
         val task: String = this.getString(R.string.result)
         val taskS: String = String.format(task, ((intent.getIntExtra("answers", 0)*100)/numTask))
         textResultPC.text = taskS
