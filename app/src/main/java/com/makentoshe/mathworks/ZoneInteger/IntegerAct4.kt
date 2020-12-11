@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import com.makentoshe.mathworks.Result
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.example_task.*
@@ -27,31 +28,27 @@ class Multiple2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_task)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        headTask.text = this.getString(R.string.Head1)
-        subheadTask.text = this.getString(R.string.Subhead1_1)
-        if (intent.getIntExtra("progress", 0) != 0) {
-            progressBarTask.progress = intent.getIntExtra("progress", 0)
-            progressBarTaskTrue.progress = intent.getIntExtra("progress_true", 0)
-        }
         when (progressBarTask.progress) {
-            1 -> {
-                a = Random.nextInt(2, 10)
-                b = Random.nextInt(2, 10)
-                val task: String = this.getString(R.string.MultipleTask)
-                val taskS: String = String.format(task, a, b)
-                taskText.text = taskS
+            0 -> {
+                val H: String = this.getString(R.string.Head1)
+                val subH: String = this.getString(R.string.Subhead1_1)
+                headTask.text = H
+                subheadTask.text = subH
+                val task: String = this.getString(R.string.textMultiple1)
+                taskText.text = task
+                taskImage.visibility = View.VISIBLE
+                editTextTask.visibility = View.GONE
+                taskImage.setImageResource(R.drawable.table_multiple)
             }
-            5 -> {
-                a = Random.nextInt(2, 10)
-                b = Random.nextInt(2, 10)
-                val task: String = this.getString(R.string.DivTask)
-                val taskS: String = String.format(task, a * b, b)
-                taskText.text = taskS
-            }
+
+
         }
 
         continueButtonTask.setOnClickListener {
             when (progressBarTask.progress) {
+                0 -> {
+                    progressBarTaskTrue.progress += 1
+                }
                 1, 2 -> {
                     if (editTextTask.text.toString() == (a*b).toString()) {
                         answers += 1
@@ -63,6 +60,9 @@ class Multiple2Activity : AppCompatActivity() {
                         answers += 1
                         progressBarTaskTrue.progress += 1
                     }
+                }
+                4 -> {
+                    progressBarTaskTrue.progress += 1
                 }
                 5, 6 -> {
                     if (editTextTask.text.toString() == a.toString()) {
@@ -81,6 +81,15 @@ class Multiple2Activity : AppCompatActivity() {
 
             progressBarTask.progress += 1
             when (progressBarTask.progress) {
+                1 -> {
+                    taskImage.visibility = View.GONE
+                    editTextTask.visibility = View.VISIBLE
+                    a = Random.nextInt(2, 10)
+                    b = Random.nextInt(2, 10)
+                    val task: String = this.getString(R.string.MultipleTask)
+                    val taskS: String = String.format(task, a, b)
+                    taskText.text = taskS
+                }
                 2 -> {
                     a = Random.nextInt(2, 10)
                     b = Random.nextInt(2, 10)
@@ -96,10 +105,21 @@ class Multiple2Activity : AppCompatActivity() {
                     taskText.text = taskS
                 }
                 4 -> {
-                    val multIntent = Intent(this, IntegerAct2Activity::class.java)
-                    multIntent.putExtra("progress", progressBarTask.progress)
-                    multIntent.putExtra("progress_true", progressBarTaskTrue.progress)
-                    startActivity(multIntent)
+                    val H: String = this.getString(R.string.Head1)
+                    val subH: String = this.getString(R.string.Subhead1_1)
+                    headTask.text = H
+                    subheadTask.text = subH
+                    val task: String = this.getString(R.string.textMultiple2)
+                    taskText.text = task
+                    editTextTask.visibility = View.GONE
+                }
+                5 -> {
+                    editTextTask.visibility = View.VISIBLE
+                    a = Random.nextInt(2, 10)
+                    b = Random.nextInt(2, 10)
+                    val task: String = this.getString(R.string.DivTask)
+                    val taskS: String = String.format(task, a * b, b)
+                    taskText.text = taskS
                 }
                 6 -> {
                     a = Random.nextInt(2, 10)

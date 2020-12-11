@@ -2,15 +2,26 @@ package com.makentoshe.mathworks
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.example_result.*
 import kotlinx.android.synthetic.main.example_task.*
 
 var numTask: Int = 0
 
 class Result : AppCompatActivity() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        return if (id == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_result)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         headResult.text = intent.getStringExtra("h")
         subheadResult.text = intent.getStringExtra("subh")
         resultProgressBar.progress = intent.getIntExtra("answers", 0)

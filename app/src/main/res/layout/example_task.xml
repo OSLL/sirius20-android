@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -83,6 +82,17 @@
                 android:text="@string/task"
                 android:textColor="@color/colorText"
                 android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/taskImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-50dp"
+                android:contentDescription="@string/theoryImage"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:visibility="gone"
+                app:srcCompat="@drawable/table_multiple" />
 
             <EditText
                 android:id="@+id/editTextTask"

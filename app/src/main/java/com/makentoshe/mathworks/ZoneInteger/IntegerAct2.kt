@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import com.makentoshe.mathworks.R
 import com.makentoshe.mathworks.Result
 import kotlinx.android.synthetic.main.example_task.*
@@ -13,7 +14,7 @@ var answersComposite: Int = 0
 var aComposite: Int = 0
 var bComposite: Int = 0
 
-fun Decomposition (x: Int): String{
+fun decomposition (x: Int): String{
     var str = ""
     var x1: Int = x
     for (i in 2..x) {
@@ -43,27 +44,28 @@ class CompositeActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_task)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        headTask.text = this.getString(R.string.Head1_4)
-        subheadTask.text = this.getString(R.string.Subhead1_4)
         progressBarTask.max = 5
         progressBarTaskTrue.max = 5
-        if (intent.getIntExtra("progress", 0) != 0) {
-            progressBarTask.progress = intent.getIntExtra("progress", 0)
-            progressBarTaskTrue.progress = intent.getIntExtra("progress_true", 0)
-        }
         when (progressBarTask.progress) {
-            1 -> {
-                aComposite = Random.nextInt(10, 20)
-                val task: String = this.getString(R.string.CompositeTask)
-                val taskS: String = String.format(task, aComposite)
-                taskText.text = taskS
+            0 -> {
+                val h: String = this.getString(R.string.Head1)
+                val subh: String = this.getString(R.string.Subhead1_4)
+                headTask.text = h
+                subheadTask.text = subh
+                val task: String = this.getString(R.string.textComposite)
+                taskText.text = task
+                editTextTask.visibility = View.GONE
             }
+
         }
 
         continueButtonTask.setOnClickListener {
             when (progressBarTask.progress) {
+                0 -> {
+                    progressBarTaskTrue.progress += 1
+                }
                 1 -> {
-                    if (editTextTask.text.toString() == Decomposition(aComposite)) {
+                    if (editTextTask.text.toString() == decomposition(aComposite)) {
                         answersComposite += 1
                         progressBarTaskTrue.progress += 1
                     }
@@ -91,6 +93,13 @@ class CompositeActivity2 : AppCompatActivity() {
 
             progressBarTask.progress += 1
             when (progressBarTask.progress) {
+                1 -> {
+                    aComposite = Random.nextInt(10, 20)
+                    val task: String = this.getString(R.string.CompositeTask)
+                    val taskS: String = String.format(task, aComposite)
+                    taskText.text = taskS
+                    editTextTask.visibility = View.VISIBLE
+                }
                 2 -> {
                     aComposite = Random.nextInt(500, 1000)
                     bComposite = Random.nextInt(400, 500)
