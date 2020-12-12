@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/headResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/zone_integer_name"
+        android:textAllCaps="true"
+        android:textColor="@color/colorHeads"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subheadResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/act_integer_1_name"
+        android:textColor="@color/colorSubheads"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headResult" />
+
+    <TextView
+        android:id="@+id/textCongratulations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/result_bad"
+        android:textColor="@color/colorText"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subheadResult" />
+
+    <ProgressBar
+        android:id="@+id/resultProgressBar"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:max="8"
+        android:progress="5"
+        android:progressDrawable="@drawable/circle"
+        app:layout_constraintBottom_toTopOf="@+id/continueButtonResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCongratulations" />
+
+    <Button
+        android:id="@+id/continueButtonResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackButton"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/navigation_forth"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textResultPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pi%"
+        app:layout_constraintBottom_toBottomOf="@+id/resultProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/resultProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/resultProgressBar"
+        app:layout_constraintTop_toTopOf="@+id/resultProgressBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.activity_lobby__main.*
-import kotlinx.android.synthetic.main.activity_menu_act_select.*
+import kotlinx.android.synthetic.main.layout_menu_zone_select.*
 
 class MenuZoneSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lobby__main)
+        setContentView(R.layout.layout_menu_zone_select)
         var lives:Int
         lives=intent.getIntExtra("lives",3)
         val intt=Intent(this,MenuActSelect::class.java)

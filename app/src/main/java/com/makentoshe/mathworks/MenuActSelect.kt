@@ -17,13 +17,13 @@ import com.makentoshe.mathworks.ZonePlain.*
 import com.makentoshe.mathworks.ZoneStereo.*
 import com.makentoshe.mathworks.ZoneDeriv.*
 import com.makentoshe.mathworks.ZoneComplex.*
-import kotlinx.android.synthetic.main.activity_menu_act_select.*
+import kotlinx.android.synthetic.main.layout_menu_act_select.*
 import java.util.*
 
 class MenuActSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_act_select)
+        setContentView(R.layout.layout_menu_act_select)
         var zone="integer"
         zone=intent.getStringExtra("zone")
         var acts: Int

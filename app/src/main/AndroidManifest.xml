@@ -77,7 +77,7 @@
         <activity android:name=".ZoneComplex.ComplexBossActivity" />
         <activity android:name=".MenuActSelect" />
         <activity android:name=".MenuZoneSelect" />
-        <activity android:name=".ActCompletedActivity" />
+        <activity android:name=".ActResult" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
