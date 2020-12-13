@@ -98,6 +98,7 @@
                 android:id="@+id/editTextTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:digits="0123456789abcdef"
                 android:ems="10"
                 android:gravity="center_horizontal|center_vertical"
                 android:hint="@string/editTextHint"

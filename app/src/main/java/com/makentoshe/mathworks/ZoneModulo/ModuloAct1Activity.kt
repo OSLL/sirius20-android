@@ -1,160 +1,75 @@
 package com.makentoshe.mathworks.ZoneModulo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputFilter
+import android.text.InputType
+import android.text.Spanned
+import android.view.MenuItem
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.Result
+import com.makentoshe.mathworks.ZoneInteger.answers
 import kotlinx.android.synthetic.main.example_task.*
 import kotlin.random.Random.Default.nextInt as nextInt
+import java.math.BigInteger
 
 var answersCompositeNum: Int = 0
 
-fun rep_letters(number: Int = 0): String{
-    var newNumber: String = ""
-    newNumber = when (number) {
-        10 -> "A"
-        11 -> "B"
-        12 -> "C"
-        13 -> "D"
-        14 -> "E"
-        15 -> "F"
-        else -> number.toString()
-    }
-    return newNumber
-}
-fun number(degree: Int = 2, num: Int = 2): String{
-    var x: String = ""
-    for (i in 0..num)
-        x += rep_letters(nextInt(1, degree - 1))
-    return x
-}
-
-fun sum(a: String = "", b: String = "", degree: Int = 2): String{
-    var res: String = ""
-    val a_list= mutableListOf<Int>()
-    val b_list= mutableListOf<Int>()
-    val c_list = mutableListOf<String>()
-    var one: Int = 0
-    var new_str: Int
-    var end_str: String
-    for (i in a) {
-        new_str = when (i.toString()) {
-            "A" -> 10
-            "B" -> 11
-            "C" -> 12
-            "D" -> 13
-            "E" -> 14
-            "F" -> 15
-            else -> i.toString().toInt()
-        }
-        a_list.add(new_str)
-    }
-    a_list.reverse()
-    for (i in b) {
-        new_str = when (i.toString()) {
-            "A" -> 10
-            "B" -> 11
-            "C" -> 12
-            "D" -> 13
-            "E" -> 14
-            "F" -> 15
-            else -> i.toString().toInt()
-        }
-        b_list.add(new_str)
-    }
-    b_list.reverse()
-    if (a_list.size >= b_list.size) {
-        for (i in 0 until a_list.size) {
-            if (i>b_list.size) {
-                b_list.add(0)
-            }
-            if ((a_list[i] +b_list[i]+one) < degree) {
-                end_str = when (a_list[i] +b_list[i]+one) {
-                    10 -> "A"
-                    11 -> "B"
-                    12 -> "C"
-                    13 -> "D"
-                    14 -> "E"
-                    15 -> "F"
-                    else -> (a_list[i] +b_list[i]+one).toString()
-                }
-                c_list.add(end_str)
-                one = 0
-            } else {
-                end_str = when (a_list[i] +b_list[i]+one-degree) {
-                    10 -> "A"
-                    11 -> "B"
-                    12 -> "C"
-                    13 -> "D"
-                    14 -> "E"
-                    15 -> "F"
-                    else -> (a_list[i] +b_list[i]+one-degree).toString()
-                }
-                c_list.add(end_str)
-                one = 1
-            }
-        }
-    } else {
-        for (i in 0 until b_list.size) {
-            if (i>b_list.size) {
-                a_list.add(0)
-            }
-            if ((a_list[i]+b_list[i]+one) < degree) {
-                end_str = when (a_list[i] +b_list[i]+one) {
-                    10 -> "A"
-                    11 -> "B"
-                    12 -> "C"
-                    13 -> "D"
-                    14 -> "E"
-                    15 -> "F"
-                    else -> (a_list[i] +b_list[i]+one).toString()
-                }
-                c_list.add(end_str)
-                one = 0
-            } else {
-                end_str = when (a_list[i] +b_list[i]+one-degree) {
-                    10 -> "A"
-                    11 -> "B"
-                    12 -> "C"
-                    13 -> "D"
-                    14 -> "E"
-                    15 -> "F"
-                    else -> (a_list[i] +b_list[i]+one-degree).toString()
-                }
-                c_list.add(end_str)
-                one = 1
-            }
-        }
-    }
-    if (one == 1) {
-        c_list.add(1.toString())
-    }
-    c_list.reverse()
-    for (i in c_list){
-        res += i
-    }
-    return res
-}
-
 class NumberActivity : AppCompatActivity() {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        return if (id == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.example_task)
-        val task: String = this.getString(R.string.NumberTask)
-        var degree: Int = nextInt(2, 16)
-        var x: String = number(degree, nextInt(3, 5))
-        var y: String = number(degree, nextInt(3, 5))
-        val taskS: String = String.format(task, x, y, degree)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        editTextTask.inputType = InputType.TYPE_CLASS_TEXT
+        val H: String = this.getString(R.string.Head2)
+        val subH: String = this.getString(R.string.Subhead2_1)
+        headTask.text = H
+        subheadTask.text = subH
+        progressBarTask.max = 4
+        progressBarTaskTrue.max = 4
+        var task: String = this.getString(R.string.NumberTask)
+        var degree: Int = nextInt(11, 16)
+        var x: Int = nextInt(10, 20)
+        var y: Int = nextInt(10, 20)
+        var x1: String = BigInteger(x.toString()).toString(degree)
+        var y1: String = BigInteger(y.toString()).toString(degree)
+        var taskS: String = String.format(task, x1, y1, degree)
         taskText.text = taskS
+        
         continueButtonTask.setOnClickListener {
             when (progressBarTask.progress) {
-                1 -> {
-                    if (editTextTask.text.toString() == sum(x, y, degree)) {
+                0 -> {
+                    if (editTextTask.text.toString() == BigInteger((x+y).toString()).toString(degree)) {
                         answersCompositeNum += 1
+                        progressBarTaskTrue.progress += 1
+                    }
+                }
+                1 -> {
+                    if (editTextTask.text.toString() == BigInteger((y).toString()).toString(degree)) {
+                        answersCompositeNum += 1
+                        progressBarTaskTrue.progress += 1
                     }
                 }
                 2 -> {
-                    if (editTextTask.text.toString() == y) {
+                    if (editTextTask.text.toString() == BigInteger((x*y).toString()).toString(degree)) {
                         answersCompositeNum += 1
+                        progressBarTaskTrue.progress += 1
+                    }
+                }
+                3 -> {
+                    if (editTextTask.text.toString() == BigInteger((y).toString()).toString(degree)) {
+                        answersCompositeNum += 1
+                        progressBarTaskTrue.progress += 1
                     }
                 }
             }
@@ -162,14 +77,42 @@ class NumberActivity : AppCompatActivity() {
 
             progressBarTask.progress += 1
             when (progressBarTask.progress) {
-                2 -> {
-                    degree = nextInt(2, 16)
-                    x = number(degree, nextInt(3, 5))
-                    y = number(degree, nextInt(3, 5))
-                    val task: String = this.getString(R.string.Number2Task)
-                    val taskS: String = String.format(task, degree, sum(x, y, degree), x)
+                1 -> {
+                    degree = nextInt(11, 16)
+                    task= this.getString(R.string.Number2Task)
+                    x = nextInt(10, 20)
+                    y= nextInt(10, 20)
+                    x1= BigInteger(x.toString()).toString(degree)
+                    taskS = String.format(task, degree.toString(), BigInteger((x+y).toString()).toString(degree), x1)
                     taskText.text = taskS
                 }
+                2 -> {
+                    degree = nextInt(11, 16)
+                    task = this.getString(R.string.Number3Task)
+                    x = nextInt(10, 20)
+                    y = nextInt(10, 20)
+                    x1 = BigInteger(x.toString()).toString(degree)
+                    y1 = BigInteger(y.toString()).toString(degree)
+                    taskS = String.format(task, degree.toString(), y1, x1)
+                    taskText.text = taskS
+                }
+                3 -> {
+                    degree = nextInt(11, 16)
+                    task = this.getString(R.string.Number4Task)
+                    x = nextInt(10, 20)
+                    y = nextInt(10, 20)
+                    x1 = BigInteger(x.toString()).toString(degree)
+                    taskS = String.format(task, degree.toString(), x1, BigInteger((x*y).toString()).toString(degree))
+                    taskText.text = taskS
+                }
+            }
+            if (progressBarTask.progress == 4) {
+                val multIntent = Intent(this, Result::class.java)
+                multIntent.putExtra("answers", answersCompositeNum)
+                multIntent.putExtra("tasks", 4)
+                multIntent.putExtra("h", this.getString(R.string.Head2))
+                multIntent.putExtra("subh", this.getString(R.string.Subhead2_1))
+                startActivity(multIntent)
             }
         }
     }
