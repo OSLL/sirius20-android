@@ -7,6 +7,6 @@ import com.makentoshe.mathworks.R
 class CombineAct4Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_act_type1)
+        setContentView(R.layout.layout_act_tasks)
     }
 }

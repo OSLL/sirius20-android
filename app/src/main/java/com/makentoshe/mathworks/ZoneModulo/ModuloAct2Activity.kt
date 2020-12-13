@@ -7,35 +7,35 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import com.makentoshe.mathworks.ActCompletedActivity
+import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
-import com.makentoshe.mathworks.ZoneInteger.answerVariantMakerForArithmAct5
-import com.makentoshe.mathworks.ZoneInteger.correctNumberMakerForArithmAct5
-import com.makentoshe.mathworks.ZoneInteger.isPrime
-import kotlinx.android.synthetic.main.activity_act_type1.*
+import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.lang.Math.abs
 
 class ModuloAct2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_act_type1)
-        zoneName.text=getString(resources.getIdentifier("zone_modulo_name", "string", packageName))
-        actName.text=getString(resources.getIdentifier("act_modulo_2_name", "string", packageName))
+        setContentView(R.layout.layout_act_tasks)
+        headTask.text=getString(R.string.zone_modulo_name)
+        subheadTask.text=getString(R.string.act_modulo_2_name)
         var step =0
         var score =0
         var max =6
+        progressBarTask.max=100
+        progressBarTaskTrue.max=100
         var i=0
         var taskTypes=arrayOf(0,1,2,0,1,2,0,1,2)
         var taskQuantity=arrayOf(0,2,3,0,3,2,0,3,2)
         var taskNames=arrayOf("act_modulo_2_descr_1","act_modulo_2_task_1","act_modulo_2_task_2","act_modulo_2_descr_2","act_modulo_2_task_3","act_modulo_2_task_4","act_modulo_2_descr_3","act_modulo_2_task_5","act_modulo_2_task_6")
-        taskText.text=getString(resources.getIdentifier(taskNames[0], "string", packageName))
+        descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var variants= IntArray(5)
         var nums=IntArray(4)
         var choice=0
         var a=""
         var aint=0
-        answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.GONE
-        answerNumberInput.addTextChangedListener(object: TextWatcher {
+        taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
+        radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
+        editTextTask.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -45,20 +45,20 @@ class ModuloAct2Activity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                a=answerNumberInput.text.toString().trim()
+                a=editTextTask.text.toString().trim()
                 if (a.toIntOrNull()!=null) aint=a.toInt()
                 Log.d("Act2","Input was modified: $a $aint")
             }
 
         })
-        nextButton.setOnClickListener {
+        continueButtonTask.setOnClickListener {
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
-                    if (answerVariant1.isChecked) choice=0
-                    else if (answerVariant2.isChecked) choice=1
-                    else if (answerVariant3.isChecked) choice=2
-                    else if (answerVariant4.isChecked) choice=3
-                    else choice=answerNumberInput.toString().toIntOrNull()?:-1
+                    if (radioButtonTask1.isChecked) choice=0
+                    else if (radioButtonTask2.isChecked) choice=1
+                    else if (radioButtonTask3.isChecked) choice=2
+                    else if (radioButtonTask4.isChecked) choice=3
+                    else choice=editTextTask.toString().toIntOrNull()?:-1
                     if (choice==variants[4]) score++
                     Log.d("Act2","Score is now $score")
                 }
@@ -68,54 +68,59 @@ class ModuloAct2Activity : AppCompatActivity() {
                     Log.d("Act2","Score is now $score")
                 }
                 step++
-                Log.d("Act2","Proceeding to next task, step=${step}, score=${score}")
+                Log.d("Act2","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
             i++
             if (i==taskTypes.size) {
                 Log.d("Act2", "The act is over, launching to the start menu")
-                val intt = Intent(this, ActCompletedActivity::class.java)
+                val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
+                intt.putExtra("zone", "modulo")
+                intt.putExtra("act", 1)
                 startActivity(intt)
             }
             Log.d("Act1","Strings updated")
             Log.d("Act1","Now showing frame $i")
-            answerVariant1.isChecked=false
-            answerVariant2.isChecked=false
-            answerVariant3.isChecked=false
-            answerVariant4.isChecked=false
-            answerNumberInput.setText("")
+            radioGroupTask.clearCheck()
+            editTextTask.setText("")
             Log.d("Act1","Variants unchecked, input cleaned")
-            if (i<taskTypes.size) {if (taskTypes[i]!=0) nums = correctNumberMakerForModuloAct2(i)
+            if (i<taskTypes.size) {
+                if (taskTypes[i] != 0) nums = correctNumberMakerForModuloAct2(i)
                 variants = answerVariantMakerForModuloAct2(nums)
-                Log.d("Act1","Answer: ${nums[0]}")
-                Log.d("Act1","Variants deployed")
+                Log.d("Act1", "Answer: ${nums[0]}")
+                Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
-                    0 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.GONE}
-                    2 -> {answerVariantGroup.visibility = View.GONE; answerNumberInput.visibility= View.VISIBLE; answerText.text="${nums[0]}"}
-                    1 -> {answerVariantGroup.visibility = View.VISIBLE; answerNumberInput.visibility= View.GONE;
-                        answerVariant1.text=variants[0].toString()
-                        answerVariant2.text=variants[1].toString()
-                        answerVariant3.text=variants[2].toString()
-                        answerVariant4.text=variants[3].toString()
-                        answerText.text=nums[0].toString()}
+                    0 -> {
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                    }
+                    2 -> {
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        radioGroupTask.visibility = View.VISIBLE; editTextTask.visibility = View.GONE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
+                        radioButtonTask1.text = variants[0].toString()
+                        radioButtonTask2.text = variants[1].toString()
+                        radioButtonTask3.text = variants[2].toString()
+                        radioButtonTask4.text = variants[3].toString()
+                    }
                 }
-                Log.d("Act1","Variants deployed")
-                if(step<=max) progressBar.progress=((score.toDouble()/max.toDouble())*100.0).toInt()
-                if(step<=max) progressStepBar.progress=((step.toDouble()/max.toDouble())*100.0).toInt()
-                var name=""
-                if (taskQuantity[i]==2)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2])}
-                else if (taskQuantity[i]==3)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1],nums[2],nums[3])}
-                else if (taskQuantity[i]==1)
-                {name=getString(resources.getIdentifier(taskNames[i], "string", packageName),nums[1])}
-                else {name=getString(resources.getIdentifier(taskNames[i], "string", packageName))}
-                taskText.text=name}
+                Log.d("Act1", "Variants deployed")
+                if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
+                if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
+                var name = ""
+                descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
+                if (taskQuantity[i] == 2) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
+                } else if (taskQuantity[i] == 3) {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2], nums[3])
+                } else {
+                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
+                }
+                taskText.text = name
+            }
         }
     }
-
-
 }
 fun GCD (A: Int, B: Int): Int {
     var a=A; var b=B; var c: Int;
