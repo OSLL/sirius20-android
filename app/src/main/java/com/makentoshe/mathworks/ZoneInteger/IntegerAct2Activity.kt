@@ -30,7 +30,7 @@ fun decomposition (x: Int): String{
     return str
 }
 
-class CompositeActivity2 : AppCompatActivity() {
+class IntegerAct2Activity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
         return if (id == android.R.id.home) {

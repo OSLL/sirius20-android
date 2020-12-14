@@ -16,7 +16,7 @@ import java.math.BigInteger
 
 var answersCompositeNum: Int = 0
 
-class NumberActivity : AppCompatActivity() {
+class ModuloAct1Activity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
         return if (id == android.R.id.home) {

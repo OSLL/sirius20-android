@@ -14,7 +14,7 @@ var answers: Int = 0
 var a: Int = Random.nextInt(2, 10)
 var b: Int = Random.nextInt(2, 10)
 
-class Multiple2Activity : AppCompatActivity() {
+class IntegerAct4Activity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
         return if (id == android.R.id.home) {
