@@ -16,8 +16,8 @@ class ModuloAct2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=getString(R.string.zone_modulo_name)
-        subheadTask.text=getString(R.string.act_modulo_2_name)
+        headTask.text=intent.getStringExtra("zone")
+        subheadTask.text=intent.getStringExtra("act")
         var step =0
         var score =0
         var max =6

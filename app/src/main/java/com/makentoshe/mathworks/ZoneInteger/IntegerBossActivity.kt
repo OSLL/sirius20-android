@@ -15,8 +15,8 @@ class IntegerBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=getString(R.string.zone_integer_name)
-        subheadTask.text=getString(R.string.boss_name)
+        headTask.text=intent.getStringExtra("zone")
+        subheadTask.text=intent.getStringExtra("act")
         var score=0
         var lives:Int
         lives=intent.getIntExtra("lives",3)

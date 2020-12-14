@@ -141,6 +141,8 @@ class MenuActSelect : AppCompatActivity() {
             Log.d("ACT_SELECT","position $position, id $id");
             val pendActivity= linksAct[zone]?.get(position)
             val intent= Intent(this,pendActivity)
+            intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zone}_name"), "string", packageName)))
+            intent.putExtra("act",actArray[position])
             startActivity(intent)
         }
         Log.d("ACT_SELECT","Zone name loaded zone_${zone}_name")
