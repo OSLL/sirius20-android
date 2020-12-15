@@ -6,10 +6,11 @@
 
     <TextView
         android:id="@+id/headTask"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/zone_integer_name"
+        android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorHeads"
         android:textSize="20sp"
@@ -20,11 +21,12 @@
 
     <TextView
         android:id="@+id/subheadTask"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="sans-serif"
         android:text="@string/act_integer_1_name"
+        android:textAlignment="center"
         android:textColor="@color/colorSubheads"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +39,10 @@
         android:layout_width="219dp"
         android:layout_height="17dp"
         android:layout_marginTop="5dp"
-        android:max="8"
+        android:max="100"
         android:progress="0"
+        android:progressBackgroundTint="@color/colorBackgroundProgress"
         android:progressTint="@color/colorRedProgress"
-        android:secondaryProgressTint="@color/colorSubheads"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
@@ -51,9 +53,12 @@
         android:layout_width="219dp"
         android:layout_height="17dp"
         android:layout_marginTop="5dp"
-        android:max="8"
+        android:backgroundTint="@color/colorTransparent"
+        android:backgroundTintMode="add"
+        android:max="100"
         android:progress="0"
-        android:secondaryProgressTint="@color/colorSubheads"
+        android:progressBackgroundTint="@color/colorTransparent"
+        android:progressTint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
@@ -62,7 +67,9 @@
         android:id="@+id/taskScroll"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/act_integer_1_descr_1"
                 android:textColor="@color/colorText"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:visibility="gone" />
 
             <TextView
@@ -90,16 +97,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/act_integer_1_task_1"
                 android:textColor="@color/colorText"
-                android:textSize="20sp" />
+                android:textSize="15sp"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/taskImage"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="-50dp"
+                android:layout_height="384dp"
+                android:background="#FFFFFF"
                 android:contentDescription="@string/task_theory_image"
-                android:scaleX="0.9"
-                android:scaleY="0.9"
+                android:padding="0dp"
+                android:scaleX="1"
+                android:scaleY="1"
                 android:visibility="gone"
                 app:srcCompat="@drawable/table_multiple" />
 
