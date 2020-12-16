@@ -26,8 +26,6 @@ class IntegerBossActivity : AppCompatActivity() {
         var i=0; var step=0
         descrText.text=getString(R.string.boss_descr,headTask.text)
         var max=5
-        progressBarTask.max=100
-        progressBarTaskTrue.max=100
         var variants=IntArray(5)
         var nums=IntArray(4)
         var choice=0

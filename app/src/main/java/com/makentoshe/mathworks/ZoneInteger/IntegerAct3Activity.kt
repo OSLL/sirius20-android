@@ -25,8 +25,6 @@ class IntegerAct3Activity : AppCompatActivity() {
         var step =0
         var score =0
         var max =6
-        progressBarTask.max=100
-        progressBarTaskTrue.max=100
         var i=0
         var variants= IntArray(5)
         var nums=IntArray(4)
@@ -87,7 +85,7 @@ class IntegerAct3Activity : AppCompatActivity() {
             Log.d("Act3","Variants unchecked, input cleaned")
             if (i<taskTypes.size) {
                 if (taskTypes[i] != 0) nums = correctNumberMakerForIntegerAct3(i)
-                variants = radioButtonTaskMakerForIntegerAct3(nums)
+                variants = answerMakerForIntegerAct3(nums)
                 Log.d("Act3", "Answer: ${nums[0]}")
                 Log.d("Act3", "Variants deployed")
                 when (taskTypes[i]) {
@@ -148,15 +146,12 @@ fun correctNumberMakerForIntegerAct3(i: Int): IntArray {
     return intArrayOf(ans,num1,num2,num3)
     Log.d("Act1","Correct numbers created")
 }
-fun radioButtonTaskMakerForIntegerAct3 (a: IntArray): IntArray {
+fun answerMakerForIntegerAct3 (a: IntArray): IntArray {
     var ans=a[0]
-    var b: MutableList<Int>
-    do {b= mutableListOf(0,(-25..25).random(),(-25..25).random(),(-25..25).random())} while (b[1]==0 || b[2]==0 || b[3]==0 || b[1]==b[2] || b[1]==b[3] || b[2]==b[3])
-    var i_corr=0
+    var b = mutableListOf<Int>(ans,0,0,0)
+    do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
-    for (i in 0..3) {if (b[i]==0) {i_corr=i}; b[i]+=ans; b[i]= abs(b[i])
-    }
-    for (i in 0..3) {if (i!=i_corr && b[i]==ans)b[i]+=1}
+    var i_corr=b.indexOf(ans)
     var aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
     Log.d("Act1","Answer array returned: ${aa[0]} ${aa[1]} ${aa[2]} ${aa[3]} ${aa[4]}")
     return aa
