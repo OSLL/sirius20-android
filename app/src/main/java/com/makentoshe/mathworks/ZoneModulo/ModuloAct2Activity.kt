@@ -87,7 +87,7 @@ class ModuloAct2Activity : AppCompatActivity() {
             Log.d("Act1","Variants unchecked, input cleaned")
             if (i<taskTypes.size) {
                 if (taskTypes[i] != 0) nums = correctNumberMakerForModuloAct2(i)
-                variants = answerVariantMakerForModuloAct2(nums)
+                variants = answerMakerForModuloAct2(nums)
                 Log.d("Act1", "Answer: ${nums[0]}")
                 Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
@@ -109,7 +109,7 @@ class ModuloAct2Activity : AppCompatActivity() {
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
                 var name = ""
-                descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
+                descrText.text = getText((resources.getIdentifier(taskNames[i], "string", packageName)))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
                 } else if (taskQuantity[i] == 3) {
@@ -157,14 +157,12 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
     return intArrayOf(ans,num1,num2,num3)
     Log.d("Act1","Correct numbers created")
 }
-fun answerVariantMakerForModuloAct2 (a: IntArray): IntArray {
+fun answerMakerForModuloAct2 (a: IntArray): IntArray {
     var ans=a[0]
-    var b: MutableList<Int>
-    do {b= mutableListOf(0,(-25..25).random(),(-25..25).random(),(-25..25).random())} while (b[1]==0 || b[2]==0 || b[3]==0 || b[1]==b[2] || b[1]==b[3] || b[2]==b[3] )
-    var i_corr=0
-    if (b[3]==0) b[3]=1
+    var b = mutableListOf<Int>(ans,0,0,0)
+    do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
-    for (i in 0..3) {if (b[i]==0) {i_corr=i}; b[i]+=ans; b[i]=abs(b[i])}
+    var i_corr=b.indexOf(ans)
     var aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
     Log.d("Act1","Answer array returned: ${aa[0]} ${aa[1]} ${aa[2]} ${aa[3]} ${aa[4]}")
     return aa

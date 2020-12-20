@@ -43,6 +43,7 @@ class IntegerAct2Activity : AppCompatActivity() {
         var a="" //Строка ввода
         var aint=0 //Строка ввода, преобразованная в Int
         taskImage.visibility=View.VISIBLE
+        taskImage.setImageResource(R.drawable.table_multiple)
         editTextTask.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
