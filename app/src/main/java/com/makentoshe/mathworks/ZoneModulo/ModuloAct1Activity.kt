@@ -96,16 +96,16 @@ fun correctNumberMakerForModuloAct1 (i: Int): IntArray {
     var num1=0; var num2=0; var num3=0;
     when (i) {
         0->{
-            do{num3=(8..16).random()}while(num3==10); num2=(num3..2*num3).random(); num1=(num3..2*num3).random()
+            num3=((8..9)+(11..16)).random(); num2=(num3..2*num3).random(); num1=(num3..2*num3).random()
         }
         1->{
-            do{num1=(8..16).random()}while(num1==10); num2=(num1..num1*2).random(); num3=(2..num2-1).random()
+            num1=((8..9)+(11..16)).random(); num2=(num1..num1*2).random(); num3=(2..num2-1).random()
         }
         2->{
-            do{num1=(8..16).random()}while(num1==10); num2=(4..num1).random(); num3=(4..num1).random()
+            num1=((8..9)+(11..16)).random(); num2=(4..num1).random(); num3=(4..num1).random()
         }
         3 -> {
-            do{num1=(8..16).random()}while(num1==10); num2=(4..20).random(); num3=(4..num1).random()*num2
+            num1=((8..9)+(11..16)).random(); num2=(4..20).random(); num3=(4..num1).random()*num2
         }
         else -> {}
     }
