@@ -75,7 +75,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
-                intt.putExtra("zone", "modulo")
+                intt.putExtra("zone", "integer")
                 intt.putExtra("act", 2)
                 startActivity(intt)
             }
