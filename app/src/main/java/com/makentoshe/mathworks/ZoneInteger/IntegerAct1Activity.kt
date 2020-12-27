@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.makentoshe.mathworks.ActResult
@@ -21,15 +20,14 @@ class IntegerAct1Activity : AppCompatActivity() {
         var lives: Int
         lives=intent.getIntExtra("lives",3)
         var score=0
-        var taskNames=arrayOf("act_integer_1_descr_1","act_integer_1_task_1","act_integer_1_task_2","act_integer_1_task_3","act_integer_1_descr_2","act_integer_1_task_4","act_integer_1_task_5","act_integer_1_task_6")
-        var taskTypes=arrayOf(0,1,1,2,0,1,1,2)
-        var taskQuantity=arrayOf(0,2,2,2,0,3,2,3)
-        Log.d("Act1","Imported")
+        val taskNames=arrayOf("act_integer_1_descr_1","act_integer_1_task_1","act_integer_1_task_2","act_integer_1_task_3","act_integer_1_descr_2","act_integer_1_task_4","act_integer_1_task_5","act_integer_1_task_6")
+        val taskTypes=arrayOf(0,1,1,2,0,1,1,2)
+        val taskQuantity=arrayOf(0,2,2,2,0,3,2,3)
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
         var i=0; var step=0
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
-        var max=6
+        val max=6
         var variants=IntArray(5)
         var nums=IntArray(4)
         var choice=0
@@ -48,33 +46,28 @@ class IntegerAct1Activity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 a=editTextTask.text.toString().trim()
                 if (a.toIntOrNull()!=null) aint=a.toInt()
-                Log.d("Act1","Input was modified: $a $aint")
             }
 
         })
         continueButtonTask.setOnClickListener{
-            Log.d("Act1","Button pressed")
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
-                    if (radioButtonTask1.isChecked) choice=0
-                    else if (radioButtonTask2.isChecked) choice=1
-                    else if (radioButtonTask3.isChecked) choice=2
-                    else if (radioButtonTask4.isChecked) choice=3
-                    else choice=editTextTask.toString().toIntOrNull()?:-1
+                    choice = when {
+                        radioButtonTask1.isChecked -> 0
+                        radioButtonTask2.isChecked -> 1
+                        radioButtonTask3.isChecked -> 2
+                        radioButtonTask4.isChecked -> 3
+                        else -> editTextTask.toString().toIntOrNull()?:-1
+                    }
                     if (choice==variants[4]) score++
-                    Log.d("Act1","Score is now $score")
                 }
                 if (taskTypes[i]==2){
-                    Log.d("Act1","Text task, answer is ${nums[0]}")
                     if (aint==nums[0]) score++
-                    Log.d("Act1","Score is now $score")
                 }
                 step++
-                Log.d("Act1","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
             i++
             if (i==taskTypes.size) {
-                Log.d("Act1","The act is over, launching to the start menu")
                 val intt= Intent(this, ActResult::class.java)
                 intt.putExtra("score",score)
                 intt.putExtra("max",max)
@@ -83,20 +76,14 @@ class IntegerAct1Activity : AppCompatActivity() {
                 intt.putExtra("act", 0)
                 startActivity(intt)
             }
-
-            Log.d("Act1","Strings updated")
-            Log.d("Act1","Now showing frame $i")
             radioGroupTask.clearCheck()
             editTextTask.setText("")
-            Log.d("Act1","Variants unchecked, input cleaned")
             if (i<taskTypes.size) {
                 if (taskTypes[i] != 0) nums = correctNumberMakerForIntegerAct1(i)
                 variants = answerMakerForIntegerAct1(nums)
-                Log.d("Act1", "Answer: ${nums[0]}")
-                Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -109,10 +96,9 @@ class IntegerAct1Activity : AppCompatActivity() {
                         radioButtonTask4.text = variants[3].toString()
                     }
                 }
-                Log.d("Act1", "Variants deployed")
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                var name: String
                 descrText.text=getText(resources.getIdentifier(taskNames[i], "string", packageName))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
@@ -151,15 +137,12 @@ fun correctNumberMakerForIntegerAct1 (i: Int): IntArray {
         else -> {num1=0; num2=0; ans=0}
     }
     return intArrayOf(ans,num1,num2,num3)
-    Log.d("Act1","Correct numbers created")
 }
 fun answerMakerForIntegerAct1 (a: IntArray): IntArray {
-    var ans=a[0]
+    val ans=a[0]
     var b = mutableListOf<Int>(ans,0,0,0)
     do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
-    var i_corr=b.indexOf(ans)
-    var aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
-    Log.d("Act1","Answer array returned: ${aa[0]} ${aa[1]} ${aa[2]} ${aa[3]} ${aa[4]}")
-    return aa
+    val i_corr=b.indexOf(ans)
+    return intArrayOf(b[0],b[1],b[2],b[3],i_corr)
 }

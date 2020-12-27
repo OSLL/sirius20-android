@@ -149,7 +149,6 @@ fun correctNumberMakerForIntegerBoss (i: Int): IntArray {
         else -> {num1=0; num2=0; ans=0}
     }
     return intArrayOf(ans,num1,num2,num3)
-    Log.d("Act1","Correct numbers created")
 }
 fun radioButtonTaskMakerForIntegerBoss(a: IntArray,i:Int): IntArray {
     var ans=a[0]

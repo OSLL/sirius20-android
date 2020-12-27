@@ -6,14 +6,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
-import com.makentoshe.mathworks.ZoneInteger.isPrime
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*
-import java.util.Collections.shuffle
 
 class ModuloBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +60,7 @@ class ModuloBossActivity : AppCompatActivity() {
                     if (choice==variants[4]) score++
                 }
                 if (taskTypes[i]==2){
-                    if (a==values[0]) score++
+                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++
                 }
                 step++
             }
@@ -99,10 +96,6 @@ class ModuloBossActivity : AppCompatActivity() {
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
                 var name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2], values[3])
-                if (i==2 && values[3].toInt()>10)
-                {
-                    name+=" (Цифры a, b, c, d, e, f запишите с маленькой буквы)."
-                }
                 taskText.text=name
             }
         }
