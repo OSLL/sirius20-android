@@ -10,7 +10,7 @@ import android.view.View
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
-import java.lang.Math.abs
+
 
 class IntegerAct3Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,18 +18,18 @@ class IntegerAct3Activity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headTask.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
-        var taskNames=arrayOf("act_integer_3_descr_1","act_integer_3_task_1","act_integer_3_task_2","act_integer_3_task_3","act_integer_3_task_4","act_integer_3_task_5","act_integer_3_task_6")
-        var taskTypes=arrayOf(0,1,1,2,2,2,1)
-        var taskQuantity=arrayOf(0,2,2,3,2,2,2)
+        val taskNames=arrayOf("act_integer_3_descr_1","act_integer_3_task_1","act_integer_3_task_2","act_integer_3_task_3","act_integer_3_task_4","act_integer_3_task_5","act_integer_3_task_6")
+        val taskTypes=arrayOf(0,1,1,2,2,2,1)
+        val taskQuantity=arrayOf(0,2,2,3,2,2,2)
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var step =0
         var score =0
-        var max =6
+        val max =6
         var i=0
         var variants= IntArray(5)
         var nums=IntArray(4)
-        var choice=0
-        var a=""
+        var choice: Int
+        var a: String
         var aint=0
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -75,7 +75,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
-                intt.putExtra("zone", "modulo")
+                intt.putExtra("zone", "integer")
                 intt.putExtra("act", 2)
                 startActivity(intt)
             }
@@ -106,7 +106,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                var name: String
                 descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
@@ -121,7 +121,7 @@ class IntegerAct3Activity : AppCompatActivity() {
     }
 }
 fun correctNumberMakerForIntegerAct3(i: Int): IntArray {
-    var num1=0; var num2=0; var num3=0; var ans:Int; var hid:Int;
+    var num1=0; var num2=0; var num3=0; var ans:Int;
     when (i) {
         1->{
             num1=(3..20).random(); do num2=(10..50).random()*2 while (num2%num1==0 || num2<2*num1); ans=num2/num1

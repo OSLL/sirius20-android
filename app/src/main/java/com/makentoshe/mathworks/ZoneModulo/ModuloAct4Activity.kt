@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
@@ -132,8 +131,8 @@ fun valueMakerForModuloAct4(i: Int): Array<String>{
             3 -> {n1="¬(M⊕N)"; num2=(0..1).random(); num3=(0..1).random(); ans="${1-(num3 xor num2)}"}
         };n2="$num2";n3="$num3"}
         7->{when((0..1).random()){
-            0 -> {n1= "X & ~X"; ans="0"}
-            1 -> {n1= "X ^ X"; ans="0"}
+            0 -> {n1= "X ⋀ ¬X"; ans="0"}
+            1 -> {n1= "X ⊕ X"; ans="0"}
         }}
         8->{num1=(0..15).random();do{num2=(1..15).random()}while(num2==num1); n1="$num1"; n2="$num2"; n3="$num3"; ans="${(num1 or num2)}"}
     }
