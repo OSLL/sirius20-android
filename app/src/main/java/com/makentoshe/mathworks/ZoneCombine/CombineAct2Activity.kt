@@ -29,7 +29,7 @@ class CombineAct2Activity : AppCompatActivity() {
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var values=IntArray(5)
         var variants=IntArray(5)
-        var choice=0
+        var choice: Int
         var a=""
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -70,7 +70,7 @@ class CombineAct2Activity : AppCompatActivity() {
                 variants = answerMakerForCombineAct2(values,i)
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -85,7 +85,7 @@ class CombineAct2Activity : AppCompatActivity() {
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                var name: String
                 descrText.text = getText((resources.getIdentifier(taskNames[i], "string", packageName)))
                 if (taskQuantity[i] == 1) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1])
@@ -102,7 +102,7 @@ class CombineAct2Activity : AppCompatActivity() {
     }
 }
 fun valueMakerForCombineAct2(i: Int): IntArray{
-    var ans=0; var num1=0; var num2=0; var num3=0; var passable=0;
+    var ans=0; var num1=0; var num2=0; var num3=0; var passable=0
     when(i) {
         1 -> {num1=(4..6).random();ans= factorial(num1)
         }
@@ -122,7 +122,8 @@ fun valueMakerForCombineAct2(i: Int): IntArray{
 }
 fun answerMakerForCombineAct2(values: IntArray, i: Int): IntArray {
     val ans=values[0]
-    var b= mutableListOf<Int>(ans,0,0,0)
+    var b= MutableList<Int>(4){0}
+    b[0]=ans
     when(i){
         1->{}
         2->{b[1]=values[4]*(values[4]-1); b[2]= factorial(values[4]); b[3]= factorial(values[4]-1)}
@@ -135,6 +136,6 @@ fun answerMakerForCombineAct2(values: IntArray, i: Int): IntArray {
     return intArrayOf(b[0],b[1],b[2],b[3],p)
 }
 fun factorial (x: Int): Int {
-    if (x==1) return 1 else return x*factorial(x-1)
+    return if (x<=1) 1 else x*factorial(x-1)
 }
 

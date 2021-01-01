@@ -1,7 +1,6 @@
 package com.makentoshe.mathworks.ZoneCombine
 
-import android.app.Application
-import android.content.Context
+
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -13,17 +12,6 @@ import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.max
 import java.util.Collections.shuffle
-class App : Application() {
-    override fun onCreate() {
-        super.onCreate()
-        mContext = this
-    }
-    companion object {
-        private var mContext: Context? = null
-        val context: Context?
-            get() = mContext
-    }
-}
 class CombineAct1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +28,7 @@ class CombineAct1Activity : AppCompatActivity() {
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var values=arrayOf("","","","","")
         var variants=arrayOf("","","","","")
-        var choice=""
+        var choice: String
         var a=""
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -81,7 +69,7 @@ class CombineAct1Activity : AppCompatActivity() {
                 variants = answerMakerForCombineAct1(values,i)
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -96,7 +84,7 @@ class CombineAct1Activity : AppCompatActivity() {
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                val name : String
                 descrText.text = getText((resources.getIdentifier(taskNames[i], "string", packageName)))
                 if (taskQuantity[i] == 1) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1])
@@ -146,7 +134,7 @@ fun valueMakerForCombineAct1(i: Int): Array<String>{
                 3 -> {n1="B \\ A";if((set2 subtract set1).toIntArray().isNotEmpty())ans="${(set2 subtract set1).toIntArray().size}" else ans="0"}
             }
         }
-        7->{set1=IntArray((3..7).random()){ i -> (0..5).random()}.toSet();set2=IntArray((3..7).random()){ i -> (0..5).random()}.toSet()
+        7->{set1=IntArray((3..7).random()){(0..5).random()}.toSet();set2=IntArray((3..7).random()){(0..5).random()}.toSet()
             n2= setDecoratorInt(set1.toIntArray())
             n3= setDecoratorInt(set2.toIntArray())
             when((0..3).random()){
@@ -161,7 +149,7 @@ fun valueMakerForCombineAct1(i: Int): Array<String>{
 }
 fun answerMakerForCombineAct1(values: Array<String>, i: Int): Array<String> {
     var ans=values[0]
-    var b= mutableListOf<String>("","","","")
+    var b= mutableListOf("","","","")
     b[0]=ans
     when(i){
         1->{when(values[4].split(" ")[0].toInt()){
@@ -185,7 +173,7 @@ fun answerMakerForCombineAct1(values: Array<String>, i: Int): Array<String> {
         7->{}
     }
     shuffle(b)
-    var p="${b.indexOf(ans)}"
+    val p="${b.indexOf(ans)}"
     return arrayOf(b[0],b[1],b[2],b[3],p)
 }
 fun setDecoratorInt(set: IntArray): String {
@@ -193,7 +181,4 @@ fun setDecoratorInt(set: IntArray): String {
 }
 fun setDecoratorString(set: Array<String>): String {
     return "{"+set.joinToString(separator=", ")+"}"
-}
-fun uselessFunction(){
-    return
 }
