@@ -33,8 +33,6 @@ class CombineAct1Activity : AppCompatActivity() {
         var step =0
         var score =0
         val max =5
-        progressBarTask.max=100
-        progressBarTaskTrue.max=100
         var i=0
         val taskTypes=arrayOf(0,1,1,0,2,0,2,2)
         val taskQuantity=arrayOf(0,2,3,0,2,0,3,3)
@@ -186,7 +184,7 @@ fun answerMakerForCombineAct1(values: Array<String>, i: Int): Array<String> {
         6->{}
         7->{}
     }
-    if (i!=4) shuffle(b)
+    shuffle(b)
     var p="${b.indexOf(ans)}"
     return arrayOf(b[0],b[1],b[2],b[3],p)
 }

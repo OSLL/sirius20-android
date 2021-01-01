@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
-import kotlin.random.Random
 
 class IntegerAct4Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,7 +83,7 @@ class IntegerAct4Activity : AppCompatActivity() {
             editTextTask.setText("")
             Log.d("Act1", "Variants unchecked, input cleaned")
             if (i < taskTypes.size) {
-                if (taskTypes[i] != 0) {nums = correctNumberMakerForIntegerAct4(i); answer=AnswerGetterForIntegerAct4(i,nums)}
+                if (taskTypes[i] != 0) {nums = correctNumberMakerForIntegerAct4(i); answer=answerGetterForIntegerAct4(i,nums)}
                 Log.d("Act1", "Answer: ${nums[0]}")
                 Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
@@ -120,7 +118,7 @@ class IntegerAct4Activity : AppCompatActivity() {
         }
     }
 }
-fun Decomposition (x: Int): String {
+fun decomposition (x: Int): String {
         var str = ""
         var x1: Int = x
         for (i in 2..x) {
@@ -144,9 +142,9 @@ fun correctNumberMakerForIntegerAct4 (i: Int): IntArray {
     }
     return b
 }
-fun AnswerGetterForIntegerAct4 (i: Int, n: IntArray): String {
+fun answerGetterForIntegerAct4 (i: Int, n: IntArray): String {
     when (i) {
-        1 -> {return Decomposition(n[0])}
+        1 -> {return decomposition(n[0])}
         2 -> {return "1"}
         3 -> {return "2"}
         4 -> {return "2"}
