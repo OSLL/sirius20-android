@@ -137,6 +137,7 @@ fun valueMakerForCombineAct1(i: Int): Array<String>{
         7->{set1=IntArray((3..7).random()){(0..5).random()}.toSet();set2=IntArray((3..7).random()){(0..5).random()}.toSet()
             n2= setDecoratorInt(set1.toIntArray())
             n3= setDecoratorInt(set2.toIntArray())
+            ans="-1"
             when((0..3).random()){
                 0 -> {n1="A ⋂ B";ans="${max((set1 intersect set2).toMutableList())}"}
                 1 -> {n1="A ∪ B";ans="${max((set1 union set2).toMutableList())}"}

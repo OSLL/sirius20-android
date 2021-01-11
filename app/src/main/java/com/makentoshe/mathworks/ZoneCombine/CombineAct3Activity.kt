@@ -59,7 +59,7 @@ class CombineAct3Activity : AppCompatActivity() {
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "combine")
-                intt.putExtra("act", 0)
+                intt.putExtra("act", 2)
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
@@ -134,6 +134,6 @@ fun answerMakerForCombineAct3(values: IntArray, i: Int): IntArray {
     var p=b.indexOf(ans)
     return intArrayOf(b[0],b[1],b[2],b[3],p)
 }
-fun arrangements (k: Int, n: Int ): Int {
+fun arrangements (k: Int, n: Int): Int {
     return factorial(n)/factorial(n-k)
 }

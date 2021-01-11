@@ -60,7 +60,7 @@ class CombineAct2Activity : AppCompatActivity() {
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "combine")
-                intt.putExtra("act", 0)
+                intt.putExtra("act", 1)
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
