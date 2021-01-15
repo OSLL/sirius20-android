@@ -1,8 +1,13 @@
-# AndroidGithubCiTemplate
+# MathWorks
 
-![Android CI](https://github.com/Makentoshe/AndroidGithubCiTemplate/workflows/Android%20CI/badge.svg?branch=master)
+Приложение для Android предполагает возможность развития математических способностей игроков.
+В приложение планируются задачи на различные темы: арифметика целых чисел, планиметрия, тригонометрия
+и раличные другие.
 
-This is a template android project with a configured Github CI workflow.
-Before using make sure the project packages were changed in the manifest, gradle.build, and in code files.
+Наставники:
+* Доброхвалов Максим
+* Иванов Дмитрий
 
-_Important_: "code files" includes tests, so the path app/src/androidTest/java/com/makentoshe/androidgithubcitemplate/ also counts.
+Участники:
+* Холяк Даниил
+* Чайкин Вадим
