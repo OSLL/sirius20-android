@@ -104,9 +104,9 @@ fun valueMakerForCombineBoss(i: Int): Array<String>{
     when(i) {
         1 -> { num1=(5..10).random(); num3=(2..6).random(); num2=num1+(5..10).random()*num3; n1=setDecoratorInt((num1..num2 step num3).toMutableSet().toIntArray()); passable="$num1 $num2 $num3";ans="{ x = ${num1%num3} (mod $num3) ⋀ $num1≤x≤$num2 ⋀ x∈ℤ}"
         }
-        2 -> { num1=(5..10).random()+(1..2).random()*10; num2=(2..4).random(); n1="$num1"; n2="$num2"; ans="${factorialDivider(num1,num1-num2)/factorial(num2)}"
+        2 -> { num1=(5..10).random()+(1..2).random()*10; num2=(2..3).random(); n1="$num1"; n2="$num2"; ans="${factorialDivider(num1,num1-num2)/factorial(num2)}"
         }
-        3 -> { num2=(2..4).random(); n2="$num2"; num3=(num2+2..7).random(); ans="$num3"; num1= factorialDivider(num3,num2); n1="$num1"; passable=n1+n2
+        3 -> { num2=(2..4).random(); n2="$num2"; num3=(num2+2..7).random(); ans="$num3"; num1= factorialDivider(num3,num3-num2); n1="$num1"; passable=n1+n2
         }
         4 -> { num1=(1..3).random(); num2=(1..3).random(); num3=(1..3).random(); n1="$num1"; n2="$num2"; n3="$num3"; ans="${ factorial(num1 + num2 + num3) / factorial(num1) / factorial(num2) / factorial(num3) }"
         }
