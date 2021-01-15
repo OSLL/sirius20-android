@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/headTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/zone_integer_name"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorHeads"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subheadTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/act_integer_1_name"
+        android:textAlignment="center"
+        android:textColor="@color/colorSubheads"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headTask" />
+
+    <ProgressBar
+        android:id="@+id/progressBarTask"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="219dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="@color/colorBackgroundProgress"
+        android:progressTint="@color/colorRedProgress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
+
+    <ProgressBar
+        android:id="@+id/progressBarTaskTrue"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="219dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/colorTransparent"
+        android:backgroundTintMode="add"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="@color/colorTransparent"
+        android:progressTint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
+
+    <ScrollView
+        android:id="@+id/taskScroll"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/taskLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/descrText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/act_integer_1_descr_1"
+                android:textColor="@color/colorText"
+                android:textIsSelectable="false"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/taskText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/act_integer_1_task_1"
+                android:textColor="@color/colorText"
+                android:textSize="15sp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/taskImage"
+                android:layout_width="match_parent"
+                android:layout_height="384dp"
+                android:background="#FFFFFF"
+                android:contentDescription="@string/task_theory_image"
+                android:padding="0dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:visibility="gone"
+                app:srcCompat="@drawable/table_multiple" />
+
+            <EditText
+                android:id="@+id/editTextTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center_horizontal|center_vertical"
+                android:hint="@string/task_input_txt"
+                android:importantForAccessibility="no"
+                android:importantForAutofill="no"
+                android:inputType="number" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupTask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="B" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="C" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="D" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/continueButtonTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackButton"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/navigation_forth"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
