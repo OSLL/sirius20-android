@@ -3,6 +3,8 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,3 +16,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
+@Entity
+data class Act(
+        @PrimaryKey var actName: String,
+        var highScore: Int,
+        var visitTimes: Int
+)
+data class Lives(
+       var lives: Int,
+       var isFinalBoss: Boolean
+)

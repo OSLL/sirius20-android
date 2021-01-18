@@ -17,7 +17,7 @@ class IntegerAct1Activity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headTask.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
-        var lives: Int
+        val lives: Int
         lives=intent.getIntExtra("lives",3)
         var score=0
         val taskNames=arrayOf("act_integer_1_descr_1","act_integer_1_task_1","act_integer_1_task_2","act_integer_1_task_3","act_integer_1_descr_2","act_integer_1_task_4","act_integer_1_task_5","act_integer_1_task_6")
@@ -30,8 +30,8 @@ class IntegerAct1Activity : AppCompatActivity() {
         val max=6
         var variants=IntArray(5)
         var nums=IntArray(4)
-        var choice=0
-        var a=""
+        var choice: Int
+        var a: String
         var aint=0
 
         editTextTask.addTextChangedListener(object: TextWatcher {
@@ -98,7 +98,7 @@ class IntegerAct1Activity : AppCompatActivity() {
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name: String
+                val name: String
                 descrText.text=getText(resources.getIdentifier(taskNames[i], "string", packageName))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
@@ -114,7 +114,7 @@ class IntegerAct1Activity : AppCompatActivity() {
 }
 
 fun correctNumberMakerForIntegerAct1 (i: Int): IntArray {
-    var num1:Int; var num2:Int; var num3=0; var ans:Int;
+    var num1:Int; var num2:Int; var num3=0; val ans:Int
     when (i) {
         1->{
             num1=99; num2=99; while (num1%10+num2%10>9) {num1= (10..49).random(); num2=(10..49).random()}; ans=num1+num2
@@ -132,7 +132,7 @@ fun correctNumberMakerForIntegerAct1 (i: Int): IntArray {
             num1=(20..49).random(); num2=(10..num1-1).random(); ans=(-num2+2*num1)
         }
         7->{
-            num1=0; num2=0; ans=(200..299).random(); num1=(10..199).random(); num2=num1+(-19..19).random(); num3=ans-num2+num1
+            ans=(200..299).random(); num1=(10..199).random(); num2=num1+(-19..19).random(); num3=ans-num2+num1
         }
         else -> {num1=0; num2=0; ans=0}
     }
@@ -140,7 +140,7 @@ fun correctNumberMakerForIntegerAct1 (i: Int): IntArray {
 }
 fun answerMakerForIntegerAct1 (a: IntArray): IntArray {
     val ans=a[0]
-    var b = mutableListOf<Int>(ans,0,0,0)
+    val b = mutableListOf<Int>(ans,0,0,0)
     do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
     val i_corr=b.indexOf(ans)
