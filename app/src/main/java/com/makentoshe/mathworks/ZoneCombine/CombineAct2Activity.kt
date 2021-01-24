@@ -9,8 +9,6 @@ import android.view.View
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
-import java.lang.Integer.min
-import java.util.*
 import java.util.Collections.shuffle
 
 class CombineAct2Activity : AppCompatActivity() {
@@ -19,6 +17,11 @@ class CombineAct2Activity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headTask.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
+        mathview.visibility= View.VISIBLE
+        mathview.fontSize=40.0F;
+        val formulas=mapOf(0 to "(1)P_n=n!\\\\(2)n!=\\prod_{i=1}^{n}i=1\\cdot 2\\cdot \\ldots\\cdot n", 3 to "(1)P_n=\\frac{n!}{k_1\\cdot k_2\\cdot \\ldots\\cdot k_m}")
+        val formula_steps=arrayOf(0,3)
+        mathview.latex=formulas[0].toString()
         var step =0
         var score =0
         val max =5
@@ -55,6 +58,7 @@ class CombineAct2Activity : AppCompatActivity() {
                 step++
             }
             i++
+            if (i in formula_steps) {mathview.visibility=View.VISIBLE; mathview.latex= formulas[i].toString()} else mathview.visibility=View.GONE
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
