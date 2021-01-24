@@ -18,6 +18,11 @@ class CombineAct3Activity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headTask.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
+        mathview.visibility= View.VISIBLE
+        mathview.fontSize=40.0F;
+        val formulas=mapOf(0 to "(1)A^k_n=n\\cdot (n-1)*\\ldots\\cdot (n-k+1)\\\\(2)A^k_n=\\frac{n!}{n-k!}\\\\(3)A^n_n=\\frac{n!}{0!}=n!", 4 to "(1)A^k_n=n^k")
+        val formula_steps=arrayOf(0,4)
+        mathview.latex=formulas[0].toString()
         var step =0
         var score =0
         val max=6
@@ -54,6 +59,7 @@ class CombineAct3Activity : AppCompatActivity() {
                 step++
             }
             i++
+            if (i in formula_steps) {mathview.visibility=View.VISIBLE; mathview.latex= formulas[i].toString()} else mathview.visibility=View.GONE
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
