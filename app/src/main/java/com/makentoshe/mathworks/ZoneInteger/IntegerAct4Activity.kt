@@ -18,19 +18,18 @@ class IntegerAct4Activity : AppCompatActivity() {
         headTask.text = intent.getStringExtra("zone")
         subheadTask.text = intent.getStringExtra("act")
         var score = 0
-        var taskNames = arrayOf("act_integer_4_descr_1", "act_integer_4_task_1", "act_integer_4_task_2", "act_integer_4_task_3", "act_integer_4_task_4")
-        var taskTypes = arrayOf(0, 2, 1, 2, 2)
-        var taskQuantity = arrayOf(0, 1, 2, 0, 0)
+        val taskNames = arrayOf("act_integer_4_descr_1", "act_integer_4_task_1", "act_integer_4_task_2", "act_integer_4_task_3", "act_integer_4_task_4")
+        val taskTypes = arrayOf(0, 2, 1, 2, 2)
+        val taskQuantity = arrayOf(0, 1, 2, 0, 0)
         Log.d("Act1", "Imported")
         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE
-        var i = 0;
+        var i = 0
         var step = 0
         descrText.text = getText(resources.getIdentifier(taskNames[0], "string", packageName))
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
-        var max = 4
-        var choice = ""
+        val max = 4
+        var choice : String
         var a = ""
-        var aint = 0
         var answer = ""
         var nums = intArrayOf(0, 0)
         editTextTask.addTextChangedListener(object : TextWatcher {
@@ -88,7 +87,7 @@ class IntegerAct4Activity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -104,7 +103,7 @@ class IntegerAct4Activity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                val name: String
                 descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[0], nums[1])

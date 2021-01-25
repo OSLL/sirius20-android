@@ -58,7 +58,7 @@ class DerivAct1Activity : AppCompatActivity() {
                     if (choice==variants[4]) score++
                 }
                 if (taskTypes[i]==2){
-                    if (a=="${values[0]}") score++
+                    if (a==values[0]) score++
                 }
                 step++
             }
@@ -67,8 +67,8 @@ class DerivAct1Activity : AppCompatActivity() {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
-                intt.putExtra("zone", "combine")
-                intt.putExtra("act", 1)
+                intt.putExtra("zone", "deriv")
+                intt.putExtra("act", 0)
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
@@ -93,23 +93,23 @@ class DerivAct1Activity : AppCompatActivity() {
                     }
                     1 -> {
                         radioGroupTask.visibility = View.VISIBLE; editTextTask.visibility = View.GONE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
-                        radioButtonTask1.text = "${variants[0]}"
-                        radioButtonTask2.text = "${variants[1]}"
-                        radioButtonTask3.text = "${variants[2]}"
-                        radioButtonTask4.text = "${variants[3]}"
+                        radioButtonTask1.text = variants[0]
+                        radioButtonTask2.text = variants[1]
+                        radioButtonTask3.text = variants[2]
+                        radioButtonTask4.text = variants[3]
                     }
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
                 descrText.text = getText((resources.getIdentifier(taskNames[i], "string", packageName)))
-                var name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
+                val name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
                 taskText.text = name
             }
         }
     }
 }
 fun valueMakerForDerivAct1(i: Int): Array<String>{
-    var ans="0"; var num1=0; var num2=0; var num3=0; var n1=""; var n2=""; var n3=""
+    var ans="0"; val num1: Int; val num2: Int; val num3: Int; var n1=""; var n2=""; var n3=""
     when(i) {
         1 -> {num1=(2..3).random();num2=(4..10).random();n1="$num1";n2="$num2"; ans="${num2.toDouble().pow(num1).toInt()}"}
         2 -> {num1=(2..10).random();num2=(2..10).random()*num1;ans="${num2/num1}";n1="$num1";n2="$num2"}
@@ -120,7 +120,7 @@ fun valueMakerForDerivAct1(i: Int): Array<String>{
 }
 fun answerMakerForDerivAct1(values: Array<String>, i: Int): Array<String> {
     val ans=values[0]
-    var b= MutableList<String>(4){""}
+    val b= MutableList<String>(4){""}
     b[0]=ans
     when(i){
         1->{b[1]=values[1];b[2]=values[2];b[3]="∞"}
@@ -129,7 +129,7 @@ fun answerMakerForDerivAct1(values: Array<String>, i: Int): Array<String> {
         5->{b[1]="1; ∞"; b[2]="0; 1"; b[3]="0; e"}
     }
     shuffle(b)
-    var p="${b.indexOf(ans)}"
+    val p="${b.indexOf(ans)}"
     return arrayOf(b[0],b[1],b[2],b[3],p)
 }
 

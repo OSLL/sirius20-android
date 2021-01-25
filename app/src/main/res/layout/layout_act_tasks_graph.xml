@@ -66,27 +66,26 @@
     <ScrollView
         android:id="@+id/taskScroll"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/continueButtonTask"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progressBarTask">
+        app:layout_constraintTop_toBottomOf="@+id/progressBarTask">
 
         <LinearLayout
             android:id="@+id/taskLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <com.jjoe64.graphview.GraphView
                 android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp"
-                android:id="@+id/graphview" />
+                android:layout_height="200dp"
+                android:visibility="visible" />
             <TextView
                 android:id="@+id/descrText"
                 android:layout_width="match_parent"
@@ -110,9 +109,9 @@
                 android:id="@+id/mathview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:visibility="gone"/>
+                app:layout_constraintRight_toRightOf="parent" />
 
             <ImageView
                 android:id="@+id/taskImage"
@@ -147,25 +146,25 @@
                     android:id="@+id/radioButtonTask1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="A" />
+                    android:text="@string/filler" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="B" />
+                    android:text="@string/filler" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="C" />
+                    android:text="@string/filler" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="D" />
+                    android:text="@string/filler" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>
