@@ -33,7 +33,7 @@ class DerivAct1Activity : AppCompatActivity() {
         val max =4
         var i=0
         val taskTypes=arrayOf(0,1,2,0,2,1)
-        val taskNames=arrayOf("act_deriv_1_descr_1","act_deriv_1_task_1","act_deriv_1_task_2","act_deriv_1_descr_2","act_deriv_1_task_3","act_deriv_1_task_4")
+        val taskNames=arrayOf("act_deriv_1_descr_1","act_deriv_1_task_1","act_deriv_1_task_1","act_deriv_1_descr_2","act_deriv_1_task_3","act_deriv_1_task_4")
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var values=Array<String>(4) { "" }
         var variants=Array<String>(5) { "" }
