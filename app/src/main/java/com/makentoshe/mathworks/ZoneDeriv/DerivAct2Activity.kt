@@ -17,7 +17,6 @@ import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 
-import java.util.*
 import kotlin.math.*
 
 
@@ -79,8 +78,8 @@ class DerivAct2Activity : AppCompatActivity() {
         val taskTypes=arrayOf(0, 1, 2, 0, 2, 2)
         val taskNames=arrayOf("act_deriv_2_descr_1", "act_deriv_2_task_1", "act_deriv_2_task_2", "act_deriv_2_descr_2", "act_deriv_2_task_3", "act_deriv_2_task_4")
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
-        var value: String =""
-        var variants=Array<String>(5) { "" }
+        var value =""
+        var variants=Array(5) { "" }
         var choice: String
         var a=""
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
@@ -129,10 +128,8 @@ class DerivAct2Activity : AppCompatActivity() {
                             removeAllSeries()
                             when(value){
                                 "0"->{
-                                    val series6=LineGraphSeries<DataPoint>(arrayOf(DataPoint(0.0,4.8),DataPoint(1.0,4.75),DataPoint(2.0,4.66),DataPoint(2.5,4.6),DataPoint(3.0,4.5),DataPoint(3.5,4.33),DataPoint(4.0,4.0),DataPoint(4.5,3.0),DataPoint(4.6,2.5),DataPoint(4.66,2.0),DataPoint(4.75,1.0),DataPoint(4.8,0.0)))
-                                    val series7=LineGraphSeries<DataPoint>(arrayOf(DataPoint(9.9,5.2),DataPoint(9.0,5.25),DataPoint(8.0,5.33),DataPoint(7.5,5.4),DataPoint(7.0,5.5),DataPoint(6.5,5.66),DataPoint(6.0,6.0),DataPoint(5.5,7.0),DataPoint(5.4,7.5),DataPoint(5.33,8.0),DataPoint(5.25,9.0),DataPoint(5.2,0.0)))
-                                    series6.color = Color.BLUE
-                                    series7.color = Color.BLUE
+                                    val series6=LineGraphSeries<DataPoint>(Array<DataPoint>(240){ i->DataPoint(i.toDouble()/50+5.2,1/(i.toDouble()/50+0.2)+5) })
+                                    val series7=LineGraphSeries<DataPoint>(Array<DataPoint>(240){ i->DataPoint(i.toDouble()/50,5-(1/((240-i).toDouble()/50+0.2)))})
                                     graph.addSeries(series6)
                                     graph.addSeries(series7)
                                 }
@@ -202,10 +199,8 @@ class DerivAct2Activity : AppCompatActivity() {
                             }
                             else->{
                                 mathview.latex="f(x)=\\frac{1}{x-5}+5"
-                                val series6=LineGraphSeries<DataPoint>(arrayOf(DataPoint(0.0,4.8),DataPoint(1.0,4.75),DataPoint(2.0,4.66),DataPoint(2.5,4.6),DataPoint(3.0,4.5),DataPoint(3.5,4.33),DataPoint(4.0,4.0),DataPoint(4.5,3.0),DataPoint(4.6,2.5),DataPoint(4.66,2.0),DataPoint(4.75,1.0),DataPoint(4.8,0.0)))
-                                val series7=LineGraphSeries<DataPoint>(arrayOf(DataPoint(9.9,5.2),DataPoint(9.0,5.25),DataPoint(8.0,5.33),DataPoint(7.5,5.4),DataPoint(7.0,5.5),DataPoint(6.5,5.66),DataPoint(6.0,6.0),DataPoint(5.5,7.0),DataPoint(5.4,7.5),DataPoint(5.33,8.0),DataPoint(5.25,9.0),DataPoint(5.2,0.0)))
-                                series6.color = Color.BLUE
-                                series7.color = Color.BLUE
+                                val series6=LineGraphSeries<DataPoint>(Array<DataPoint>(240){ i->DataPoint(i.toDouble()/50+5.2,1/(i.toDouble()/50+0.2)+5) })
+                                val series7=LineGraphSeries<DataPoint>(Array<DataPoint>(240){ i->DataPoint(i.toDouble()/50,5-(1/((240-i).toDouble()/50+0.2)))})
                                 graph.addSeries(series6)
                                 graph.addSeries(series7)
                             }
@@ -277,7 +272,7 @@ class DerivAct2Activity : AppCompatActivity() {
     }
 }
 fun randomAnswerMakerForDerivAct2(i: Int): String{
-    var ans="0";
+    var ans="0"
     when(i) {
         1 -> {
             ans="${(0..3).random()}"
