@@ -95,11 +95,13 @@ class DerivAct2Activity : AppCompatActivity() {
             taskImage.visibility=View.GONE
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
-                    if (radioButtonTask1.isChecked) choice="0"
-                    else if (radioButtonTask2.isChecked) choice="1"
-                    else if (radioButtonTask3.isChecked) choice="2"
-                    else if (radioButtonTask4.isChecked) choice="3"
-                    else choice="4"
+                    choice = when {
+                        radioButtonTask1.isChecked -> "0"
+                        radioButtonTask2.isChecked -> "1"
+                        radioButtonTask3.isChecked -> "2"
+                        radioButtonTask4.isChecked -> "3"
+                        else -> "4"
+                    }
                     if (choice==variants[4]) score++
                 }
                 if (taskTypes[i]==2){

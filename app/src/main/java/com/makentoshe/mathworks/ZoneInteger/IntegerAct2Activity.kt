@@ -21,11 +21,11 @@ class IntegerAct2Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         //Акт получает имя зоны и имя акта, которые передаются через интент
         var score=0 //Очки прогресса (за правильные ответы)
-        var taskNames=arrayOf("act_integer_2_descr_1","act_integer_2_task_1","act_integer_2_task_2","act_integer_2_task_3","act_integer_2_descr_2","act_integer_2_task_4","act_integer_2_task_5","act_integer_2_task_6")
+        val taskNames=arrayOf("act_integer_2_descr_1","act_integer_2_task_1","act_integer_2_task_2","act_integer_2_task_3","act_integer_2_descr_2","act_integer_2_task_4","act_integer_2_task_5","act_integer_2_task_6")
         //Все подгружаемые строки акта
-        var taskTypes=arrayOf(0,1,2,2,0,1,2,2)
+        val taskTypes=arrayOf(0,1,2,2,0,1,2,2)
         //Тип задачи: 0 теория, 1 выбор ответа, 2 ввод ответа
-        var taskQuantity=arrayOf(0,2,2,2,0,2,2,2)
+        val taskQuantity=arrayOf(0,2,2,2,0,2,2,2)
         //Количество генерируемых чисел или строчек в задаче
         Log.d("Act2","Imported")
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -36,11 +36,11 @@ class IntegerAct2Activity : AppCompatActivity() {
         //Подгрузка текста в элемент теории descrText
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         //Скрываем элемент задачи taskText и показываем элемент теории descrText
-        var max=6 //Число задач
+        val max=6 //Число задач
         var variants=IntArray(5) //Массив для временного хранения вариантов; нужен только актам, где есть задачи с выбором ответа. Содержит 4 варианта и номер правильного из них
         var nums=IntArray(4) //Массив для временного хранения генериремых чисел из условий задач; содержит ответ и 3 вставляемых числа
-        var choice=0 //Номер выбора (для задач с выбором ответа)
-        var a="" //Строка ввода
+        var choice: Int //Номер выбора (для задач с выбором ответа)
+        var a: String //Строка ввода
         var aint=0 //Строка ввода, преобразованная в Int
         taskImage.visibility=View.VISIBLE
         taskImage.setImageResource(R.drawable.table_multiple)
@@ -101,7 +101,7 @@ class IntegerAct2Activity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE; //Отобразить текст теории и скрыть текст задачи
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE //Отобразить текст теории и скрыть текст задачи
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE //Отобразить текст задачи и скрыть текст теории
@@ -117,7 +117,7 @@ class IntegerAct2Activity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt() //Обновляем счетчики прогресса
-                var name = ""
+                val name: String
                 descrText.text=getText(resources.getIdentifier(taskNames[i], "string", packageName)) //Присваиваем текст теории текстовому блоку (через getText, чтобы сохранить форматирование)
                 when {
                     taskQuantity[i] == 2 -> {
@@ -136,7 +136,7 @@ class IntegerAct2Activity : AppCompatActivity() {
         }
     }
 fun correctNumberMakerForIntegerAct2 (i: Int): IntArray {
-    var num1:Int; var num2:Int; var num3=0; var ans:Int;
+    val num1:Int; val num2:Int; val num3=0; val ans:Int
     when (i) {
         1->{
             num1=(2..10).random(); num2=(2..10).random(); ans=num1*num2
@@ -159,15 +159,13 @@ fun correctNumberMakerForIntegerAct2 (i: Int): IntArray {
         else -> {num1=0; num2=0; ans=0}
     }
     return intArrayOf(ans,num1,num2,num3)
-    Log.d("Act1","Correct numbers created")
 }
 fun answerMakerForIntegerAct2 (a: IntArray): IntArray {
-    var ans=a[0]
-    var b = mutableListOf<Int>(ans,0,0,0)
+    val ans=a[0]
+    val b = mutableListOf<Int>(ans,0,0,0)
     do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
-    var i_corr=b.indexOf(ans)
-    var aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
-    Log.d("Act1","Answer array returned: ${aa[0]} ${aa[1]} ${aa[2]} ${aa[3]} ${aa[4]}")
+    val i_corr=b.indexOf(ans)
+    val aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
     return aa
 }

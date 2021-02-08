@@ -130,7 +130,7 @@
                 android:hint="@string/task_input_txt"
                 android:importantForAccessibility="no"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                android:inputType="numberSigned|number|numberDecimal" />
 
             <RadioGroup
                 android:id="@+id/radioGroupTask"
