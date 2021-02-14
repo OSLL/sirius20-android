@@ -42,10 +42,6 @@ class DerivAct2Activity : AppCompatActivity() {
             viewport.isXAxisBoundsManual = true
             viewport.setMinX(-1.0)
             viewport.setMaxX(10.1)
-            viewport.isScalable = true
-            viewport.isScrollable = true
-            viewport.setScalableY(true)
-            viewport.setScrollableY(true)
         }
         val series1 = LineGraphSeries<DataPoint>(Array<DataPoint>(600){i-> DataPoint(i.toDouble()/100+1.5,((i.toDouble()-300)/100).pow(2))})
         series1.color = Color.BLUE

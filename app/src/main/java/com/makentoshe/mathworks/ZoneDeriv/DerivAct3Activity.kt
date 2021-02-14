@@ -41,13 +41,9 @@ class DerivAct3Activity : AppCompatActivity() {
             viewport.isXAxisBoundsManual = true
             viewport.setMinX(-5.1)
             viewport.setMaxX(5.1)
-            viewport.isScalable = true
-            viewport.isScrollable = true
-            viewport.setScalableY(true)
-            viewport.setScrollableY(true)
-            val series1=LineGraphSeries<DataPoint>(Array(601){ i-> DataPoint((i - 301).toDouble() / 100, ((i - 301).toDouble() / 100).pow(2)) }); series1.color=Color.rgb(255,128,0)
-            val series2=LineGraphSeries<DataPoint>(arrayOf(DataPoint(0.0,-1.0),DataPoint(5.0,9.0))); series2.color=Color.RED
-            val series3=PointsGraphSeries<DataPoint>(arrayOf(DataPoint(1.0,1.0))); series3.size=10.0F; series3.color=Color.BLACK
+            val series1= LineGraphSeries<DataPoint>(Array(601){ i-> DataPoint((i - 301).toDouble() / 100, ((i - 301).toDouble() / 100).pow(2)) }); series1.color= Color.rgb(255,128,0)
+            val series2= LineGraphSeries<DataPoint>(arrayOf(DataPoint(0.0,-1.0), DataPoint(5.0,9.0))); series2.color= Color.RED
+            val series3= PointsGraphSeries<DataPoint>(arrayOf(DataPoint(1.0,1.0))); series3.size=10.0F; series3.color= Color.BLACK
             addSeries(series1)
             addSeries(series2)
             addSeries(series3)
