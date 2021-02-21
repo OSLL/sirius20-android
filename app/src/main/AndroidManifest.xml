@@ -69,6 +69,7 @@
         <activity android:name=".ZoneDeriv.DerivAct2Activity" />
         <activity android:name=".ZoneDeriv.DerivAct3Activity" />
         <activity android:name=".ZoneDeriv.DerivAct4Activity" />
+        <activity android:name=".ZoneDeriv.DerivAct5Activity" />
         <activity android:name=".ZoneDeriv.DerivBossActivity" />
         <activity android:name=".ZoneComplex.ComplexAct1Activity" />
         <activity android:name=".ZoneComplex.ComplexAct2Activity" />

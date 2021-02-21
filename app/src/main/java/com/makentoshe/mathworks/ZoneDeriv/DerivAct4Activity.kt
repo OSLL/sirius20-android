@@ -6,17 +6,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.jjoe64.graphview.GraphView
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
+import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.shuffle
 
 
 class DerivAct4Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_act_tasks_graph)
+        setContentView(R.layout.layout_act_tasks)
         headTask.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
@@ -26,17 +25,6 @@ class DerivAct4Activity : AppCompatActivity() {
                 3 to "\\\\(1)\\int_a^b f(x)dx=F(b)-F(a)\\\\(2)\\int_a^b f(x)dx=\\sum_{i=1}^n f(c_i)\\Delta x_i;\\\\x_0=a;x_n=b;\\\\c_i\\in[x_{i-1};x_i];\\\\\\Delta x_i=x_i-x_{i-1}\\\\(3)\\int_{a}^{b}f(x)dx+\\int_{b}^{c}f(x)dx=\\\\=\\int_{a}^{c}f(x)dx; a<b<c.\\\\(4)\\int_b^a f(x)dx=-\\int_a^b f(x)dx"
         )
         mathview.latex=formulas[0].toString()
-        val graph = findViewById<View>(R.id.graph) as GraphView
-        graph.visibility=View.GONE
-        VIBRATOR_SERVICE
-        graph.run {
-            viewport.isYAxisBoundsManual = true
-            viewport.setMinY(-1.1)
-            viewport.setMaxY(10.1)
-            viewport.isXAxisBoundsManual = true
-            viewport.setMinX(-5.1)
-            viewport.setMaxX(5.1)
-        }
         var step =0
         var score =0
         val max =4
@@ -80,7 +68,7 @@ class DerivAct4Activity : AppCompatActivity() {
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
-                intt.putExtra("act", 2)
+                intt.putExtra("act", 3)
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

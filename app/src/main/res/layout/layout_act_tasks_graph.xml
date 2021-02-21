@@ -147,25 +147,29 @@
                     android:id="@+id/radioButtonTask1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/filler" />
+                    android:text="@string/filler"
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/filler" />
+                    android:text="@string/filler"
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/filler" />
+                    android:text="@string/filler"
+                    android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/filler" />
+                    android:text="@string/filler"
+                    android:textSize="15sp" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>

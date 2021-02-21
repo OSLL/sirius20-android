@@ -107,6 +107,7 @@ class ActResult : AppCompatActivity() {
                         DerivAct2Activity::class.java,
                         DerivAct3Activity::class.java,
                         DerivAct4Activity::class.java,
+                        DerivAct5Activity::class.java,
                         DerivBossActivity::class.java
                 ),
                 "complex" to arrayOf(
