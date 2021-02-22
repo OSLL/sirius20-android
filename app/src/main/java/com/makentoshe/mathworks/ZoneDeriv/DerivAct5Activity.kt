@@ -79,15 +79,7 @@ class DerivAct5Activity : AppCompatActivity() {
             if (i<taskTypes.size) {
                 if (taskTypes[i] != 0) values = valueMakerForDerivAct5(i)
                 when(i){
-                    1->{
-                        when(values[1].split(' ')[0]){
-                            "0" -> {
-                                mathview.latex="\\\\f(x)=${values[1].split(' ')[1]}x^${values[1].split(' ')[2]}"
-                            }
-                            "1"->{
-                                mathview.latex="\\\\h(\\chi)=${values[1].split(' ')[1]}^{${values[1].split(' ')[0]}\\chi}\\\\(a^\\chi)=a^\\chi\\ln a"
-                            }
-                        }
+                    1->{mathview.latex="\\\\f(x)=${values[1].split(' ')[1]}x^{${values[1].split(' ')[2]}}"
                     }
                     2->{
                         when(values[0]){
@@ -252,13 +244,9 @@ class DerivAct5Activity : AppCompatActivity() {
 fun valueMakerForDerivAct5(i: Int): Array<String>{
     var ans="\\"; val num1: Int; var num2: Int; val num3: Int; var pas=""
     when(i) {
-        1 -> {when((0..1).random()){
-            0->{val dic = mapOf(2 to "²", 3 to "³", 4 to "⁴", 5 to "⁵", 6 to "⁶", 7 to "⁷", 8 to "⁸", 9 to "⁹")
+        1 -> {val dic = mapOf(2 to "²", 3 to "³", 4 to "⁴", 5 to "⁵", 6 to "⁶", 7 to "⁷", 8 to "⁸", 9 to "⁹")
                 num1=(2..10).random();num2=(3..10).random();ans="${num1*num2}x${dic[num2-1]}";pas="0 $num1 $num2"
-            }
-            1->{val dic= mapOf(2 to "²",3 to "³",4 to "⁴",5 to "⁵",6 to "⁶",7 to "⁷",8 to "⁸",9 to "⁹",10 to "¹⁰")
-                num1=(2..10).random();do{num2=(4..10).random()}while(num2==num1); ans="$num1·$num2${dic[num1]}ᵡ ln $num2"; pas="$num1 $num2"}
-        }}
+        }
         2 -> {ans="${(-2..2).random()}"}
         3 -> {when((0..3).random()){
             0->{ans="sin x"; pas="cos x -sin x -cos x"}
@@ -287,20 +275,11 @@ fun answerMakerForDerivAct5(values: Array<String>, i: Int): Array<String> {
     val b= MutableList(4){""}
     b[0]=ans
     when(i) {
-        1 -> {when(values[1].split(' ')[0]){
-            "0" -> {
-                val dic = mapOf(2 to "²", 3 to "³", 4 to "⁴", 5 to "⁵", 6 to "⁶", 7 to "⁷", 8 to "⁸", 9 to "⁹", 10 to "¹⁰")
+        1 -> { val dic = mapOf(2 to "²", 3 to "³", 4 to "⁴", 5 to "⁵", 6 to "⁶", 7 to "⁷", 8 to "⁸", 9 to "⁹", 10 to "¹⁰")
                 b[1]="${values[1].split(' ')[1].toInt()*values[1].split(' ')[2].toInt()}x${dic[values[1].split(' ')[2].toInt()]}"
                 b[2]="${values[1].split(' ')[1].toInt()}x${dic[values[1].split(' ')[2].toInt()]}"
                 b[3]="${values[1].split(' ')[1].toInt()}x${dic[values[1].split(' ')[2].toInt()-1]}"
             }
-            "1"->{
-                val dic = mapOf(2 to "²", 3 to "³", 4 to "⁴", 5 to "⁵", 6 to "⁶", 7 to "⁷", 8 to "⁸", 9 to "⁹", 10 to "¹⁰")
-                b[1] = "${values[3].split(' ')[0]}·${values[3].split(' ')[1]}ᵡ ln ${values[3].split(' ')[1]}"
-                b[2]= "${values[3].split(' ')[1]}${dic[values[3].split(' ')[0].toInt()]}ᵡ ln ${values[3].split(' ')[1]}"
-                b[3]= "${values[3].split(' ')[1]}·${values[3].split(' ')[0]}${dic[values[3].split(' ')[1].toInt()]}ᵡ ln ${values[3].split(' ')[0]}"
-            }
-        }}
         2 -> {}
         3 -> {b[1]=values[1].split(' ')[0]+" "+values[1].split(' ')[1]; b[2]=values[1].split(' ')[2]+" "+values[1].split(' ')[3]; b[3]=values[1].split(' ')[4]+" "+values[1].split(' ')[5];}
         5 -> {}
