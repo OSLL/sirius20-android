@@ -9,12 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".MenuSetup"
+            android:label="@string/title_activity_menu_setup"></activity>
         <activity android:name=".ZoneInteger.IntegerAct1Activity" />
-        <activity android:name=".ZoneInteger.IntegerAct2Activity"/>
+        <activity android:name=".ZoneInteger.IntegerAct2Activity" />
         <activity android:name=".ZoneInteger.IntegerAct3Activity" />
         <activity android:name=".ZoneInteger.IntegerAct4Activity" />
         <activity android:name=".ZoneInteger.IntegerBossActivity" />
-        <activity android:name=".ZoneModulo.ModuloAct1Activity"/>
+        <activity android:name=".ZoneModulo.ModuloAct1Activity" />
         <activity android:name=".ZoneModulo.ModuloAct2Activity" />
         <activity android:name=".ZoneModulo.ModuloAct3Activity" />
         <activity android:name=".ZoneModulo.ModuloAct4Activity" />
@@ -75,7 +78,7 @@
         <activity android:name=".ZoneComplex.ComplexAct2Activity" />
         <activity android:name=".ZoneComplex.ComplexAct3Activity" />
         <activity android:name=".ZoneComplex.ComplexBossActivity" />
-        <activity android:name=".MenuTitle"></activity>
+        <activity android:name=".MenuTitle" />
         <activity android:name=".MenuActSelect" />
         <activity android:name=".MenuZoneSelect" />
         <activity android:name=".ActResult" />
@@ -86,6 +89,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
+
 </manifest>
