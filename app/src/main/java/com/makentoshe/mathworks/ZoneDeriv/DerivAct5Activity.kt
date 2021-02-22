@@ -242,7 +242,7 @@ class DerivAct5Activity : AppCompatActivity() {
     }
 }
 fun valueMakerForDerivAct5(i: Int): Array<String>{
-    var ans="\\"; val num1: Int; var num2: Int; val num3: Int; var pas=""
+    var ans="\\"; val num1: Int; val num2: Int; val num3: Int; var pas=""
     when(i) {
         1 -> {val dic = mapOf(2 to "²", 3 to "³", 4 to "⁴", 5 to "⁵", 6 to "⁶", 7 to "⁷", 8 to "⁸", 9 to "⁹")
                 num1=(2..10).random();num2=(3..10).random();ans="${num1*num2}x${dic[num2-1]}";pas="0 $num1 $num2"

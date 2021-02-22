@@ -222,6 +222,12 @@
     <string name="act_deriv_5_task_4">Найдите определённый интеграл функции f(x) на промежутке от a до b:</string>
     <string name="act_deriv_5_task_5">Найдите неопределённый интеграл функции f(x):</string>
     <string name="act_deriv_5_task_6">Производной какой функции f(χ), скорее всего, соответствует график?</string>
+    <string name="act_deriv_boss_task_1">Определите тип разрыва по графику.</string>
+    <string name="act_deriv_boss_task_2">Найдите предел функции.</string>
+    <string name="act_deriv_boss_task_3">Найдите число точек экстремума функции по графику.</string>
+    <string name="act_deriv_boss_task_4">Найдите неопределённый интеграл функции f(x):</string>
+    <string name="act_deriv_boss_task_5">Найдите площадь фигуры, ограниченной графиками функций h(x) и f(x), прямыми x=a и x=b.</string>
+    <string name="act_deriv_boss_task_6">Производной какой функции f(χ) соответствует график?</string>
     <string name="navigation_forth">Дальше</string>
     <string name="navigation_back">Назад</string>
     <string name="to_main">На главную</string>
