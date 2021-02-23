@@ -153,7 +153,7 @@ class DerivAct5Activity : AppCompatActivity() {
                         "ln|x|+C"->"\\frac{1}{x}"
                         "tan x+C"->"\\frac{1}{\\cos^2x}"
                         "cot x+C"->"-\\frac{1}{\\sin^2x}"
-                        "-x x+C"->"-1"
+                        "-x+C"->"-1"
                         "-sin x+C"->"-\\cos x"
                         else->"2\\cos2x"
                     }}
