@@ -3,8 +3,6 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.renderscript.Float2
-import android.util.Log
 import android.widget.ArrayAdapter
 import com.makentoshe.mathworks.ZoneCombine.*
 import com.makentoshe.mathworks.ZoneFloat.*
@@ -18,16 +16,13 @@ import com.makentoshe.mathworks.ZoneStereo.*
 import com.makentoshe.mathworks.ZoneDeriv.*
 import com.makentoshe.mathworks.ZoneComplex.*
 import kotlinx.android.synthetic.main.layout_menu_act_select.*
-import java.util.*
 
 class MenuActSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_menu_act_select)
-        var zone="integer"
-        zone=intent.getStringExtra("zone")
-        var acts: Int
-        acts = when (zone){
+        val zone=intent.getStringExtra("zone")
+        val acts = when (zone){
             "integer" -> 5
             "modulo" -> 5
             "combine" -> 5
@@ -138,15 +133,13 @@ class MenuActSelect : AppCompatActivity() {
         actArray[acts-1]=(getString(resources.getIdentifier(("boss_name"), "string", packageName)))
         val adapt= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,actArray)
         list.adapter=adapt
-        list.setOnItemClickListener { parent, view, position, id ->
-            Log.d("ACT_SELECT","position $position, id $id");
-            val pendActivity= linksAct[zone]?.get(position)
+        list.setOnItemClickListener { _, _, position, _ ->
+            val pendActivity= linksAct[zone!!]?.get(position)
             val intent= Intent(this,pendActivity)
             intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zone}_name"), "string", packageName)))
             intent.putExtra("act",actArray[position])
             startActivity(intent)
         }
-        Log.d("ACT_SELECT","Zone name loaded zone_${zone}_name")
         zoneTitle.text=getString(resources.getIdentifier("zone_${zone}_name", "string", packageName))
     }
 }

@@ -24,10 +24,10 @@ class ModuloAct1Activity : AppCompatActivity() {
         radioGroupTask.visibility = View.GONE;
         var i=0; var step=0
         taskText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
-        var max=4
+        val max=4
         var nums= correctNumberMakerForModuloAct1(0)
         var answer= answerGetterForModuloAct1(nums,0)
-        var choice=""
+        var choice: String
         var a=""
         taskText.text=getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[0].toString(nums[2]), nums[1].toString(nums[2]),nums[2].toString())
         editTextTask.addTextChangedListener(object: TextWatcher {

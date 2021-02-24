@@ -16,9 +16,12 @@ class MenuTitle : AppCompatActivity() {
         settingsButton.setOnClickListener {
             startActivity(Intent(this,MenuSetup::class.java))
         }
+        infoButton.setOnClickListener {
+            startActivity(Intent(this,MenuInfo::class.java))
+        }
         var i=0
         titleText.setOnClickListener{
-            if (i<5) {i++;titleText.setTextColor(Color.rgb(i*32,128,32));titleText.text="MathW"+" ".repeat(i)+"o"+" ".repeat(i)+"rks"} else {startActivity(Intent(this,MenuSetup::class.java));finish()}
+            if (i<5) {i++;titleText.setTextColor(Color.rgb(i*32,128,32));titleText.text="MathW${i}rks"} else {startActivity(Intent(this,MenuHidden::class.java));finish()}
         }
     }
 }

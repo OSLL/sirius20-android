@@ -90,7 +90,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 Log.d("Act3", "Variants deployed")
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -106,7 +106,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name: String
+                val name: String
                 descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
@@ -121,7 +121,7 @@ class IntegerAct3Activity : AppCompatActivity() {
     }
 }
 fun correctNumberMakerForIntegerAct3(i: Int): IntArray {
-    var num1=0; var num2=0; var num3=0; var ans:Int;
+    val num1: Int; var num2: Int; var num3=0; val ans:Int
     when (i) {
         1->{
             num1=(3..20).random(); do num2=(10..50).random()*2 while (num2%num1==0 || num2<2*num1); ans=num2/num1
@@ -133,26 +133,22 @@ fun correctNumberMakerForIntegerAct3(i: Int): IntArray {
             num1=(4..10).random()*50; do num2=(5..25).random()*20 while (num2%num1==0 || num1%num2==0); do num3=(5..7).random() while(num3*num1%num2==0); ans=(num3*num1)/num2+1
         }
         4->{
-            num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); if ((num1/num2)%2==0) ans=num1/num2-1 else ans=num1/num2;
+            num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); ans = if ((num1/num2)%2==0) num1/num2-1 else num1/num2
         }
         5->{
-            num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); if ((num1/num2)%2==0) num3=num1/num2-1 else num3=num1/num2; ans=num1-num3*num2;
+            num1=(5..15).random()*20; do num2=(2..5).random()*10 while (num1%num2==0); num3 = if ((num1/num2)%2==0) num1/num2-1 else num1/num2; ans=num1-num3*num2
         }
         6->{
-            num1=(6..15).random(); do{num2=(4..20).random()*5} while(num2%num1==0); ans=num2%num1+num2/num1;
+            num1=(6..15).random(); do{num2=(4..20).random()*5} while(num2%num1==0); ans=num2%num1+num2/num1
         }
         else -> {num1=0; num2=0; ans=0}
     }
     return intArrayOf(ans,num1,num2,num3)
-    Log.d("Act1","Correct numbers created")
 }
 fun answerMakerForIntegerAct3 (a: IntArray): IntArray {
-    var ans=a[0]
-    var b = mutableListOf<Int>(ans,0,0,0)
+    val ans=a[0]
+    val b = mutableListOf(ans,0,0,0)
     do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
-    var i_corr=b.indexOf(ans)
-    var aa= intArrayOf(b[0],b[1],b[2],b[3],i_corr)
-    Log.d("Act1","Answer array returned: ${aa[0]} ${aa[1]} ${aa[2]} ${aa[3]} ${aa[4]}")
-    return aa
+    return intArrayOf(b[0],b[1],b[2],b[3],b.indexOf(ans))
 }

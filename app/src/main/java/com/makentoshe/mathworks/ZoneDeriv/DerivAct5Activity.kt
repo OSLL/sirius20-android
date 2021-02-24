@@ -144,7 +144,7 @@ class DerivAct5Activity : AppCompatActivity() {
                         mathview.latex=when(values[1].split(' ')[0]){
                         "0"-> "\\\\f(x)=${values[1].split(' ')[3].toInt()+1}x^${values[1].split(' ')[3]},\\\\a=${values[1].split(' ')[1]},b=${values[1].split(' ')[2]}"
                         "1"-> "\\\\f(x)=\\frac{1}{x},\\\\a=$a 1,\\;b=$a e"
-                        "2"-> "\\\\f(x)=\\cos \\frac{\\pi x}{2},\\\\a=${values[1].split(' ')[1]},b=${values[1].split(' ')[2]}"
+                        "2"-> "\\\\f(x)=\\cos \\x,\\\\a=${values[1].split(' ')[1]}\\cdot\\frac{\\pi}{2},b=${values[1].split(' ')[2]}\\cdot\\frac{\\pi}{2}"
                             else -> ""
                     }}
                     6->{mathview.latex="\\\\f(x)="+when(values[0]){
