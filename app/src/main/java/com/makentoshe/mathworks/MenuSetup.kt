@@ -16,7 +16,7 @@ class MenuSetup : AppCompatActivity() {
         val adapt= ArrayAdapter<String>(this,R.layout.list_simple_element, R.id.list_content, themeArray)
         list_theme.adapter=adapt
         list_theme.setOnItemClickListener { _, _, position, _ ->
-            linksTheme[themeArray[position!!]]?.let { setTheme(it) }
+            linksTheme[themeArray[position!!]]?.let { application.setTheme(it) }
         }
         continueButtonTask.setOnClickListener {
             startActivity(Intent(this,MainActivity::class.java))

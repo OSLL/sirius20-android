@@ -151,28 +151,36 @@
                     android:id="@+id/radioButtonTask1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/filler" />
+                    android:foregroundTint="?attr/colorOnBackground"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>

@@ -106,8 +106,8 @@
                 android:id="@+id/mathview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="?attr/colorOnBackground"
                 android:visibility="gone"
+                android:textColor="?attr/colorOnBackground"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
 
@@ -146,28 +146,36 @@
                     android:id="@+id/radioButtonTask1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
                     android:textSize="15sp" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/filler" />
+                    android:buttonTint="?attr/colorOnBackground"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>

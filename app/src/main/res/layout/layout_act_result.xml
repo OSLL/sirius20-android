@@ -59,7 +59,7 @@
         android:max="8"
         android:progress="5"
         android:progressDrawable="@drawable/circle"
-        android:progressTint="?attr/colorAccent"
+        android:progressTint="?attr/colorProgressBarTaskGreen"
         app:layout_constraintBottom_toTopOf="@+id/continueButtonResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
