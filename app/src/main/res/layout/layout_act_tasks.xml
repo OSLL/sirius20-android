@@ -2,17 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <TextView
-        android:id="@+id/headTask"
+        android:id="@+id/headSetup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/zone_integer_name"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/colorHeads"
+        android:textColor="?attr/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -27,11 +28,11 @@
         android:fontFamily="sans-serif"
         android:text="@string/act_integer_1_name"
         android:textAlignment="center"
-        android:textColor="@color/colorSubheads"
+        android:textColor="?attr/colorSecondary"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headTask" />
+        app:layout_constraintTop_toBottomOf="@+id/headSetup" />
 
     <ProgressBar
         android:id="@+id/progressBarTask"
@@ -41,8 +42,8 @@
         android:layout_marginTop="5dp"
         android:max="100"
         android:progress="0"
-        android:progressBackgroundTint="@color/colorBackgroundProgress"
-        android:progressTint="@color/colorRedProgress"
+        android:progressBackgroundTint="?attr/colorProgressBarTaskBackground"
+        android:progressTint="?attr/colorProgressBarTaskRed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
@@ -58,7 +59,7 @@
         android:max="100"
         android:progress="0"
         android:progressBackgroundTint="@color/colorTransparent"
-        android:progressTint="@color/colorAccent"
+        android:progressTint="?attr/colorProgressBarTaskGreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
@@ -87,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/act_integer_1_descr_1"
-                android:textColor="@color/colorText"
+                android:textColor="?attr/colorOnBackground"
                 android:textIsSelectable="false"
                 android:textSize="15sp"
                 android:visibility="gone" />
@@ -97,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/act_integer_1_task_1"
-                android:textColor="@color/colorText"
+                android:textColor="?attr/colorOnBackground"
                 android:textSize="15sp"
                 android:visibility="visible" />
 
@@ -105,6 +106,7 @@
                 android:id="@+id/mathview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnBackground"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
@@ -113,7 +115,7 @@
                 android:id="@+id/taskImage"
                 android:layout_width="match_parent"
                 android:layout_height="384dp"
-                android:background="#FFFFFF"
+                android:background="?android:attr/colorBackground"
                 android:contentDescription="@string/task_theory_image"
                 android:padding="0dp"
                 android:scaleX="1"
@@ -130,7 +132,9 @@
                 android:hint="@string/task_input_txt"
                 android:importantForAccessibility="no"
                 android:importantForAutofill="no"
-                android:inputType="numberSigned|number|numberDecimal" />
+                android:inputType="numberSigned|number|numberDecimal"
+                android:textColor="?attr/colorOnBackground"
+                android:textColorHint="?attr/colorProgressBarTaskBackground" />
 
             <RadioGroup
                 android:id="@+id/radioGroupTask"
@@ -172,11 +176,11 @@
         android:id="@+id/continueButtonTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackButton"
+        android:background="?attr/colorSurface"
         android:paddingLeft="10sp"
         android:paddingRight="10sp"
         android:text="@string/navigation_forth"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/colorOnSurface"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

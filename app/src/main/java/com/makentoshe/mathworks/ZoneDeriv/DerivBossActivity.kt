@@ -19,7 +19,7 @@ class DerivBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks_graph)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.fontSize=40.0F
         var step =0
@@ -28,7 +28,7 @@ class DerivBossActivity : AppCompatActivity() {
         var i=0
         val taskTypes=arrayOf(0,1,2,2,1,2,1)
         val taskNames=arrayOf("boss_descr", "act_deriv_boss_task_1", "act_deriv_boss_task_2", "act_deriv_boss_task_3",  "act_deriv_boss_task_4","act_deriv_boss_task_5","act_deriv_boss_task_6")
-        descrText.text=getString(R.string.boss_descr,headTask.text)
+        descrText.text=getString(R.string.boss_descr,headSetup.text)
         var values=Array(2) { "" }
         var variants=Array(5) { "" }
         var choice: String

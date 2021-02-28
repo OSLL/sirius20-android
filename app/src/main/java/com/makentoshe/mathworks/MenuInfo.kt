@@ -10,9 +10,9 @@ class MenuInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=getText(R.string.app_name)
+        headSetup.text=getText(R.string.app_name)
         subheadTask.text=getText(R.string.title_info)
-        continueButtonTask.text=getText(R.string.to_main)
+        continueButtonTask.text=getText(R.string.navigation_to_main)
         descrText.visibility=View.VISIBLE
         descrText.text=getText(R.string.info_text)
         taskText.text=getString(resources.getIdentifier("info_version", "string", packageName),getText(R.string.app_name),applicationContext.getPackageManager().getPackageInfo(applicationContext.getPackageName(), 0).versionName)

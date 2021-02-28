@@ -15,7 +15,7 @@ class IntegerBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var score=0
         var lives:Int
@@ -24,7 +24,7 @@ class IntegerBossActivity : AppCompatActivity() {
         var taskTypes=arrayOf(0,1,2,2,1,2)
         var taskQuantity=arrayOf(0,2,3,2,1,2)
         var i=0; var step=0
-        descrText.text=getString(R.string.boss_descr,headTask.text)
+        descrText.text=getString(R.string.boss_descr,headSetup.text)
         var max=5
         var variants=IntArray(5)
         var nums=IntArray(4)

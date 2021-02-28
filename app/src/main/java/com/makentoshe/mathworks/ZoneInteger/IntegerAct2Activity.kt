@@ -17,7 +17,7 @@ class IntegerAct2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         //Акт получает имя зоны и имя акта, которые передаются через интент
         var score=0 //Очки прогресса (за правильные ответы)

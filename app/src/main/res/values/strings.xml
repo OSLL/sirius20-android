@@ -6,6 +6,7 @@
     <string name="info_text">Приложение для <b>Android</b> предполагает возможность развития математических способностей игроков. В приложении планируются задачи на различные темы: арифметика целых чисел, планиметрия, тригонометрия и различные другие.\nНаставники:\n • Дмитрий Иванов\n • Максим Доброхвалов\nУчастники:\n • Вадим Чайкин\n • Даниил Холяк</string>
     <string name="info_version">Версия приложения %1$s: %2$s</string>
     <string name="menu_zone_select">Выберите зону</string>
+    <string name="menu_zone_percentage">Пройдено:</string>
     <string name="menu_act_select">Выберите акт</string>
     <string name="zone_integer_name">Арифметика целых чисел</string>
     <string name="zone_modulo_name">Модульная арифметика</string>
@@ -232,7 +233,7 @@
     <string name="act_deriv_boss_task_6">Какая функция f(χ), скорее всего, является первообразной от изображённой на графике?</string>
     <string name="navigation_forth">Дальше</string>
     <string name="navigation_back">Назад</string>
-    <string name="to_main">На главную</string>
+    <string name="navigation_to_main">На главную</string>
     <string name="task_input_txt">Введите ответ…</string>
     <string name="check">Проверить</string>
     <string name="result_good">Молодец!\nПродолжайте в том же духе!</string>
@@ -240,4 +241,8 @@
     <string name="navigation_previous">Предыдущий</string>
     <string name="task_theory_image">Картинка</string>
     <string name="filler">Заполнитель</string>
+    <string name="theme_name">Тема приложения</string>
+    <string name="theme_apptheme">Стандартная тема</string>
+    <string name="theme_darktheme">Тёмная тема</string>
+    <string name="preferenced_theme">AppTheme</string>
 </resources>

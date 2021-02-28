@@ -15,7 +15,7 @@ class IntegerAct4Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text = intent.getStringExtra("zone")
+        headSetup.text = intent.getStringExtra("zone")
         subheadTask.text = intent.getStringExtra("act")
         var score = 0
         val taskNames = arrayOf("act_integer_4_descr_1", "act_integer_4_task_1", "act_integer_4_task_2", "act_integer_4_task_3", "act_integer_4_task_4")

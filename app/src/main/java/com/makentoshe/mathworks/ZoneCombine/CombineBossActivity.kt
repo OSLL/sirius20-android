@@ -15,7 +15,7 @@ class CombineBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var step=0
         var score=0
@@ -24,7 +24,7 @@ class CombineBossActivity : AppCompatActivity() {
         val taskTypes=arrayOf(0,1,2,1,2,2)
         val taskQuantity=arrayOf(0,1,2,2,3,3)
         val taskNames=arrayOf("boss_descr","act_combine_boss_task_1","act_combine_boss_task_2","act_combine_boss_task_3","act_combine_boss_task_4","act_combine_boss_task_5")
-        descrText.text=getString(R.string.boss_descr,headTask.text)
+        descrText.text=getString(R.string.boss_descr,headSetup.text)
         var values=Array(5){""}
         var variants=Array(5){""}
         var choice: String

@@ -2,14 +2,22 @@
 <resources>
     <color name="colorPrimary">#4B964B</color>
     <color name="colorPrimaryDark">#1C4C2A</color>
+    <color name="colorSecondary">#1C4C2A</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorHeads">#4B964B</color>
-    <color name="colorSubheads">#1C4C2A</color>
+    <color name="colorBackground">#F0F0F0</color>
     <color name="colorBackScroll">#F3F3F3</color>
     <color name="colorText">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorBackButton">#006496</color>
-    <color name="colorRedProgress">#990000</color>
+    <color name="colorTransitionButton">#006496</color>
+    <color name="colorRedProgress">#FF0000</color>
+    <color name="colorGreenProgress">#43A047</color>
     <color name="colorTransparent">#00ffffff</color>
-    <color name="colorBackgroundProgress">#7f7f7f</color>
+    <color name="colorBackgroundProgress">#7A7F7F7F</color>
+    <color name="colorPrimaryDarker">#4B964B</color>
+    <color name="colorPrimaryDarkDarker">#13351D</color>
+    <color name="colorSecondaryDarker">#58FF86</color>
+    <color name="colorAccentDarker">#03DAC5</color>
+    <color name="colorBackgroundDarker">#28282C</color>
+    <color name="colorTextDarker">#B4C0CC</color>
+    <color name="colorTransitionButtonDarker">#00AAFF</color>
 </resources>

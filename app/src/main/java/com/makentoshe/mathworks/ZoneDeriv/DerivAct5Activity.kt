@@ -19,7 +19,7 @@ class DerivAct5Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks_graph)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
@@ -144,7 +144,7 @@ class DerivAct5Activity : AppCompatActivity() {
                         mathview.latex=when(values[1].split(' ')[0]){
                         "0"-> "\\\\f(x)=${values[1].split(' ')[3].toInt()+1}x^${values[1].split(' ')[3]},\\\\a=${values[1].split(' ')[1]},b=${values[1].split(' ')[2]}"
                         "1"-> "\\\\f(x)=\\frac{1}{x},\\\\a=$a 1,\\;b=$a e"
-                        "2"-> "\\\\f(x)=\\cos \\x,\\\\a=${values[1].split(' ')[1]}\\cdot\\frac{\\pi}{2},b=${values[1].split(' ')[2]}\\cdot\\frac{\\pi}{2}"
+                        "2"-> "\\\\f(x)=\\cos x,\\\\a=${values[1].split(' ')[1]}\\cdot\\frac{\\pi}{2},b=${values[1].split(' ')[2]}\\cdot\\frac{\\pi}{2}"
                             else -> ""
                     }}
                     6->{mathview.latex="\\\\f(x)="+when(values[0]){
@@ -155,7 +155,7 @@ class DerivAct5Activity : AppCompatActivity() {
                         "cot x+C"->"-\\frac{1}{\\sin^2x}"
                         "-x+C"->"-1"
                         "-sin x+C"->"-\\cos x"
-                        else->"2\\cos2x"
+                        else->"2\\cos 2x"
                     }}
                     7->{mathview.visibility=View.GONE
                         graph.visibility=View.VISIBLE

@@ -20,7 +20,7 @@ class MenuZoneSelect : AppCompatActivity() {
         for (i in (0..10)){
             zoneNameArray[i]=(getString(resources.getIdentifier(("zone_${zoneArray[i]}_name"), "string", packageName)))
         }
-        val adapt= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,zoneNameArray)
+        val adapt= ArrayAdapter<String>(this,R.layout.list_simple_element,R.id.list_content,zoneNameArray)
         list1.adapter=adapt
         list1.setOnItemClickListener { parent, view, position, id ->
             val intent= Intent(this,MenuActSelect::class.java)

@@ -5,7 +5,28 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorTransitionButton</item>
+        <item name="colorOnBackground">@color/colorText</item>
+        <item name="colorOnSurface">@color/colorWhite</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgress</item>
     </style>
-
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDarker</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkDarker</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorAccentDarker</item>
+        <item name="android:colorBackground">@color/colorBackgroundDarker</item>
+        <item name="colorSurface">@color/colorTransitionButtonDarker</item>
+        <item name="colorOnBackground">@color/colorTextDarker</item>
+        <item name="colorOnSurface">@color/colorText</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgress</item>
+    </style>
 </resources>

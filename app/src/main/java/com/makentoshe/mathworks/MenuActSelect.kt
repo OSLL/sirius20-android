@@ -16,6 +16,7 @@ import com.makentoshe.mathworks.ZoneStereo.*
 import com.makentoshe.mathworks.ZoneDeriv.*
 import com.makentoshe.mathworks.ZoneComplex.*
 import kotlinx.android.synthetic.main.layout_menu_act_select.*
+import kotlinx.android.synthetic.main.layout_menu_zone_select.*
 
 class MenuActSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,7 +132,7 @@ class MenuActSelect : AppCompatActivity() {
             actArray[i]=(getString(resources.getIdentifier(("act_${zone}_${i+1}_name"), "string", packageName)))
         }
         actArray[acts-1]=(getString(resources.getIdentifier(("boss_name"), "string", packageName)))
-        val adapt= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,actArray)
+        val adapt= ArrayAdapter<String>(this,R.layout.list_simple_element, R.id.list_content, actArray)
         list.adapter=adapt
         list.setOnItemClickListener { _, _, position, _ ->
             val pendActivity= linksAct[zone!!]?.get(position)
