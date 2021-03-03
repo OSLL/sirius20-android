@@ -3,7 +3,7 @@
     <color name="colorPrimary">#4B964B</color>
     <color name="colorPrimaryDark">#1C4C2A</color>
     <color name="colorSecondary">#1C4C2A</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#43A047</color>
     <color name="colorBackground">#F0F0F0</color>
     <color name="colorBackScroll">#F3F3F3</color>
     <color name="colorText">#000000</color>
@@ -15,9 +15,20 @@
     <color name="colorBackgroundProgress">#7A7F7F7F</color>
     <color name="colorPrimaryDarker">#4B964B</color>
     <color name="colorPrimaryDarkDarker">#13351D</color>
-    <color name="colorSecondaryDarker">#58FF86</color>
-    <color name="colorAccentDarker">#03DAC5</color>
+    <color name="colorAccentDarker">#43A047</color>
     <color name="colorBackgroundDarker">#28282C</color>
     <color name="colorTextDarker">#B4C0CC</color>
     <color name="colorTransitionButtonDarker">#00AAFF</color>
+    <color name="colorPrimaryInvert">#b469b4</color>
+    <color name="colorPrimaryDarkInvert">#E3B3D5</color>
+    <color name="colorSecondaryInvert">#E3B3D5</color>
+    <color name="colorAccentInvert">#BC5FB8</color>
+    <color name="colorBackgroundInvert">#0F0F0F</color>
+    <color name="colorBackScrollInvert">#0C0C0C</color>
+    <color name="colorTextInvert">#FFFFFF</color>
+    <color name="colorWhiteInvert">#000000</color>
+    <color name="colorTransitionButtonInvert">#FF9B69</color>
+    <color name="colorBackgroundProgressInvert">#7A808080</color>
+    <color name="colorRedProgressInvert">#00FFFF</color>
+    <color name="colorGreenProgressInvert">#BC5FB8</color>
 </resources>

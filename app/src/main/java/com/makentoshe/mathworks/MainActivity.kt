@@ -3,26 +3,14 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.preference.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val intent = Intent(this,MenuTitle::class.java)
-        startActivity(intent)
+        this.startActivity(Intent(this,MenuTitle::class.java))
     }
 }
-@Entity
-data class Act(
-        @PrimaryKey var actName: String,
-        var highScore: Int,
-        var visitTimes: Int
-)
-data class Lives(
-       var lives: Int,
-       var isFinalBoss: Boolean
-)

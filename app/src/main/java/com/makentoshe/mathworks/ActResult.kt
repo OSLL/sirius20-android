@@ -3,6 +3,7 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ZoneCombine.*
 import com.makentoshe.mathworks.ZoneComplex.ComplexAct1Activity
 import com.makentoshe.mathworks.ZoneComplex.ComplexAct2Activity
@@ -21,12 +22,12 @@ import kotlinx.android.synthetic.main.layout_act_result.*
 
 class ActResult : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_act_result
-        )
-        var score=intent.getIntExtra("score",2)
-        var max=intent.getIntExtra("max",5)
-        var rate=(score.toDouble()/max.toDouble()*100.0).toInt()
+        setContentView(R.layout.layout_act_result)
+        val score=intent.getIntExtra("score",2)
+        val max=intent.getIntExtra("max",5)
+        val rate=(score.toDouble()/max.toDouble()*100.0).toInt()
         val linksAct=mapOf(
                 "integer" to arrayOf(
                         IntegerAct1Activity::class.java,

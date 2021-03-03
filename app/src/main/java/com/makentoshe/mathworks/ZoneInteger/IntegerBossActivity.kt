@@ -7,12 +7,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
 class IntegerBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
         headSetup.text=intent.getStringExtra("zone")
@@ -20,12 +22,12 @@ class IntegerBossActivity : AppCompatActivity() {
         var score=0
         var lives:Int
         lives=intent.getIntExtra("lives",3)
-        var taskNames=arrayOf("act_integer_boss_theory","act_integer_boss_task_1","act_integer_boss_task_2","act_integer_boss_task_3","act_integer_boss_task_4","act_integer_boss_task_5")
-        var taskTypes=arrayOf(0,1,2,2,1,2)
-        var taskQuantity=arrayOf(0,2,3,2,1,2)
+        val taskNames=arrayOf("act_integer_boss_theory","act_integer_boss_task_1","act_integer_boss_task_2","act_integer_boss_task_3","act_integer_boss_task_4","act_integer_boss_task_5")
+        val taskTypes=arrayOf(0,1,2,2,1,2)
+        val taskQuantity=arrayOf(0,2,3,2,1,2)
         var i=0; var step=0
         descrText.text=getString(R.string.boss_descr,headSetup.text)
-        var max=5
+        val max=5
         var variants=IntArray(5)
         var nums=IntArray(4)
         var choice=0

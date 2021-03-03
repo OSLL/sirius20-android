@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ZoneCombine.*
 import com.makentoshe.mathworks.ZoneFloat.*
 import com.makentoshe.mathworks.ZoneFunction.*
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.layout_menu_zone_select.*
 
 class MenuActSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_menu_act_select)
         val zone=intent.getStringExtra("zone")

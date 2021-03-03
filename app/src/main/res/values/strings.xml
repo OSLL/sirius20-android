@@ -244,5 +244,6 @@
     <string name="theme_name">Тема приложения</string>
     <string name="theme_apptheme">Стандартная тема</string>
     <string name="theme_darktheme">Тёмная тема</string>
+    <string name="theme_inverttheme">Какая-то сюрреалистическая тема</string>
     <string name="preferenced_theme">AppTheme</string>
 </resources>
