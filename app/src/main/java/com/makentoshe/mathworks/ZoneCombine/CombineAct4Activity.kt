@@ -1,11 +1,13 @@
 package com.makentoshe.mathworks.ZoneCombine
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.shuffle
 
 class CombineAct4Activity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -20,7 +23,12 @@ class CombineAct4Activity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
-        mathview.fontSize=40.0F;
+        mathview.fontSize=40.0F
+        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
+            R.style.DarkTheme->getColor(R.color.colorTextDarker)
+            R.style.InvertTheme->getColor(R.color.colorTextInvert)
+            else->getColor(R.color.colorText)
+        }
         val formulas=mapOf(0 to "(1)C^k_n=\\frac{n!}{k!(n-k)!}\\\\(2)C^0_n=1\\\\C^1_n=n\\\\C^{n-1}_n=n\\\\C^n_n=1\\\\(3)A^k_n=n\\cdot (n-1)\\cdot \\ldots\\cdot (n-k+1)", 4 to "(1)C^k_n=\\frac{(n+k-1)!}{(n-1)!k!}")
         val formula_steps=arrayOf(0,4)
         mathview.latex=formulas[0].toString()

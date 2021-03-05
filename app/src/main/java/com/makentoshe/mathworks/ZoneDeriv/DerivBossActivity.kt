@@ -2,11 +2,13 @@ package com.makentoshe.mathworks.ZoneDeriv
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 import kotlin.math.*
 
 class DerivBossActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -24,6 +27,14 @@ class DerivBossActivity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.fontSize=40.0F
+        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
+            R.style.DarkTheme->getColor(R.color.colorTextDarker)
+            R.style.InvertTheme->getColor(R.color.colorTextInvert)
+            else->getColor(R.color.colorText)
+        }
+        graph.gridLabelRenderer.gridColor=mathview.textColor
+        graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
+        graph.gridLabelRenderer.verticalLabelsColor=mathview.textColor
         var step =0
         var score =0
         val max =6

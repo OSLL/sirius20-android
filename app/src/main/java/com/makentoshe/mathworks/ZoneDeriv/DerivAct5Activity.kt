@@ -2,11 +2,13 @@ package com.makentoshe.mathworks.ZoneDeriv
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 import kotlin.math.*
 
 class DerivAct5Activity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -25,6 +28,14 @@ class DerivAct5Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
+        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
+            R.style.DarkTheme->getColor(R.color.colorTextDarker)
+            R.style.InvertTheme->getColor(R.color.colorTextInvert)
+            else->getColor(R.color.colorText)
+        }
+        graph.gridLabelRenderer.gridColor=mathview.textColor
+        graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
+        graph.gridLabelRenderer.verticalLabelsColor=mathview.textColor
         val formulas=mapOf(
             0 to "\\\\C\\prime=0,C=const\\\\(x^n)\\prime=nx^{n-1}\\\\(\\sqrt{x})\\prime=\\frac{1}{2\\sqrt{x}}\\\\(a^x)\\prime=a^x\\ln a\\\\(e^x)\\prime=e^x\\\\(\\log_ax)\\prime=\\frac{1}{x\\ln a}\\\\(\\ln x)\\prime=\\frac{1}{x}\\\\(\\sin x)\\prime=\\cos x\\\\(\\cos x)\\prime=-\\sin x\\\\(\\tan x)\\prime=\\frac{1}{\\cos^2x}\\\\(\\cot x)'=-\\frac{1}{\\sin^2x}",
             4 to "\\\\\\int 0\\;dx=C,C=const\\\\\\int dx=x+C\\\\\\int x^p dx=\\frac{x^{p+1}}{p+1}+C,\\\\p\\neq-1, x>0\\\\\\int(kx+b)^pdx=\\frac{(kx+b)^{p+1}}{k(p+1)}+C\\\\\\int\\frac{dx}{x}=\\ln{|x|}+C\\\\\\int a^xdx=\\frac{a^x}{\\ln a}+C\\\\\\int e^x dx=e^x+C\\\\\\int \\sin x\\;dx=-\\cos x+C\\\\\\int \\cos x\\;dx=\\sin x+C\\\\\\int\\frac{dx}{\\cos^2x}=\\tan x+C\\\\\\int\\frac{dx}{\\sin^2x}=-\\cot x+C"

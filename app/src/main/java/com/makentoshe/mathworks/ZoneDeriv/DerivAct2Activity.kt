@@ -3,11 +3,13 @@ package com.makentoshe.mathworks.ZoneDeriv
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.GraphView
@@ -22,6 +24,7 @@ import kotlin.math.*
 
 
 class DerivAct2Activity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -30,7 +33,15 @@ class DerivAct2Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
+        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
+            R.style.DarkTheme->getColor(R.color.colorTextDarker)
+            R.style.InvertTheme->getColor(R.color.colorTextInvert)
+            else->getColor(R.color.colorText)
+        }
         graph.visibility=View.VISIBLE
+        graph.gridLabelRenderer.gridColor=mathview.textColor
+        graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
+        graph.gridLabelRenderer.verticalLabelsColor=mathview.textColor
         editTextTask.inputType= InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
         val formulas=mapOf(
                 0 to "\\\\(1)\\lim_{x\\to a}{f(x)}\\neq f(a)\\\\(2)\\lim_{x\\to a+0}{f(x)}\\neq \\lim_{x\\to a-0}{f(x)}\\\\(3)\\lim_{x\\to a+0}{f(x)}=\\pm \\infty \\lor\\\\\\lim_{x\\to a-0}{f(x)}=\\pm \\infty\\\\(4)\\neg\\exists\\lim_{x\\to a+0}{f(x)} \\lor \\neg\\exists\\lim_{x\\to a+0}{f(x)}\n",

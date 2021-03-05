@@ -2,11 +2,13 @@ package com.makentoshe.mathworks.ZoneDeriv
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
@@ -20,6 +22,7 @@ import kotlin.math.pow
 import kotlin.math.sin
 
 class DerivAct3Activity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -28,7 +31,15 @@ class DerivAct3Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
+        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
+            R.style.DarkTheme->getColor(R.color.colorTextDarker)
+            R.style.InvertTheme->getColor(R.color.colorTextInvert)
+            else->getColor(R.color.colorText)
+        }
         graph.visibility= View.VISIBLE
+        graph.gridLabelRenderer.gridColor=mathview.textColor
+        graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
+        graph.gridLabelRenderer.verticalLabelsColor=mathview.textColor
         val formulas=mapOf(
                 0 to "\\\\(1){f}\\prime(x_0)=\\lim_{x \\to x_0}\\frac{f(x)-f(x_0)}{x-x_0}\\\\(2)f\\in D(x_0) \\Leftrightarrow\\exists f\\prime(x_0)\\in(-\\infty;+\\infty)\\\\(3)y=f(x_0)+f\\prime(x_0)(x-x_0)\n",
                 2 to "y=f(x_0)+{f}\\prime(x_0)(x-x_0)",

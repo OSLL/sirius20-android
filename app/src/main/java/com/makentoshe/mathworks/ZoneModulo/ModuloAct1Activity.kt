@@ -22,8 +22,7 @@ class ModuloAct1Activity : AppCompatActivity() {
         var score=0
         val taskNames=arrayOf("act_modulo_1_task_1","act_modulo_1_task_2","act_modulo_1_task_3","act_modulo_1_task_4")
         val taskTypes=arrayOf(2,2,2,2)
-        val taskQuantity=arrayOf(3,3,3,3)
-        radioGroupTask.visibility = View.GONE;
+        radioGroupTask.visibility = View.GONE
         var i=0; var step=0
         taskText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         val max=4
@@ -62,11 +61,11 @@ class ModuloAct1Activity : AppCompatActivity() {
             radioGroupTask.clearCheck()
             editTextTask.setText("")
             if (i<taskTypes.size) {
-                if (taskTypes[i] != 0) nums = correctNumberMakerForModuloAct1(i);
+                if (taskTypes[i] != 0) nums = correctNumberMakerForModuloAct1(i)
                 answer=answerGetterForModuloAct1(nums,i)
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -74,7 +73,7 @@ class ModuloAct1Activity : AppCompatActivity() {
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                val name: String
                 if (i==0) name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[0].toString(nums[2]), nums[1].toString(nums[2]),nums[2].toString())
                 else name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[0].toString(),nums[1].toString(nums[0]), nums[2].toString(nums[0]))
                 taskText.text = name
@@ -82,7 +81,7 @@ class ModuloAct1Activity : AppCompatActivity() {
         }
 }}
 fun correctNumberMakerForModuloAct1 (i: Int): IntArray {
-    var num1=0; var num2=0; var num3=0;
+    var num1=0; var num2=0; var num3=0
     when (i) {
         0->{
             num3=((8..9)+(11..16)).random(); num2=(num3..2*num3).random(); num1=(num3..2*num3).random()
@@ -103,7 +102,7 @@ fun correctNumberMakerForModuloAct1 (i: Int): IntArray {
 fun answerGetterForModuloAct1(nums: IntArray,i: Int):String{
     when (i) {
         0->{
-            return (nums[0]*nums[1]).toString(nums[2])
+            return (nums[0]+nums[1]).toString(nums[2])
         }
         1->{
             return (nums[1]-nums[2]).toString(nums[0])
