@@ -144,7 +144,7 @@ class DerivAct5Activity : AppCompatActivity() {
                                 "-sin x" -> {LineGraphSeries(Array(1000){ i->DataPoint(i.toDouble()/100-5.0,cos(i.toDouble()/100-5.0)-1.0)})}
                                 else -> {LineGraphSeries(Array(1000){ i->DataPoint(i.toDouble()/100-5.0,-sin(i.toDouble()/100-5.0))})}
                             }
-                            val series2= PointsGraphSeries<DataPoint>(arrayOf(DataPoint(0.0,0.0))); series2.size=10.0F; series2.color= Color.BLACK
+                            val series2= PointsGraphSeries<DataPoint>(arrayOf(DataPoint(0.0,0.0))); series2.size=10.0F; series2.color= Color.RED
                             addSeries(series1)
                             addSeries(series2)
                         }

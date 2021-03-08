@@ -179,6 +179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:foregroundTint="?attr/colorOnBackground"
+                    android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
                     android:textColor="?attr/colorOnBackground" />
             </RadioGroup>
