@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
+import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*
@@ -20,6 +21,9 @@ class ModuloBossActivity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
+        var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        livesIndicator.visibility=View.VISIBLE
+        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
         var step =0
         var score =0
         val max =5
@@ -59,12 +63,16 @@ class ModuloBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice=editTextTask.toString()
-                    if (choice==variants[4]) score++
+                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+
                 }
                 if (taskTypes[i]==2){
-                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++
+                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+
                 }
+
                 step++
+                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
             }
             i++
             if (i==taskTypes.size) {

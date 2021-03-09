@@ -84,6 +84,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/livesIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/marker_heart"
+                android:textAlignment="center"
+                android:textColor="?attr/colorProgressBarTaskRed"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <TextView
                 android:id="@+id/descrText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

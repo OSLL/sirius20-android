@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
+import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
@@ -20,8 +21,9 @@ class IntegerBossActivity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var score=0
-        var lives:Int
-        lives=intent.getIntExtra("lives",3)
+        var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        livesIndicator.visibility=View.VISIBLE
+        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
         val taskNames=arrayOf("act_integer_boss_theory","act_integer_boss_task_1","act_integer_boss_task_2","act_integer_boss_task_3","act_integer_boss_task_4","act_integer_boss_task_5")
         val taskTypes=arrayOf(0,1,2,2,1,2)
         val taskQuantity=arrayOf(0,2,3,2,1,2)
@@ -61,14 +63,16 @@ class IntegerBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice=2
                     else if (radioButtonTask4.isChecked) choice=3
                     else choice=editTextTask.toString().toIntOrNull()?:-1
-                    if (choice==variants[4]) score++ else lives--
+                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+
                     Log.d("Act1","Score is now $score")
                 }
                 if (taskTypes[i]==2){
                     Log.d("Act1","Text task, answer is ${nums[0]}")
-                    if (aint==nums[0]) score++ else lives--
+                    if (aint==nums[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                     Log.d("Act1","Score is now $score")
                 }
+                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
                 step++
                 Log.d("Act1","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
@@ -78,7 +82,6 @@ class IntegerBossActivity : AppCompatActivity() {
                 val intt= Intent(this, ActResult::class.java)
                 intt.putExtra("score",score)
                 intt.putExtra("max",max)
-                intt.putExtra("lives",lives)
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 4)
                 startActivity(intt)
@@ -154,13 +157,13 @@ fun correctNumberMakerForIntegerBoss (i: Int): IntArray {
 }
 fun radioButtonTaskMakerForIntegerBoss(a: IntArray,i:Int): IntArray {
     var ans=a[0]
-    var b= mutableListOf<Int>(ans,0,0,0)
+    var b= mutableListOf(ans,0,0,0)
     when (i) {
         1 -> {do {b[1]=b[0]+(-15..15).random()}while (b[1]==b[0]||b[1]<=0);do {b[2]=b[0]+(-15..15).random()}while (b[2]==b[1]||b[2]==b[0]||b[2]<=0); do {b[3]=b[0]+(-15..15).random()}while (b[3]==b[2]||b[3]==b[1]||b[3]==b[0]||b[2]<=0)}
-        2 -> {b[1]=a[1];b[2]=a[2]+a[1]+a[3];do{b[3]=b[0]+(-15..15).random()}while(b[3]==b[1]||b[3]==b[2]||b[3]==b[0])}
-        3 -> {b[1]=a[1]; b[2]=a[2];do{b[3]=b[0]+(-15..15).random()}while(b[3]==b[1]||b[3]==b[2]||b[3]==b[0])}
+        2 -> {}
+        3 -> {}
         4 -> {b[1]=a[1];b[2]=b[0]+(2..23).random();do{b[3]=b[0]+(2..23).random()}while(b[3]==b[2]||b[3]==b[1]||b[3]==b[0])}
-        5 -> {b[1]=a[1]/a[2];b[2]=b[0]+(2..23).random();do{b[3]=b[0]+(2..23).random()}while(b[3]==b[2]||b[3]==b[1]||b[3]==b[0])}
+        5 -> {}
         else -> {b= mutableListOf<Int>(ans,0,0,0)}
     }
     b.shuffle()

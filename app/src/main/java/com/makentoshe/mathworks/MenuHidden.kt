@@ -52,5 +52,8 @@ class MenuHidden : AppCompatActivity() {
                 notify(15, builder.build())
             }
         }
+        hiddenCheatLifeButton.setOnClickListener {
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",3).apply()
+        }
     }
 }

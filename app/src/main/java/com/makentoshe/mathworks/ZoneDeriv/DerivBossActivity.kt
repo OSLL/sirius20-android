@@ -14,8 +14,26 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.jjoe64.graphview.series.PointsGraphSeries
 import com.makentoshe.mathworks.ActResult
+import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
+import kotlinx.android.synthetic.main.layout_act_tasks.*
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.continueButtonTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.descrText
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.editTextTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.headSetup
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.livesIndicator
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.mathview
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTaskTrue
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask1
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask2
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask3
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask4
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioGroupTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.subheadTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskImage
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskText
 import kotlin.math.*
 
 class DerivBossActivity : AppCompatActivity() {
@@ -24,6 +42,9 @@ class DerivBossActivity : AppCompatActivity() {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks_graph)
+        var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        livesIndicator.visibility=View.VISIBLE
+        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.fontSize=40.0F
@@ -65,11 +86,12 @@ class DerivBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
-                    if (choice==variants[4]) score++
+                    if (choice==variants[4]) score++ else {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                 }
                 if (taskTypes[i]==2){
-                    if (a==values[0]) score++
+                    if (a==values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                 }
+                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
                 step++
             }
             i++

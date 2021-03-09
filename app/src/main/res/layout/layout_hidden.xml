@@ -9,11 +9,12 @@
 
     <Button
         android:id="@+id/setupToMainButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="?attr/colorSurface"
         android:text="@string/navigation_to_main"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintEnd_toEndOf="@+id/setupSendNotificationButton"
         app:layout_constraintStart_toStartOf="@+id/setupSendNotificationButton"
         app:layout_constraintTop_toBottomOf="@+id/setupSendNotificationButton" />
@@ -23,9 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="?attr/colorSurface"
         android:text="Отправить уведомление"
+        android:textColor="?attr/colorOnSurface"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hiddenCheatLifeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="?attr/colorSurface"
+        android:text="Восстановить жизни"
+        android:textColor="?attr/colorOnSurface"
+        app:layout_constraintEnd_toEndOf="@+id/setupToMainButton"
+        app:layout_constraintStart_toStartOf="@+id/setupToMainButton"
+        app:layout_constraintTop_toBottomOf="@+id/setupToMainButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

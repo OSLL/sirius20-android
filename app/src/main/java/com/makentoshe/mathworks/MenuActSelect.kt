@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ZoneCombine.*
 import com.makentoshe.mathworks.ZoneFloat.*
@@ -138,10 +139,15 @@ class MenuActSelect : AppCompatActivity() {
         list.adapter=adapt
         list.setOnItemClickListener { _, _, position, _ ->
             val pendActivity= linksAct[zone!!]?.get(position)
-            val intent= Intent(this,pendActivity)
-            intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zone}_name"), "string", packageName)))
-            intent.putExtra("act",actArray[position])
-            startActivity(intent)
+            val lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+            if (position!= acts-1 || lives!=0){
+                val intent= Intent(this,pendActivity)
+                intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zone}_name"), "string", packageName)))
+                intent.putExtra("act",actArray[position])
+                startActivity(intent)}
+            else {
+                Toast.makeText(applicationContext,getString(R.string.boss_unavailable),Toast.LENGTH_LONG).show()
+            }
         }
         zoneTitle.text=getString(resources.getIdentifier("zone_${zone}_name", "string", packageName))
     }
