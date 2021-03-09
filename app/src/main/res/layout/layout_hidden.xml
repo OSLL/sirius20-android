@@ -7,40 +7,94 @@
     android:background="?android:attr/colorBackground"
     tools:context=".MenuHidden">
 
-    <Button
-        android:id="@+id/setupToMainButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:background="?attr/colorSurface"
-        android:text="@string/navigation_to_main"
-        android:textColor="?attr/colorOnSurface"
-        app:layout_constraintEnd_toEndOf="@+id/setupSendNotificationButton"
-        app:layout_constraintStart_toStartOf="@+id/setupSendNotificationButton"
-        app:layout_constraintTop_toBottomOf="@+id/setupSendNotificationButton" />
-
-    <Button
-        android:id="@+id/setupSendNotificationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="?attr/colorSurface"
-        android:text="Отправить уведомление"
-        android:textColor="?attr/colorOnSurface"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:measureAllChildren="true"
+        android:saveEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/hiddenCheatLifeButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="?attr/colorSurface"
-        android:text="Восстановить жизни"
-        android:textColor="?attr/colorOnSurface"
-        app:layout_constraintEnd_toEndOf="@+id/setupToMainButton"
-        app:layout_constraintStart_toStartOf="@+id/setupToMainButton"
-        app:layout_constraintTop_toBottomOf="@+id/setupToMainButton" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/uselessButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="?attr/colorSurface"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="20sp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/uselessButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="?attr/colorSurface"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/hiddenCheatLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="?attr/colorSurface"
+                    android:text="Восстановить жизни"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/setupSendNotificationButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="?attr/colorSurface"
+                    android:text="Отправить уведомление"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/setupToMainButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="?attr/colorSurface"
+                android:text="@string/navigation_to_main"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

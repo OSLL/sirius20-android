@@ -13,27 +13,10 @@ import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.jjoe64.graphview.series.PointsGraphSeries
+import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
-import kotlinx.android.synthetic.main.layout_act_tasks.*
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.continueButtonTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.descrText
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.editTextTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.headSetup
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.livesIndicator
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.mathview
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTaskTrue
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask1
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask2
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask3
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask4
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioGroupTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.subheadTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskImage
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskText
 import kotlin.math.*
 
 class DerivBossActivity : AppCompatActivity() {
@@ -91,7 +74,7 @@ class DerivBossActivity : AppCompatActivity() {
                 if (taskTypes[i]==2){
                     if (a==values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                 }
-                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
+                if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
                 step++
             }
             i++

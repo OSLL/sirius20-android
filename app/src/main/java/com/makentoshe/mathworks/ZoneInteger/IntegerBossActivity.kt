@@ -8,8 +8,8 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.preference.PreferenceManager
+import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
@@ -32,8 +32,8 @@ class IntegerBossActivity : AppCompatActivity() {
         val max=5
         var variants=IntArray(5)
         var nums=IntArray(4)
-        var choice=0
-        var a=""
+        var choice: Int
+        var a: String
         var aint=0
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -72,7 +72,7 @@ class IntegerBossActivity : AppCompatActivity() {
                     if (aint==nums[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                     Log.d("Act1","Score is now $score")
                 }
-                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
+                if (lives==0){finish();startActivity(Intent(this,  ActFailure::class.java))}
                 step++
                 Log.d("Act1","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
@@ -99,7 +99,7 @@ class IntegerBossActivity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -115,7 +115,7 @@ class IntegerBossActivity : AppCompatActivity() {
                 Log.d("Act1", "Variants deployed")
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
+                val name : String
                 descrText.text = getText(resources.getIdentifier(taskNames[i], "string", packageName))
                 if (taskQuantity[i] == 2) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1], nums[2])
@@ -125,16 +125,14 @@ class IntegerBossActivity : AppCompatActivity() {
                 else if (taskQuantity[i] == 1) {
                     name = getString(resources.getIdentifier(taskNames[i], "string", packageName), nums[1])
                 }
-                else {
-                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
-                }
+                else name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
                 taskText.text = name
             }
         }
     }
 }
 fun correctNumberMakerForIntegerBoss (i: Int): IntArray {
-    var num1:Int; var num2=0; var num3=0; var ans:Int;
+    var num1:Int; var num2=0; var num3=0; val ans:Int
     when (i) {
         1->{
             num2=(5..9).random(); num1=(5..15).random()*num2;  ans=num1/num2
@@ -156,7 +154,7 @@ fun correctNumberMakerForIntegerBoss (i: Int): IntArray {
     return intArrayOf(ans,num1,num2,num3)
 }
 fun radioButtonTaskMakerForIntegerBoss(a: IntArray,i:Int): IntArray {
-    var ans=a[0]
+    val ans=a[0]
     var b= mutableListOf(ans,0,0,0)
     when (i) {
         1 -> {do {b[1]=b[0]+(-15..15).random()}while (b[1]==b[0]||b[1]<=0);do {b[2]=b[0]+(-15..15).random()}while (b[2]==b[1]||b[2]==b[0]||b[2]<=0); do {b[3]=b[0]+(-15..15).random()}while (b[3]==b[2]||b[3]==b[1]||b[3]==b[0]||b[2]<=0)}
@@ -164,15 +162,15 @@ fun radioButtonTaskMakerForIntegerBoss(a: IntArray,i:Int): IntArray {
         3 -> {}
         4 -> {b[1]=a[1];b[2]=b[0]+(2..23).random();do{b[3]=b[0]+(2..23).random()}while(b[3]==b[2]||b[3]==b[1]||b[3]==b[0])}
         5 -> {}
-        else -> {b= mutableListOf<Int>(ans,0,0,0)}
+        else -> {b= mutableListOf(ans,0,0,0)}
     }
     b.shuffle()
-    var point: Int =0
+    var point=0
     for (j in b) if (j==ans) {point=b.indexOf(j)}
     return intArrayOf(b[0],b[1],b[2],b[3],point)
 }
 fun isPrime(a: Int): Boolean {
-    var i: Int; var b= true;
-    for (i in (2..a-1)) {if (a%i==0) b=false}
+    var b= true
+    for (i in (2 until a)) if (a%i==0) b=false
     return b
 }

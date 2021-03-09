@@ -31,7 +31,7 @@
         android:fontFamily="sans-serif"
         android:text="@string/act_integer_1_name"
         android:textAlignment="center"
-        android:textColor="?attr/colorPrimaryDark"
+        android:textColor="?attr/colorSecondary"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +60,13 @@
         android:progress="5"
         android:progressDrawable="@drawable/circle"
         android:progressTint="?attr/colorProgressBarTaskGreen"
-        app:layout_constraintBottom_toTopOf="@+id/continueButtonResult"
+        app:layout_constraintBottom_toTopOf="@+id/continueButtonFailure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCongratulations" />
 
     <Button
-        android:id="@+id/continueButtonResult"
+        android:id="@+id/continueButtonFailure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"

@@ -7,8 +7,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.preference.PreferenceManager
+import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.shuffle
@@ -57,7 +57,7 @@ class CombineBossActivity : AppCompatActivity() {
                 if (taskTypes[i]==2){
                     if (a== values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                 }
-                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
+                if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
                 step++
             }
             i++

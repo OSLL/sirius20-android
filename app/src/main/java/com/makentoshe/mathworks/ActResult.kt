@@ -129,10 +129,8 @@ class ActResult : AppCompatActivity() {
         resultProgressBar.progress=score
         resultProgressBar.max=max
         if (rate==100) {textCongratulations.text=getString(resources.getIdentifier("result_good", "string", packageName))}
-        var lives=intent.getIntExtra("lives",3)
-        continueButtonResult.setOnClickListener {
+        continueButtonFailure.setOnClickListener {
             val intent= Intent(this,MainActivity::class.java)
-            intent.putExtra("lives",lives)
             startActivity(intent)
         }
     }

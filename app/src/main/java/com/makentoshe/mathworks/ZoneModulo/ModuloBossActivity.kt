@@ -8,8 +8,8 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import androidx.preference.PreferenceManager
+import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.MainActivity
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*
@@ -72,7 +72,7 @@ class ModuloBossActivity : AppCompatActivity() {
                 }
 
                 step++
-                if (lives==0){finish();startActivity(Intent(this, MainActivity::class.java))}
+                if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
             }
             i++
             if (i==taskTypes.size) {
