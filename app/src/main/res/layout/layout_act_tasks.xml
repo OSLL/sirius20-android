@@ -64,34 +64,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
 
+    <LinearLayout
+        android:id="@+id/hearts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarTask"
+        app:layout_constraintStart_toStartOf="@+id/progressBarTask"
+        app:layout_constraintTop_toBottomOf="@id/progressBarTask">
+
+        <ImageView
+            android:id="@+id/heart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+        <ImageView
+            android:id="@+id/heart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+        <ImageView
+            android:id="@+id/heart3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/taskScroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/continueButtonTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarTask">
+        app:layout_constraintTop_toBottomOf="@+id/hearts">
 
         <LinearLayout
             android:id="@+id/taskLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/livesIndicator"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/marker_heart"
-                android:textAlignment="center"
-                android:textColor="?attr/colorProgressBarTaskRed"
-                android:textSize="20sp"
-                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/descrText"
@@ -116,8 +146,8 @@
                 android:id="@+id/mathview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:textColor="?attr/colorOnBackground"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
 

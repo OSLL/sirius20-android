@@ -27,8 +27,24 @@ class CombineBossActivity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
-        livesIndicator.visibility=View.VISIBLE
-        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
+        hearts.visibility=View.VISIBLE
+        when(lives){
+            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_24px)
+            }
+            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+        }
         var step=0
         var score=0
         val max=5
@@ -57,11 +73,28 @@ class CombineBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
-                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
 
                 }
                 if (taskTypes[i]==2){
-                    if (a== values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
+                    if (a== values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }}
                 }
                 if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
                 step++

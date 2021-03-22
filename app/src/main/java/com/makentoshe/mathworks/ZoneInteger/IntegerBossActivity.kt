@@ -26,11 +26,27 @@ class IntegerBossActivity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         var score=0
         var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
-        livesIndicator.visibility=View.VISIBLE
-        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
         val taskNames=arrayOf("act_integer_boss_theory","act_integer_boss_task_1","act_integer_boss_task_2","act_integer_boss_task_3","act_integer_boss_task_4","act_integer_boss_task_5")
         val taskTypes=arrayOf(0,1,2,2,1,2)
         val taskQuantity=arrayOf(0,2,3,2,1,2)
+        hearts.visibility=View.VISIBLE
+        when(lives){
+            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_24px)
+            }
+            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+        }
         var i=0; var step=0
         descrText.text=getString(R.string.boss_descr,headSetup.text)
         val max=5
@@ -67,13 +83,47 @@ class IntegerBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice=2
                     else if (radioButtonTask4.isChecked) choice=3
                     else choice=editTextTask.toString().toIntOrNull()?:-1
-                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
+                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }}
 
                     Log.d("Act1","Score is now $score")
                 }
                 if (taskTypes[i]==2){
                     Log.d("Act1","Text task, answer is ${nums[0]}")
-                    if (aint==nums[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
+                    if (aint==nums[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }}
                     Log.d("Act1","Score is now $score")
                 }
                 if (lives==0){finish();startActivity(Intent(this,  ActFailure::class.java))}

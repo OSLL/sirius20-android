@@ -26,11 +26,27 @@ class ModuloBossActivity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
-        livesIndicator.visibility=View.VISIBLE
-        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
         var step =0
         var score =0
         val max =5
+        hearts.visibility=View.VISIBLE
+        when(lives){
+            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_24px)
+            }
+            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+        }
         progressBarTask.max=100
         progressBarTaskTrue.max=100
         var i=0
@@ -67,11 +83,45 @@ class ModuloBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice=editTextTask.toString()
-                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
+                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }}
 
                 }
                 if (taskTypes[i]==2){
-                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
+                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }}
 
                 }
 

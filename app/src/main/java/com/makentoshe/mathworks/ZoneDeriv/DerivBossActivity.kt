@@ -27,8 +27,6 @@ class DerivBossActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks_graph)
         var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
-        livesIndicator.visibility=View.VISIBLE
-        livesIndicator.text=getText(R.string.marker_heart).repeat(lives)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.fontSize=40.0F
@@ -36,6 +34,24 @@ class DerivBossActivity : AppCompatActivity() {
             R.style.DarkTheme->getColor(R.color.colorTextDarker)
             R.style.InvertTheme->getColor(R.color.colorTextInvert)
             else->getColor(R.color.colorText)
+        }
+        hearts.visibility=View.VISIBLE
+        when(lives){
+            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_24px)
+            }
+            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
         }
         graph.gridLabelRenderer.gridColor=mathview.textColor
         graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
@@ -70,10 +86,27 @@ class DerivBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
-                    if (choice==variants[4]) score++ else {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+                    if (choice==variants[4]) score++ else {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                 }
                 if (taskTypes[i]==2){
-                    if (a==values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
+                    if (a==values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }}
                 }
                 if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
                 step++
