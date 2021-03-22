@@ -10,6 +10,7 @@
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorSurface">@color/colorTransitionButton</item>
         <item name="colorOnBackground">@color/colorText</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactive</item>
         <item name="colorOnSurface">@color/colorWhite</item>
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
@@ -24,6 +25,7 @@
         <item name="android:colorBackground">@color/colorBackgroundDarker</item>
         <item name="colorSurface">@color/colorPrimary</item>
         <item name="colorOnBackground">@color/colorTextDarker</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactiveDarker</item>
         <item name="colorOnSurface">@color/colorWhite</item>
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
@@ -38,6 +40,7 @@
         <item name="android:colorBackground">@color/colorBackgroundInvert</item>
         <item name="colorSurface">@color/colorTransitionButtonInvert</item>
         <item name="colorOnBackground">@color/colorTextInvert</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactiveInvert</item>
         <item name="colorOnSurface">@color/colorWhiteInvert</item>
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgressInvert</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgressInvert</item>

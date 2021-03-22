@@ -16,7 +16,9 @@ class CustomArrayAdapter(context: Context, values: Array<String>, private val ma
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = super.getView(position, convertView, parent)
         val text1 = view.findViewById(R.id.list_content) as TextView
-        if (!mask[position]) text1.setTextColor(Color.GRAY)
+        val text2 = view.findViewById(R.id.list_content_inactive) as TextView
+        text2.text=text1.text
+        if (!mask[position]) {text1.visibility=View.GONE;text2.visibility=View.VISIBLE}
         return view
     }
 }

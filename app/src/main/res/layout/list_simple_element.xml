@@ -16,6 +16,19 @@
         android:gravity="start"
         android:text="@string/filler"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/list_content_inactive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="4dp"
+        android:gravity="start"
+        android:text="@string/filler"
+        android:textColor="?attr/colorOnBackgroundInactive"
+        android:textSize="20sp"
+        android:visibility="gone" />
 
 </LinearLayout>

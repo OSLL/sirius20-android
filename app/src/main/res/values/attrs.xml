@@ -4,5 +4,6 @@
         <attr name="colorProgressBarTaskBackground" format="color"/>
         <attr name="colorProgressBarTaskGreen" format="color"/>
         <attr name="colorProgressBarTaskRed" format="color"/>
+        <attr name="colorOnBackgroundInactive" format="color"/>
     </declare-styleable>
 </resources>
