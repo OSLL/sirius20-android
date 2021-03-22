@@ -13,7 +13,8 @@ import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
-import com.makentoshe.mathworks.TimerReceiverSyncInterval
+import com.makentoshe.mathworks.Singleton
+import com.makentoshe.mathworks.Singleton.service
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*
 
@@ -83,7 +84,7 @@ class ModuloBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice=editTextTask.toString()
-                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();service.startTimer()
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -104,7 +105,7 @@ class ModuloBossActivity : AppCompatActivity() {
 
                 }
                 if (taskTypes[i]==2){
-                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)
+                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();service.startTimer()
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
