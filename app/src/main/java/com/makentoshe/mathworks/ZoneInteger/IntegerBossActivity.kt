@@ -1,19 +1,23 @@
 package com.makentoshe.mathworks.ZoneInteger
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.TimerReceiverSyncInterval
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
 class IntegerBossActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -63,13 +67,13 @@ class IntegerBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice=2
                     else if (radioButtonTask4.isChecked) choice=3
                     else choice=editTextTask.toString().toIntOrNull()?:-1
-                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+                    if (choice==variants[4]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
 
                     Log.d("Act1","Score is now $score")
                 }
                 if (taskTypes[i]==2){
                     Log.d("Act1","Text task, answer is ${nums[0]}")
-                    if (aint==nums[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+                    if (aint==nums[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
                     Log.d("Act1","Score is now $score")
                 }
                 if (lives==0){finish();startActivity(Intent(this,  ActFailure::class.java))}

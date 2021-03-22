@@ -13,6 +13,8 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.layout_hidden.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class MenuHidden : AppCompatActivity() {
@@ -28,7 +30,13 @@ class MenuHidden : AppCompatActivity() {
         }
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
+        val builder = NotificationCompat.Builder(this, "OVER9000")
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle(notificationName)
+                .setContentText(notificationText)
+                .setAutoCancel(true)
+                .setContentIntent(PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_UPDATE_CURRENT))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 "OVER9000", "My channel",
@@ -41,13 +49,6 @@ class MenuHidden : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
         setupSendNotificationButton.setOnClickListener {
-            val builder = NotificationCompat.Builder(this, "OVER9000")
-                    .setSmallIcon(R.drawable.ic_launcher_foreground)
-                    .setContentTitle(notificationName)
-                    .setContentText(notificationText)
-                    .setAutoCancel(true)
-                    .setContentIntent(PendingIntent.getActivity(this,0,Intent(this,MainActivity::class.java),PendingIntent.FLAG_UPDATE_CURRENT))
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             with(NotificationManagerCompat.from(this)) {
                 notify(15, builder.build())
             }

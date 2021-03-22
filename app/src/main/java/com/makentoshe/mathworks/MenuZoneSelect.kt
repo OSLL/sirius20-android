@@ -16,13 +16,14 @@ class MenuZoneSelect : AppCompatActivity() {
         val intt=Intent(this,MenuActSelect::class.java)
         intt.putExtra("lives",lives)
         val zoneArray=arrayOf("integer","modulo","combine","stats","float","function","triangle","plain","stereo","deriv","complex")
+        val mask=arrayOf(true,true,true,false,false,false,false,false,false,true,false)
         val zoneNameArray= Array<String>(11){ ""}
         for (i in (0..10)){
             zoneNameArray[i]=(getString(resources.getIdentifier(("zone_${zoneArray[i]}_name"), "string", packageName)))
         }
-        val adapt= ArrayAdapter<String>(this,R.layout.list_simple_element,R.id.list_content,zoneNameArray)
+        val adapt= CustomArrayAdapter(this,zoneNameArray,mask)
         list1.adapter=adapt
-        list1.setOnItemClickListener { parent, view, position, id ->
+        list1.setOnItemClickListener { _, _, position, _ ->
             val intent= Intent(this,MenuActSelect::class.java)
             intent.putExtra("zone",zoneArray[position])
             startActivity(intent)

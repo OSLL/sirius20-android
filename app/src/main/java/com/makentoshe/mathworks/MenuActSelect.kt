@@ -18,7 +18,6 @@ import com.makentoshe.mathworks.ZoneStereo.*
 import com.makentoshe.mathworks.ZoneDeriv.*
 import com.makentoshe.mathworks.ZoneComplex.*
 import kotlinx.android.synthetic.main.layout_menu_act_select.*
-import kotlinx.android.synthetic.main.layout_menu_zone_select.*
 
 class MenuActSelect : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

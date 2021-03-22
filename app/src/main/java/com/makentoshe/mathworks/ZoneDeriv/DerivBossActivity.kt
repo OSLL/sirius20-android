@@ -16,11 +16,12 @@ import com.jjoe64.graphview.series.PointsGraphSeries
 import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.TimerReceiverSyncInterval
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 import kotlin.math.*
 
 class DerivBossActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
@@ -72,7 +73,7 @@ class DerivBossActivity : AppCompatActivity() {
                     if (choice==variants[4]) score++ else {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
                 }
                 if (taskTypes[i]==2){
-                    if (a==values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()}
+                    if (a==values[0]) score++ else  {lives--;livesIndicator.text=getText(R.string.marker_heart).repeat(lives);PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();TimerReceiverSyncInterval.scheduleAlarms(applicationContext)}
                 }
                 if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
                 step++
