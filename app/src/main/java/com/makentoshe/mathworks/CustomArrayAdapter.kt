@@ -18,7 +18,7 @@ class CustomArrayAdapter(context: Context, values: Array<String>, private val ma
         val text1 = view.findViewById(R.id.list_content) as TextView
         val text2 = view.findViewById(R.id.list_content_inactive) as TextView
         text2.text=text1.text
-        if (!mask[position]) {text1.visibility=View.GONE;text2.visibility=View.VISIBLE}
+        if (!mask[position]) {text1.visibility=View.GONE;text2.visibility=View.VISIBLE} else {text1.visibility=View.VISIBLE;text2.visibility=View.GONE}
         return view
     }
 }

@@ -143,7 +143,9 @@ class MenuActSelect : AppCompatActivity() {
                 val intent= Intent(this,pendActivity)
                 intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zone}_name"), "string", packageName)))
                 intent.putExtra("act",actArray[position])
-                startActivity(intent)}
+                startActivity(intent)
+                this.finish()
+            }
             else {
                 Toast.makeText(applicationContext,getString(R.string.boss_unavailable),Toast.LENGTH_LONG).show()
             }
