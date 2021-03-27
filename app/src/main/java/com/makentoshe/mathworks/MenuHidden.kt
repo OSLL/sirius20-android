@@ -14,7 +14,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.layout_hidden.*
 import java.util.*
-import kotlin.concurrent.schedule
 
 
 class MenuHidden : AppCompatActivity() {
@@ -24,6 +23,24 @@ class MenuHidden : AppCompatActivity() {
         setContentView(R.layout.layout_hidden)
         val notificationName=getString(R.string.app_name)
         val notificationText=getString(R.string.result_good)
+        var lives= PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        when(lives){
+            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_24px)
+            }
+            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+        }
         setupToMainButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -53,8 +70,47 @@ class MenuHidden : AppCompatActivity() {
                 notify(15, builder.build())
             }
         }
-        hiddenCheatLifeButton.setOnClickListener {
-            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",3).apply()
+        uselessButton1.setOnClickListener {
+            if (lives>0) lives--
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()
+            when(lives){
+                3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_24px)
+                }
+                2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+            }
+        }
+        uselessButton2.setOnClickListener {
+            if (lives<3) lives++
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()
+            when(lives){
+                3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_24px)
+                }
+                2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+            }
         }
     }
 }

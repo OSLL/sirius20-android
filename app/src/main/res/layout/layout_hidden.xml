@@ -7,19 +7,59 @@
     android:background="?android:attr/colorBackground"
     tools:context=".MenuHidden">
 
+    <LinearLayout
+        android:id="@+id/hearts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/heart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+        <ImageView
+            android:id="@+id/heart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+        <ImageView
+            android:id="@+id/heart3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+    </LinearLayout>
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_width="343dp"
+        android:layout_height="653dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:measureAllChildren="true"
         android:saveEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/hearts">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,12 +77,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="?attr/colorSurface"
-                    android:text="@string/filler"
+                    android:text="-"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="20sp" />
 
                 <Space
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/filler" />
+
+                <Space
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
@@ -52,25 +104,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="?attr/colorSurface"
-                    android:text="@string/filler"
+                    android:text="+"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="20sp" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/hiddenCheatLifeButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="?attr/colorSurface"
-                    android:text="Восстановить жизни"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/setupSendNotificationButton"

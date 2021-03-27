@@ -13,7 +13,6 @@ import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
-import com.makentoshe.mathworks.Singleton
 import com.makentoshe.mathworks.Singleton.service
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*

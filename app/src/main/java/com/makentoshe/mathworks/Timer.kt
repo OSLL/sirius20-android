@@ -37,7 +37,7 @@ class AutoStartService() : Service() {
 
         initialiseTimerTask()
 
-        timer?.schedule(timerTask, 1000, 5000) //
+        timer?.schedule(timerTask, 1000, 1199000) //
     }
 
     fun initialiseTimerTask() {

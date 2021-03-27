@@ -14,27 +14,7 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.jjoe64.graphview.series.PointsGraphSeries
 import com.makentoshe.mathworks.*
-import kotlinx.android.synthetic.main.layout_act_tasks.*
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.continueButtonTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.descrText
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.editTextTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.headSetup
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart1
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart2
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart3
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.hearts
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.mathview
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTaskTrue
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask1
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask2
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask3
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask4
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioGroupTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.subheadTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskImage
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskText
 import kotlin.math.*
 
 class DerivBossActivity : AppCompatActivity() {
