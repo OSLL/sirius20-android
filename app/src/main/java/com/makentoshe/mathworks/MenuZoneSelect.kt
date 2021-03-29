@@ -3,7 +3,7 @@ package com.makentoshe.mathworks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
+
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.layout_menu_zone_select.*
 

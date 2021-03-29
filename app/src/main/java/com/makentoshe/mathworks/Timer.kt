@@ -42,7 +42,7 @@ class AutoStartService() : Service() {
 
     fun initialiseTimerTask() {
         timerTask = object : TimerTask() {
-            var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+            var lives= PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
             override fun run() {
                 if (lives < 3)
                     {lives += 1
