@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.preference.PreferenceManager
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActFailure
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R

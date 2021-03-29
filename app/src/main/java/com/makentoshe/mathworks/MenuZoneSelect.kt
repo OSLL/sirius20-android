@@ -24,9 +24,10 @@ class MenuZoneSelect : AppCompatActivity() {
         val adapt= CustomArrayAdapter(this,zoneNameArray,mask)
         list1.adapter=adapt
         list1.setOnItemClickListener { _, _, position, _ ->
-            val intent= Intent(this,MenuActSelect::class.java)
+            if (mask[position])
+            {val intent= Intent(this,MenuActSelect::class.java)
             intent.putExtra("zone",zoneArray[position])
-            startActivity(intent)
+            startActivity(intent)}
         }
     }
 }
