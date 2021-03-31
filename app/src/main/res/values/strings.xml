@@ -1,4 +1,5 @@
 <resources>
+    <string name="loading">Загрузка……</string>
     <string name="app_name">MathWorks</string>
     <string name="title_continue">Играть</string>
     <string name="title_settings">Настройки</string>
