@@ -79,6 +79,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 2)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct3",1).apply()}
                 startActivity(intt)
             }
             Log.d("Act3","Strings updated")

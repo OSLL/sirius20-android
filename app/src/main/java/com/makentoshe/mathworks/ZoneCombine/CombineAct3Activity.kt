@@ -25,11 +25,7 @@ class CombineAct3Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         val formulas=mapOf(0 to "(1)A^k_n=n\\cdot (n-1)*\\ldots\\cdot (n-k+1)\\\\(2)A^k_n=\\frac{n!}{n-k!}\\\\(3)A^n_n=\\frac{n!}{0!}=n!", 4 to "(1)A^k_n=n^k")
         val formula_steps=arrayOf(0,4)
         mathview.latex=formulas[0].toString()
@@ -76,6 +72,7 @@ class CombineAct3Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "combine")
                 intt.putExtra("act", 2)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombineAct3",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

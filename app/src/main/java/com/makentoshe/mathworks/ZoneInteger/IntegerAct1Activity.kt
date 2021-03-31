@@ -76,6 +76,7 @@ class IntegerAct1Activity : AppCompatActivity() {
                 intt.putExtra("lives",lives)
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 0)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct1",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

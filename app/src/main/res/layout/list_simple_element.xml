@@ -8,6 +8,20 @@
 
     <!-- Defining where should text be placed. You set you text color here-->
     <TextView
+        android:id="@+id/list_content_completed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="4dp"
+        android:gravity="start"
+        android:text="@string/filler"
+        android:textColor="?attr/colorPrimary"
+        android:textIsSelectable="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/list_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

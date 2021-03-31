@@ -13,7 +13,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.layout_hidden.*
-import java.util.*
 
 
 class MenuHidden : AppCompatActivity() {
@@ -21,6 +20,7 @@ class MenuHidden : AppCompatActivity() {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_hidden)
+        var permitReset=false
         val notificationName=getString(R.string.app_name)
         val notificationText=getString(R.string.result_good)
         var lives= PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
@@ -41,7 +41,7 @@ class MenuHidden : AppCompatActivity() {
                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
         }
-        setupToMainButton.setOnClickListener {
+        hiddenToMainButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -65,7 +65,7 @@ class MenuHidden : AppCompatActivity() {
             channel.enableVibration(true)
             notificationManager.createNotificationChannel(channel)
         }
-        setupSendNotificationButton.setOnClickListener {
+        hiddenSendNotificationButton.setOnClickListener {
             with(NotificationManagerCompat.from(this)) {
                 notify(15, builder.build())
             }
@@ -111,6 +111,16 @@ class MenuHidden : AppCompatActivity() {
                     heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                     heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
             }
+        }
+        hiddenUnlockResetButton.setOnClickListener {
+            if(permitReset) {permitReset=false; resetButton.setBackgroundColor(Color.GRAY)}
+            else {permitReset=true; resetButton.setBackgroundColor(Color.RED)}
+        }
+        resetButton.setOnClickListener {
+            if(permitReset){
+                PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().clear().commit()
+                finish()
+                startActivity(intent)}
         }
     }
 }

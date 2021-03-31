@@ -24,11 +24,7 @@ class CombineAct2Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         val formulas=mapOf(0 to "(1)P_n=n!\\\\(2)n!=\\prod_{i=1}^{n}i=1\\cdot 2\\cdot \\ldots\\cdot n", 3 to "(1)P_n=\\frac{n!}{k_1\\cdot k_2\\cdot \\ldots\\cdot k_m}")
         val formula_steps=arrayOf(0,3)
         mathview.latex=formulas[0].toString()
@@ -75,6 +71,7 @@ class CombineAct2Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "combine")
                 intt.putExtra("act", 1)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombineAct2",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

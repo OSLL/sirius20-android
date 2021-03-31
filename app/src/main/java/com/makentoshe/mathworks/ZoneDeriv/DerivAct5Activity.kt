@@ -28,11 +28,7 @@ class DerivAct5Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         graph.gridLabelRenderer.gridColor=mathview.textColor
         graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
         graph.gridLabelRenderer.verticalLabelsColor=mathview.textColor
@@ -85,6 +81,7 @@ class DerivAct5Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 4)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct5",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

@@ -62,6 +62,7 @@ class CombineAct1Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "combine")
                 intt.putExtra("act", 0)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombineAct1",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

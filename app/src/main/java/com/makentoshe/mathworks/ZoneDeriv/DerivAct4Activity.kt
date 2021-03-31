@@ -12,6 +12,22 @@ import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks.*
+import kotlinx.android.synthetic.main.layout_act_tasks.continueButtonTask
+import kotlinx.android.synthetic.main.layout_act_tasks.descrText
+import kotlinx.android.synthetic.main.layout_act_tasks.editTextTask
+import kotlinx.android.synthetic.main.layout_act_tasks.headSetup
+import kotlinx.android.synthetic.main.layout_act_tasks.mathview
+import kotlinx.android.synthetic.main.layout_act_tasks.progressBarTask
+import kotlinx.android.synthetic.main.layout_act_tasks.progressBarTaskTrue
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask1
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask2
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask3
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask4
+import kotlinx.android.synthetic.main.layout_act_tasks.radioGroupTask
+import kotlinx.android.synthetic.main.layout_act_tasks.subheadTask
+import kotlinx.android.synthetic.main.layout_act_tasks.taskImage
+import kotlinx.android.synthetic.main.layout_act_tasks.taskText
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 import java.util.Collections.shuffle
 
 
@@ -25,11 +41,7 @@ class DerivAct4Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         val formulas=mapOf(
                 0 to "\\\\(1)\\int f(x)dx=F(x)+C, C=const\\\\(2)\\int f\\prime(x)dx=f(x)+c\\\\(\\int f(x)dx)\\prime=f(x)",
                 3 to "\\\\(1)\\int_a^b f(x)dx=F(b)-F(a)\\\\(2)\\int_a^b f(x)dx=\\sum_{i=1}^n f(c_i)\\Delta x_i;\\\\x_0=a;x_n=b;\\\\c_i\\in[x_{i-1};x_i];\\\\\\Delta x_i=x_i-x_{i-1}\\\\(3)\\int_{a}^{b}f(x)dx+\\int_{b}^{c}f(x)dx=\\\\=\\int_{a}^{c}f(x)dx; a<b<c.\\\\(4)\\int_b^a f(x)dx=-\\int_a^b f(x)dx"
@@ -79,6 +91,7 @@ class DerivAct4Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 3)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct4",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

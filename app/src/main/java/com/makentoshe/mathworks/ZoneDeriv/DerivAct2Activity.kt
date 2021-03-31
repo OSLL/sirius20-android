@@ -19,7 +19,6 @@ import com.jjoe64.graphview.series.PointsGraphSeries
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
-
 import kotlin.math.*
 
 
@@ -33,11 +32,7 @@ class DerivAct2Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         graph.visibility=View.VISIBLE
         graph.gridLabelRenderer.gridColor=mathview.textColor
         graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
@@ -125,6 +120,7 @@ class DerivAct2Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 1)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct2",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

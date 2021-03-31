@@ -27,11 +27,7 @@ class DerivBossActivity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         hearts.visibility=View.VISIBLE
         when(lives){
             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -83,7 +79,8 @@ class DerivBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
-                    if (choice==variants[4]) score++ else {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();Singleton.service.startTimer()
+                    if (choice==variants[4]) score++ else {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
+                        startService(intent_)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -103,7 +100,8 @@ class DerivBossActivity : AppCompatActivity() {
                         }}
                 }
                 if (taskTypes[i]==2){
-                    if (a==values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();Singleton.service.startTimer()
+                    if (a==values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
+                        startService(intent_)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -132,6 +130,7 @@ class DerivBossActivity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 5)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivBoss",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

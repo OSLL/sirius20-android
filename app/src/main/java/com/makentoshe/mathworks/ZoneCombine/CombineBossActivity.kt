@@ -9,10 +9,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.annotation.RequiresApi
-import com.makentoshe.mathworks.ActFailure
-import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.R
-import com.makentoshe.mathworks.Singleton
+import com.makentoshe.mathworks.*
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.shuffle
 
@@ -73,7 +70,9 @@ class CombineBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
-                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();Singleton.service.startTimer()
+                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();
+                        val intent_=Intent(this,AutoStartService::class.java)
+                        startService(intent_)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -94,7 +93,9 @@ class CombineBossActivity : AppCompatActivity() {
 
                 }
                 if (taskTypes[i]==2){
-                    if (a== values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();Singleton.service.startTimer()
+                    if (a== values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()
+                        val intent_=Intent(this,AutoStartService::class.java)
+                        startService(intent_)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -123,6 +124,7 @@ class CombineBossActivity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "combine")
                 intt.putExtra("act", 4)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombineBoss",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

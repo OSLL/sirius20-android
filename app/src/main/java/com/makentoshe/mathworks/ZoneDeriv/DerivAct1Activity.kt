@@ -26,11 +26,7 @@ class DerivAct1Activity : AppCompatActivity() {
         subheadTask.text=intent.getStringExtra("act")
         mathview.visibility= View.VISIBLE
         mathview.fontSize=40.0F
-        mathview.textColor=when(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme)){
-            R.style.DarkTheme->getColor(R.color.colorTextDarker)
-            R.style.InvertTheme->getColor(R.color.colorTextInvert)
-            else->getColor(R.color.colorText)
-        }
+        mathview.textColor=descrText.currentTextColor
         val formulas=mapOf(
                 0 to "(1)\\lim_{n \\to \\infty} x_n=2\\\\(2)\\lim_{x \\to a+} f(x)\\\\(3)\\lim_{x \\to a-} f(x)\\\\(4)\\lim_{x \\to 0}\\frac{\\sin{x}}{x}\\\\(5)\\lim_{x \\to \\infty}(1+\\frac{1}{x})^x",
                 3 to "(1)\\lim_{x \\to a}f(x)+\\lim_{x \\to a}g(x)=\\\\\\lim_{x \\to a}(f(x)+g(x))\\\\(2)\\lim_{x \\to a}f(x)-\\lim_{x \\to a}g(x)=\\\\\\lim_{x \\to a}(f(x)-g(x))\\\\(3)\\lim_{x \\to a}f(x)\\cdot \\lim_{x \\to a}g(x)=\\\\\\lim_{x \\to a}(f(x)g(x))\\\\(4)\\frac{\\lim_{x \\to a}f(x)}{\\lim_{x \\to a}g(x)}=\\lim_{x \\to a}\\frac{f(x)}{g(x)}\\\\(5)\\lim _{{n\\to a }}f(x)=\\lim _{{n\\to a }}g(x)=A\\Rightarrow\\\\\\lim _{{n\\to a }}h(x)=A,\\\\f(x)\\leq h(x)\\leq g(x)",
@@ -80,6 +76,7 @@ class DerivAct1Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 0)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct1",1).apply()}
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

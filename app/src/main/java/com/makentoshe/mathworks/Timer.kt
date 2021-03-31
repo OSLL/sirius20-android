@@ -19,11 +19,6 @@ class AutoStartService() : Service() {
         return null
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        super.onStartCommand(intent, flags, startId)
-        startTimer()
-        return START_STICKY
-    }
 
     override fun onDestroy() {
         super.onDestroy()

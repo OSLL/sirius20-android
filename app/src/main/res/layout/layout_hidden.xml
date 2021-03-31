@@ -86,13 +86,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/filler" />
-
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,30 +103,43 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/hiddenSendNotificationButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/setupSendNotificationButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="?attr/colorSurface"
-                    android:text="Отправить уведомление"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="?attr/colorSurface"
+                android:text="Отправить уведомление"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp" />
 
             <Button
-                android:id="@+id/setupToMainButton"
+                android:id="@+id/hiddenUnlockResetButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="?attr/colorSurface"
+                android:text="Разблокировать опасное действие"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/hiddenToMainButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="?attr/colorSurface"
                 android:text="@string/navigation_to_main"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorTextInactive"
+                android:text="Сброс данных приложения"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="20sp" />
 

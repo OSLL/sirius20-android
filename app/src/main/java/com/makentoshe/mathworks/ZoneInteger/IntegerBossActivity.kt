@@ -80,7 +80,8 @@ class IntegerBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice=2
                     else if (radioButtonTask4.isChecked) choice=3
                     else choice=editTextTask.toString().toIntOrNull()?:-1
-                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();Singleton.service.startTimer()
+                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
+                        startService(intent_)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -103,7 +104,8 @@ class IntegerBossActivity : AppCompatActivity() {
                 }
                 if (taskTypes[i]==2){
                     Log.d("Act1","Text task, answer is ${nums[0]}")
-                    if (aint==nums[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();Singleton.service.startTimer()
+                    if (aint==nums[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
+                        startService(intent_)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -135,6 +137,7 @@ class IntegerBossActivity : AppCompatActivity() {
                 intt.putExtra("max",max)
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 4)
+                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerBoss",1).apply()}
                 startActivity(intt)
             }
 
