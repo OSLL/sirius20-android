@@ -141,7 +141,7 @@ class MenuActSelect : AppCompatActivity() {
                 "modulo" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct4",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",0)
                 ),

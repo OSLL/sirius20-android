@@ -215,7 +215,8 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
-                    android:textColor="?attr/colorOnBackground" />
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="15sp" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>
