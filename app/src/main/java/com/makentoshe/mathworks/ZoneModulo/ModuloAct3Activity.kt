@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import androidx.preference.PreferenceManager
@@ -20,6 +21,7 @@ class ModuloAct3Activity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
+        editTextTask.inputType= InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
         var step =0
         var score =0
         val max =5
