@@ -19,10 +19,10 @@ fun setServiceState(context: Context, state: ServiceState) {
     }
 }
 
-fun getServiceState(context: Context): ServiceState? {
+fun getServiceState(context: Context): ServiceState {
     val sharedPrefs = getPreferences(context)
     val value = sharedPrefs.getString(key, ServiceState.STOPPED.name)
-    return value?.let { ServiceState.valueOf(it) }
+    return ServiceState.valueOf(value!!)
 }
 
 private fun getPreferences(context: Context): SharedPreferences {

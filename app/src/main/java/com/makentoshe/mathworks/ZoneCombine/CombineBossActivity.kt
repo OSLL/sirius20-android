@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import com.makentoshe.mathworks.*
@@ -63,6 +64,9 @@ class CombineBossActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { a=editTextTask.text.toString().trim() }
         })
+        hearts.setOnClickListener {
+            Log.d("BOSS","Lives is now ${prefs.getInt("lives",-1)}")
+        }
         continueButtonTask.setOnClickListener {
             taskImage.visibility= View.GONE
             if (taskTypes[i]!=0) {
@@ -118,7 +122,7 @@ class CombineBossActivity : AppCompatActivity() {
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
                         }}
                 }
-                if (lives==0){finish();startActivity(Intent(this, ActFailure::class.java))}
+                if (prefs.getInt("lives",-1)==0){finish();startActivity(Intent(this, ActFailure::class.java))}
                 step++
             }
             i++
@@ -169,8 +173,8 @@ class CombineBossActivity : AppCompatActivity() {
         }
     }
     private fun actionOnService(context: Context,action: Actions) {
-        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
-        Intent(this, EndlessService::class.java).also {
+        if (getServiceState(context) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(context, EndlessService::class.java).also {
             it.action = action.name
             startService(it)
         }

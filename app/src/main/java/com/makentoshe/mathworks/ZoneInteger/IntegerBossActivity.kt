@@ -72,7 +72,9 @@ class IntegerBossActivity : AppCompatActivity() {
             }
 
         })
-
+        hearts.setOnClickListener {
+            Log.d("BOSS","Lives is now ${prefs.getInt("lives",-1)}")
+        }
         continueButtonTask.setOnClickListener{
             Log.d("Act1","Button pressed")
             if (taskTypes[i]!=0) {
@@ -131,7 +133,7 @@ class IntegerBossActivity : AppCompatActivity() {
                         }}
                     Log.d("Act1","Score is now $score")
                 }
-                if (lives==0){finish();startActivity(Intent(this,  ActFailure::class.java))}
+                if (prefs.getInt("lives",-1)==0){finish();startActivity(Intent(this,  ActFailure::class.java))}
                 step++
                 Log.d("Act1","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
@@ -191,8 +193,8 @@ class IntegerBossActivity : AppCompatActivity() {
         }
     }
     private fun actionOnService(context: Context,action: Actions) {
-        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
-        Intent(this, EndlessService::class.java).also {
+        if (getServiceState(context) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(context, EndlessService::class.java).also {
             it.action = action.name
             startService(it)
         }
