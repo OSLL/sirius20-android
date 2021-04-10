@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -23,7 +24,8 @@ class MenuHidden : AppCompatActivity() {
         var permitReset=false
         val notificationName=getString(R.string.app_name)
         val notificationText=getString(R.string.result_good)
-        var lives= PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        val prefs = getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        var lives= prefs.getInt("lives", 0)
         when(lives){
             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -71,8 +73,10 @@ class MenuHidden : AppCompatActivity() {
             }
         }
         uselessButton1.setOnClickListener {
-            if (lives>0) lives--
-            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()
+            if(lives>0) lives--
+            Log.d("MenuHidden","Lives decreased and is now $lives")
+            prefs.edit().putInt("lives",lives).apply()
+            actionOnService(applicationContext,Actions.START)
             when(lives){
                 3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                     heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -92,8 +96,10 @@ class MenuHidden : AppCompatActivity() {
             }
         }
         uselessButton2.setOnClickListener {
-            if (lives<3) lives++
-            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply()
+            if(lives<3)lives++
+            Log.d("MenuHidden","Lives increased and is now $lives")
+            prefs.edit().putInt("lives",lives).apply()
+            actionOnService(applicationContext,Actions.START)
             when(lives){
                 3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                     heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -121,6 +127,13 @@ class MenuHidden : AppCompatActivity() {
                 PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().clear().commit()
                 finish()
                 startActivity(intent)}
+        }
+    }
+    private fun actionOnService(context: Context,action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, EndlessService::class.java).also {
+            it.action = action.name
+            startService(it)
         }
     }
 }

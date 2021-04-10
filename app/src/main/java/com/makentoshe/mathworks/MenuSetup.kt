@@ -13,8 +13,8 @@ class MenuSetup : AppCompatActivity() {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid", R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_setup)
-        val themeArray= arrayOf(getString(R.string.theme_apptheme), getString(R.string.theme_darktheme), getString(R.string.theme_inverttheme))
-        val linksTheme= mapOf(getString(R.string.theme_apptheme) to R.style.AppTheme, getString(R.string.theme_darktheme) to R.style.DarkTheme, getString(R.string.theme_inverttheme) to R.style.InvertTheme)
+        val themeArray= arrayOf(getString(R.string.theme_apptheme), getString(R.string.theme_darktheme), getString(R.string.theme_inverttheme),getString(R.string.theme_antiquetheme))
+        val linksTheme= mapOf(getString(R.string.theme_apptheme) to R.style.AppTheme, getString(R.string.theme_darktheme) to R.style.DarkTheme, getString(R.string.theme_inverttheme) to R.style.InvertTheme, getString(R.string.theme_antiquetheme) to R.style.AntiqueTheme)
         val adapt= ArrayAdapter<String>(this, R.layout.list_simple_element, R.id.list_content, themeArray)
         var t=0
         list_theme.adapter=adapt

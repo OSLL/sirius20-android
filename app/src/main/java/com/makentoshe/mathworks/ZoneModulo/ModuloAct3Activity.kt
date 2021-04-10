@@ -65,7 +65,7 @@ class ModuloAct3Activity : AppCompatActivity() {
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
-                intt.putExtra("act", 3)
+                intt.putExtra("act", 2)
                 if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct3",1).apply()}
                 startActivity(intt)
             }

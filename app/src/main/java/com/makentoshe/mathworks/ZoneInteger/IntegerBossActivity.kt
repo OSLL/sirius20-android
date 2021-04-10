@@ -1,5 +1,6 @@
 package com.makentoshe.mathworks.ZoneInteger
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +23,8 @@ class IntegerBossActivity : AppCompatActivity() {
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var score=0
-        var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        val prefs = getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        var lives= prefs.getInt("lives", 0)
         val taskNames=arrayOf("act_integer_boss_theory","act_integer_boss_task_1","act_integer_boss_task_2","act_integer_boss_task_3","act_integer_boss_task_4","act_integer_boss_task_5")
         val taskTypes=arrayOf(0,1,2,2,1,2)
         val taskQuantity=arrayOf(0,2,3,2,1,2)
@@ -80,8 +82,10 @@ class IntegerBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice=2
                     else if (radioButtonTask4.isChecked) choice=3
                     else choice=editTextTask.toString().toIntOrNull()?:-1
-                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
-                        startService(intent_)
+                    if (choice==variants[4]) score++ else  {
+                        prefs.edit().putInt("lives",lives-1).apply()
+                        lives= prefs.getInt("lives", 0)
+                        actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -104,8 +108,10 @@ class IntegerBossActivity : AppCompatActivity() {
                 }
                 if (taskTypes[i]==2){
                     Log.d("Act1","Text task, answer is ${nums[0]}")
-                    if (aint==nums[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
-                        startService(intent_)
+                    if (aint==nums[0]) score++ else  {
+                        prefs.edit().putInt("lives",lives-1).apply()
+                        lives= prefs.getInt("lives", 0)
+                        actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -182,6 +188,13 @@ class IntegerBossActivity : AppCompatActivity() {
                 else name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
                 taskText.text = name
             }
+        }
+    }
+    private fun actionOnService(context: Context,action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, EndlessService::class.java).also {
+            it.action = action.name
+            startService(it)
         }
     }
 }

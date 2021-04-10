@@ -46,4 +46,18 @@
         <item name="colorProgressBarTaskRed">@color/colorRedProgressInvert</item>
         <item name="colorProgressBarTaskGreen">@color/colorGreenProgressInvert</item>
     </style>
+    <style name="AntiqueTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryAntique</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkAntique</item>
+        <item name="colorSecondary">@color/colorSecondaryAntique</item>
+        <item name="colorAccent">@color/colorAccentAntique</item>
+        <item name="android:colorBackground">@color/colorBackgroundAntique</item>
+        <item name="colorSurface">@color/colorTransitionButtonAntique</item>
+        <item name="colorOnBackground">@color/colorTextAntique</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactiveAntique</item>
+        <item name="colorOnSurface">@color/colorWhiteAntique</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgressAntique</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgressAntique</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgressAntique</item>
+    </style>
 </resources>

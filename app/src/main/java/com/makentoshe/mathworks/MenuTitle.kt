@@ -23,7 +23,7 @@ class MenuTitle : AppCompatActivity() {
         }
         var i=0
         titleText.setOnClickListener{
-            if (i<5) {i++;titleText.setTextColor(Color.rgb(i*32,128,32));titleText.text="MathW${i}rks"} else {startActivity(Intent(this,MenuHidden::class.java));finish()}
+            if (i<5 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("lockedMenuHidden",true)) {i++;titleText.setTextColor(Color.rgb(i*32,128,32));titleText.text="MathW${i}rks"} else {startActivity(Intent(this,MenuHidden::class.java));finish(); PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putBoolean("lockedMenuHidden",false).apply()}
         }
     }
 }

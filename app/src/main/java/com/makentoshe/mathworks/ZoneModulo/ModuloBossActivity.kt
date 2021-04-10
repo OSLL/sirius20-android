@@ -1,5 +1,6 @@
 package com.makentoshe.mathworks.ZoneModulo
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +11,7 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import androidx.annotation.RequiresApi
-import com.makentoshe.mathworks.ActFailure
-import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.AutoStartService
-import com.makentoshe.mathworks.R
-import com.makentoshe.mathworks.Singleton.service
+import com.makentoshe.mathworks.*
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*
 
@@ -26,7 +23,8 @@ class ModuloBossActivity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
-        var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        val prefs = getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        var lives= prefs.getInt("lives", 0)
         var step =0
         var score =0
         val max =5
@@ -84,9 +82,10 @@ class ModuloBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice=editTextTask.toString()
-                    if (choice==variants[4]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,
-                        AutoStartService::class.java)
-                        startService(intent_)
+                    if (choice==variants[4]) score++ else  {
+                        prefs.edit().putInt("lives",lives-1).apply()
+                        lives= prefs.getInt("lives", 0)
+                        actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -107,8 +106,10 @@ class ModuloBossActivity : AppCompatActivity() {
 
                 }
                 if (taskTypes[i]==2){
-                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
-                        startService(intent_)
+                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {
+                        prefs.edit().putInt("lives",lives-1).apply()
+                        lives= prefs.getInt("lives", 0)
+                        actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -167,6 +168,13 @@ class ModuloBossActivity : AppCompatActivity() {
                 val name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2], values[3])
                 taskText.text=name
             }
+        }
+    }
+    private fun actionOnService(context: Context,action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, EndlessService::class.java).also {
+            it.action = action.name
+            startService(it)
         }
     }
 }

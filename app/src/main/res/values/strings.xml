@@ -253,5 +253,6 @@
     <string name="theme_apptheme">Стандартная тема</string>
     <string name="theme_darktheme">Тёмная тема</string>
     <string name="theme_inverttheme">Инвертированная тема</string>
+    <string name="theme_antiquetheme">Античная тема</string>
     <string name="marker_heart">&#9825;</string>
 </resources>

@@ -34,4 +34,17 @@
     <color name="colorBackgroundProgressInvert">#7A808080</color>
     <color name="colorRedProgressInvert">#00FFFF</color>
     <color name="colorGreenProgressInvert">#BC5FB8</color>
+    <color name="colorPrimaryAntique">#964B4B</color>
+    <color name="colorPrimaryDarkAntique">#4C1C2A</color>
+    <color name="colorSecondaryAntique">#4C1C2A</color>
+    <color name="colorAccentAntique">#FFB300</color>
+    <color name="colorBackgroundAntique">#FFEBCE</color>
+    <color name="colorBackScrollAntique">#FFEBCE</color>
+    <color name="colorTextAntique">#000030</color>
+    <color name="colorTextInactiveAntique">#7A000030</color>
+    <color name="colorWhiteAntique">#FFEBCE</color>
+    <color name="colorTransitionButtonAntique">#01579B</color>
+    <color name="colorRedProgressAntique">#9F0000</color>
+    <color name="colorGreenProgressAntique">#649600</color>
+    <color name="colorBackgroundProgressAntique">#7A8F7F6F</color>
 </resources>

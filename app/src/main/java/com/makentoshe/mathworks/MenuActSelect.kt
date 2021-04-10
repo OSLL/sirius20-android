@@ -1,5 +1,6 @@
 package com.makentoshe.mathworks
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -229,7 +230,7 @@ class MenuActSelect : AppCompatActivity() {
         list.adapter=adapt
         list.setOnItemClickListener { _, _, position, _ ->
             val pendActivity= linksAct[zone!!]?.get(position)
-            val lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+            val lives=getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE).getInt("lives",-1)
             val pose= linksActMask[zone]!!.toIntArray()[position]
             if ((position!= acts-1 || lives!=0)){
                 if (pose!=-1)

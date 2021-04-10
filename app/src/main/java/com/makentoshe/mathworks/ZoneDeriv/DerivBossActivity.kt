@@ -1,5 +1,6 @@
 package com.makentoshe.mathworks.ZoneDeriv
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -23,7 +24,8 @@ class DerivBossActivity : AppCompatActivity() {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks_graph)
-        var lives=PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("lives",3)
+        val prefs = getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        var lives= prefs.getInt("lives", 0)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         mathview.fontSize=40.0F
@@ -79,8 +81,10 @@ class DerivBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
-                    if (choice==variants[4]) score++ else {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
-                        startService(intent_)
+                    if (choice==variants[4]) score++ else {
+                        prefs.edit().putInt("lives",lives-1).apply()
+                        lives= prefs.getInt("lives", 0)
+                        actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -100,8 +104,10 @@ class DerivBossActivity : AppCompatActivity() {
                         }}
                 }
                 if (taskTypes[i]==2){
-                    if (a==values[0]) score++ else  {lives--;PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("lives",lives).apply();val intent_=Intent(this,AutoStartService::class.java)
-                        startService(intent_)
+                    if (a==values[0]) score++ else  {
+                        prefs.edit().putInt("lives",lives-1).apply()
+                        lives= prefs.getInt("lives", 0)
+                        actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -336,6 +342,13 @@ class DerivBossActivity : AppCompatActivity() {
                 taskText.text = getString(resources.getIdentifier(taskNames[i], "string", packageName))
             }
         }
+    private fun actionOnService(context: Context,action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, EndlessService::class.java).also {
+            it.action = action.name
+            startService(it)
+        }
+    }
 }
 
 
