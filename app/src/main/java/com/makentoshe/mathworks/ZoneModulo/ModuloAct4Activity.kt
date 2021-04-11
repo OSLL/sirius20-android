@@ -74,7 +74,7 @@ class ModuloAct4Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 3)
-                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct4",1).apply()}
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct4",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct4",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

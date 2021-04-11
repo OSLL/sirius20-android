@@ -88,7 +88,7 @@ class IntegerAct2Activity : AppCompatActivity() {
                 intt.putExtra("max",max)
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 1)
-                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct2",1).apply()}
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct2",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
 

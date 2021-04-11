@@ -24,7 +24,7 @@ class MenuZoneSelect : AppCompatActivity() {
         val adapt= CustomArrayAdapter(this,zoneNameArray,mask)
         list1.adapter=adapt
         list1.setOnItemClickListener { _, _, position, _ ->
-            if (mask[position]!=-1)
+            if (mask[position]!=-1 || PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowUnfinishedZones",false))
             {val intent= Intent(this,MenuActSelect::class.java)
             intent.putExtra("zone",zoneArray[position])
             startActivity(intent)}

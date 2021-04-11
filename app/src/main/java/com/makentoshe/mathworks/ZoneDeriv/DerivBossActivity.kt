@@ -130,7 +130,7 @@ class DerivBossActivity : AppCompatActivity() {
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
                         }}
                 }
-                if (prefs.getInt("lives",-1)==0){finish();startActivity(Intent(this, ActFailure::class.java))}
+                if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "deriv");startActivity(intt_)}
                 step++
             }
             i++
@@ -140,7 +140,7 @@ class DerivBossActivity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 5)
-                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivBoss",1).apply()}
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

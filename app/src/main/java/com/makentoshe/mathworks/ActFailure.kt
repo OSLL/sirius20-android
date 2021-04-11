@@ -12,7 +12,7 @@ class ActFailure : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_failure)
         continueButtonFailure.setOnClickListener {
-            startActivity(Intent(this,MainActivity::class.java))
+            val intt=Intent(this,MenuActSelect::class.java); intt.putExtra("zone",intent.getStringExtra("zone"));startActivity(intt)
         }
     }
 }

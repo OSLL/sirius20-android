@@ -16,13 +16,13 @@ class EndlessService : Service() {
     private var isServiceStarted = false
 
     override fun onBind(intent: Intent): IBinder? {
-        Log.d("ES","Some component want to bind with the service")
+        Log.d("EndlS","Some component want to bind with the service")
         // We don't provide binding, so return null
         return null
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.d("ES","onStartCommand executed with startId: $startId")
+        Log.d("EndlS","onStartCommand executed with startId: $startId")
         if (intent != null) {
             val action = intent.action
             Log.d("ES","using an intent with action $action")
@@ -32,7 +32,7 @@ class EndlessService : Service() {
                 else -> Log.d("ES","This should never happen. No action in the received intent")
             }
         } else {
-            Log.d("ES",
+            Log.d("EndlS",
                     "with a null intent. It has been probably restarted by the system."
             )
         }
@@ -42,14 +42,14 @@ class EndlessService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        Log.d("ES","The service has been created".toUpperCase())
+        Log.d("EndlS","The service has been created".toUpperCase())
 //        val notification = createNotification()
 //        startForeground(1, notification)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("ES","The service has been destroyed".toUpperCase())
+        Log.d("EndlS","The service has been destroyed".toUpperCase())
     }
 
     override fun onTaskRemoved(rootIntent: Intent) {
@@ -64,7 +64,7 @@ class EndlessService : Service() {
 
     private fun startService() {
         if (isServiceStarted) return
-        Log.d("ES","Starting the foreground service task")
+        Log.d("EndlS","Starting the foreground service task")
         isServiceStarted = true
         setServiceState(this, ServiceState.STARTED)
 
@@ -84,12 +84,12 @@ class EndlessService : Service() {
                     increaseUserHealth()
                 }
             }
-            Log.d("ES","End of the loop for the service")
+            Log.d("EndlS","End of the loop for the service")
         }
     }
 
     private fun stopService() {
-        Log.d("ES","Stopping the foreground service")
+        Log.d("EndlS","Stopping the foreground service")
         try {
             wakeLock?.let {
                 if (it.isHeld) {
@@ -98,7 +98,7 @@ class EndlessService : Service() {
             }
             stopSelf()
         } catch (e: Exception) {
-            Log.d("ES","Service stopped without being started: ${e.message}")
+            Log.d("EndlS","Service stopped without being started: ${e.message}")
         }
         isServiceStarted = false
         setServiceState(this, ServiceState.STOPPED)
@@ -113,15 +113,15 @@ class EndlessService : Service() {
         if (health < 3){
             if (health < 0)
             {
-                Log.d("ES","Negative health")
+                Log.d("EndlS","Negative health")
             }
             else{
-                Log.d("ES","increase health by timer")
+                Log.d("EndlS","increase health by timer")
                 health = prefs.getInt("lives", -1)
                 prefs.edit().putInt("lives", health + 1).apply()
             }
             if (prefs.getInt("lives", -1) == 3){
-                Log.d("ES","health == 3")
+                Log.d("EndlS","health == 3")
                 stopService()
 
             }

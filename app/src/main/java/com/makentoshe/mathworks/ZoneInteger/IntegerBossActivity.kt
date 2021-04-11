@@ -131,21 +131,18 @@ class IntegerBossActivity : AppCompatActivity() {
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
                         }}
-                    Log.d("Act1","Score is now $score")
                 }
-                if (prefs.getInt("lives",-1)==0){finish();startActivity(Intent(this,  ActFailure::class.java))}
+                if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "integer");startActivity(intt_)}
                 step++
-                Log.d("Act1","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
             i++
             if (i==taskTypes.size) {
-                Log.d("Act1","The act is over, launching to the start menu")
                 val intt= Intent(this, ActResult::class.java)
                 intt.putExtra("score",score)
                 intt.putExtra("max",max)
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 4)
-                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerBoss",1).apply()}
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
 

@@ -66,7 +66,7 @@ class ModuloAct3Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 2)
-                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct3",1).apply()}
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct3",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
@@ -114,7 +114,7 @@ fun valueMakerForModuloAct3(i: Int): Array<String>{
         1->{num1=((4..9)+(11..16)).random();num2=(2..3).random();num3=(num1.toFloat().pow(2).toInt()+2 until num1.toFloat().pow(num2+1).toInt()).random();n2="$num1 $num2 $num3"
         n1=num3.toString(num1)
         val arr=n1.split("").slice(1..n1.length).toMutableList(); n1+=sub[num1];for (i in(arr.indices)){arr[i]=arr[i].toInt(16).toString();arr[i]+="·$num1"+sup[arr.size-1-i]}; ans=arr.joinToString(separator=" + ")}
-        2->{num2=((4..9)+(11..16)).random();n2="$num2";num1=(num2*num2+2..num2*num2*num2).random();n1=num1.toString(num2);ans="$num1"}
+        2->{num2=((4..9)).random();n2="$num2";num1=(num2*num2+2..num2*num2*num2).random();n1=num1.toString(num2);ans="$num1"}
         3->{num2=(11..16).random();n2="$num2";num1=(num2+2..num2*num2).random();n1=num1.toString(num2);ans="$num1"}
         5->{num2=((4..9)+(11..16)).random();num1=(num2+2..num2*num2).random();n1="$num1";n2="$num2";ans=num1.toString(num2)}
         6->{num2=((4..9)+(11..16)).random();do{num3=((4..9)+(11..16)).random()}while(num3==num2);num1=(num2+2..num2*num2).random();n1="$num1";n2="$num2";n3="$num3";ans=n1.toInt(num2).toString(num3)}

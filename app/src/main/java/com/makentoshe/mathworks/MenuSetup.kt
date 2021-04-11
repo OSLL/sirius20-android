@@ -25,6 +25,10 @@ class MenuSetup : AppCompatActivity() {
             finish()
             startActivity(intent)
         }
+        setupAllowUnfinishedZones.isChecked=PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowUnfinishedZones",false)
+        setupAllowUnfinishedZones.setOnClickListener {
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putBoolean("allowUnfinishedZones",setupAllowUnfinishedZones.isChecked).apply()
+        }
         continueButtonTask.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }

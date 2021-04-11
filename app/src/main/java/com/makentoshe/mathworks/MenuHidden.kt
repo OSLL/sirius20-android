@@ -43,6 +43,12 @@ class MenuHidden : AppCompatActivity() {
                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
         }
+        hiddenStopServiceButton.setOnClickListener {
+            Intent(applicationContext, EndlessService::class.java).also {
+                it.action = Actions.STOP.name
+                stopService(it)
+            }
+        }
         hiddenToMainButton.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()

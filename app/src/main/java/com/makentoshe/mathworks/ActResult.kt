@@ -118,8 +118,7 @@ class ActResult : AppCompatActivity() {
                         ComplexBossActivity::class.java
                 )
         )
-        var zoneIndex ="integer"
-        zoneIndex =intent.getStringExtra("zone")
+        var zoneIndex : String = intent.getStringExtra("zone")
         var actIndex = intent.getIntExtra("act",0)
         var acts= linksAct[zoneIndex]!!.size
         headResult.text=getString(resources.getIdentifier("zone_${zoneIndex}_name", "string", packageName))
@@ -130,7 +129,8 @@ class ActResult : AppCompatActivity() {
         resultProgressBar.max=max
         if (rate==100) {textCongratulations.text=getString(resources.getIdentifier("result_good", "string", packageName))}
         continueButtonFailure.setOnClickListener {
-            val intent= Intent(this,MainActivity::class.java)
+            val intent= Intent(this,MenuActSelect::class.java)
+            intent.putExtra("zone",zoneIndex)
             startActivity(intent)
         }
     }

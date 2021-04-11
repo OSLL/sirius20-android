@@ -135,7 +135,7 @@ class ModuloBossActivity : AppCompatActivity() {
                 }
 
                 step++
-                if (prefs.getInt("lives",-1)==0){finish();startActivity(Intent(this, ActFailure::class.java))}
+                if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "modulo");startActivity(intt_)}
             }
             i++
             if (i==taskTypes.size) {
@@ -144,7 +144,7 @@ class ModuloBossActivity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 4)
-                if (score==max) {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloBoss",1).apply()}
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
