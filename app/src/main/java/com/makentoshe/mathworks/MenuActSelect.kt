@@ -26,6 +26,7 @@ class MenuActSelect : AppCompatActivity() {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_menu_act_select)
+        backButtonActSelect.setOnClickListener { startActivity(Intent(this,MenuZoneSelect::class.java));finish()}
         val zone=intent.getStringExtra("zone")
         val acts = when (zone){
             "integer" -> 5

@@ -13,6 +13,24 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.makentoshe.mathworks.*
 import kotlinx.android.synthetic.main.layout_act_tasks.*
+import kotlinx.android.synthetic.main.layout_act_tasks.continueButtonTask
+import kotlinx.android.synthetic.main.layout_act_tasks.descrText
+import kotlinx.android.synthetic.main.layout_act_tasks.editTextTask
+import kotlinx.android.synthetic.main.layout_act_tasks.headSetup
+import kotlinx.android.synthetic.main.layout_act_tasks.heart1
+import kotlinx.android.synthetic.main.layout_act_tasks.heart2
+import kotlinx.android.synthetic.main.layout_act_tasks.heart3
+import kotlinx.android.synthetic.main.layout_act_tasks.hearts
+import kotlinx.android.synthetic.main.layout_act_tasks.progressBarTask
+import kotlinx.android.synthetic.main.layout_act_tasks.progressBarTaskTrue
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask1
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask2
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask3
+import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask4
+import kotlinx.android.synthetic.main.layout_act_tasks.radioGroupTask
+import kotlinx.android.synthetic.main.layout_act_tasks.subheadTask
+import kotlinx.android.synthetic.main.layout_act_tasks.taskText
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 
 class IntegerBossActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
@@ -76,6 +94,24 @@ class IntegerBossActivity : AppCompatActivity() {
             Log.d("BOSS","Lives is now ${prefs.getInt("lives",-1)}")
         }
         continueButtonTask.setOnClickListener{
+            lives= prefs.getInt("lives", 0)
+            when(lives){
+                3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_24px)
+                }
+                2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+            }
             Log.d("Act1","Button pressed")
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
@@ -85,8 +121,9 @@ class IntegerBossActivity : AppCompatActivity() {
                     else if (radioButtonTask4.isChecked) choice=3
                     else choice=editTextTask.toString().toIntOrNull()?:-1
                     if (choice==variants[4]) score++ else  {
-                        prefs.edit().putInt("lives",lives-1).apply()
-                        lives= prefs.getInt("lives", 0)
+                        lives--
+                        Log.d("EndlS","lives=$lives")
+                        prefs.edit().putInt("lives",lives).apply()
                         actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -104,15 +141,17 @@ class IntegerBossActivity : AppCompatActivity() {
                             0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-                        }}
+                        }
+                    }
 
                     Log.d("Act1","Score is now $score")
                 }
                 if (taskTypes[i]==2){
                     Log.d("Act1","Text task, answer is ${nums[0]}")
                     if (aint==nums[0]) score++ else  {
-                        prefs.edit().putInt("lives",lives-1).apply()
-                        lives= prefs.getInt("lives", 0)
+                        lives--
+                        Log.d("EndlS","lives=$lives")
+                        prefs.edit().putInt("lives",lives).apply()
                         actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -130,7 +169,8 @@ class IntegerBossActivity : AppCompatActivity() {
                             0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-                        }}
+                        }
+                    }
                 }
                 if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "integer");startActivity(intt_)}
                 step++

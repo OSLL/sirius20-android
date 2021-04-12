@@ -16,7 +16,27 @@ import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.jjoe64.graphview.series.PointsGraphSeries
 import com.makentoshe.mathworks.*
+import kotlinx.android.synthetic.main.layout_act_tasks.*
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.continueButtonTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.descrText
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.editTextTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.headSetup
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart1
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart2
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart3
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.hearts
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.mathview
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTaskTrue
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask1
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask2
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask3
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask4
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioGroupTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.subheadTask
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskImage
+import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskText
 import kotlin.math.*
 
 class DerivBossActivity : AppCompatActivity() {
@@ -32,23 +52,6 @@ class DerivBossActivity : AppCompatActivity() {
         mathview.fontSize=40.0F
         mathview.textColor=descrText.currentTextColor
         hearts.visibility=View.VISIBLE
-        when(lives){
-            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
-                heart2.setImageResource(R.drawable.ic_favorite_24px)
-                heart3.setImageResource(R.drawable.ic_favorite_24px)
-            }
-            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
-                heart2.setImageResource(R.drawable.ic_favorite_24px)
-                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
-            }
-            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
-                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
-                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
-            }
-            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
-                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
-                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-        }
         graph.gridLabelRenderer.gridColor=mathview.textColor
         graph.gridLabelRenderer.horizontalLabelsColor=mathview.textColor
         graph.gridLabelRenderer.verticalLabelsColor=mathview.textColor
@@ -77,6 +80,24 @@ class DerivBossActivity : AppCompatActivity() {
             Log.d("BOSS","Lives is now ${prefs.getInt("lives",-1)}")
         }
         continueButtonTask.setOnClickListener {
+            lives= prefs.getInt("lives", 0)
+            when(lives){
+                3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_24px)
+                }
+                2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+            }
             taskImage.visibility= View.GONE
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
@@ -86,8 +107,8 @@ class DerivBossActivity : AppCompatActivity() {
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
                     if (choice==variants[4]) score++ else {
-                        prefs.edit().putInt("lives",lives-1).apply()
-                        lives= prefs.getInt("lives", 0)
+                        lives--
+                        prefs.edit().putInt("lives",lives).apply()
                         actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -105,12 +126,13 @@ class DerivBossActivity : AppCompatActivity() {
                             0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-                        }}
+                        }
+                        }
                 }
                 if (taskTypes[i]==2){
                     if (a==values[0]) score++ else  {
-                        prefs.edit().putInt("lives",lives-1).apply()
-                        lives= prefs.getInt("lives", 0)
+                        lives--
+                        prefs.edit().putInt("lives",lives).apply()
                         actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -128,7 +150,8 @@ class DerivBossActivity : AppCompatActivity() {
                             0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-                        }}
+                        }
+                        }
                 }
                 if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "deriv");startActivity(intt_)}
                 step++

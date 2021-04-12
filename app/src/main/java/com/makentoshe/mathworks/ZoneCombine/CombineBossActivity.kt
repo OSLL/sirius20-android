@@ -68,6 +68,24 @@ class CombineBossActivity : AppCompatActivity() {
             Log.d("BOSS","Lives is now ${prefs.getInt("lives",-1)}")
         }
         continueButtonTask.setOnClickListener {
+            lives= prefs.getInt("lives", 0)
+            when(lives){
+                3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_24px)
+                }
+                2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+            }
             taskImage.visibility= View.GONE
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
@@ -77,8 +95,8 @@ class CombineBossActivity : AppCompatActivity() {
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice="4"
                     if (choice==variants[4]) score++ else  {
-                        prefs.edit().putInt("lives",lives-1).apply()
-                        lives= prefs.getInt("lives", 0)
+                        lives--
+                        prefs.edit().putInt("lives",lives).apply()
                         actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -96,13 +114,14 @@ class CombineBossActivity : AppCompatActivity() {
                             0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-                        }}
+                        }
+                        }
 
                 }
                 if (taskTypes[i]==2){
                     if (a== values[0]) score++ else  {
-                        prefs.edit().putInt("lives",lives-1).apply()
-                        lives= prefs.getInt("lives", 0)
+                        lives--
+                        prefs.edit().putInt("lives",lives).apply()
                         actionOnService(applicationContext,Actions.START)
                         when(lives){
                             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
@@ -120,7 +139,8 @@ class CombineBossActivity : AppCompatActivity() {
                             0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
                                 heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
-                        }}
+                        }
+                        }
                 }
                 if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "combine");startActivity(intt_)}
                 step++
