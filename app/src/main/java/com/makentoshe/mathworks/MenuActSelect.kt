@@ -216,7 +216,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivBoss",0)
                 ),
                 "complex" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",-1)
