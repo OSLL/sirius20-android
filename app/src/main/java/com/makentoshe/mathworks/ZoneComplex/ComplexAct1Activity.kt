@@ -101,9 +101,9 @@ class ComplexAct1Activity : AppCompatActivity() {
                 if(i==3)graph.visibility=View.VISIBLE else graph.visibility=View.GONE
                 mathview.latex=when(i){
                     1->values[1]
-                    2->if(values[3].toInt()>=0)"${values[2]}+${values[3]}i" else "${values[2]}${values[3]}i"
+                    2->complex(values[2].toInt(),values[3].toInt())
                     3-> formulas[3].toString()
-                    4->if(values[3].toInt()>=0)"${values[2]}+${values[3]}i" else "${values[2]}${values[3]}i"
+                    4->complex(values[2].toInt(),values[3].toInt())
                     5->when(values[0].toInt()){
                         -2->{"Re(-2+2i)"}
                         -1->{"Im(-i)"}
@@ -152,10 +152,10 @@ class ComplexAct1Activity : AppCompatActivity() {
 fun valueMakerForComplexAct1(i: Int): Array<String>{
     var ans=""; var n1=""; var n2=""; var n3=""; var passable="";val num1: Int; val num2: Int; val num3: Int
     when(i) {
-        1 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random();ans="$num2";n1=if(num2>=0)"$num1+${num2}i" else "$num1${num2}i"}
-        2 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random();ans=if(num2>=0)"$num1-${num2}i" else "$num1+${-num2}i";n2="$num1";n3="$num2"}
+        1 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random();ans="$num2";n1=complex(num1,num2)}
+        2 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random();ans=complex(num1,-num2);n2="$num1";n3="$num2"}
         4 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random()
-            if(num1>0 && num1>0)ans="(0; π/2)" else if (num1<0&&num2>0) ans="(π/2; π)" else if (num1<0&&num2<0) ans="(π; 3π/2)" else ans="(3π/2;2π)";n2="$num1";n3="$num2"
+            if(num1>0 && num1>0)ans="(0; π/2)" else if (num1<0&&num2>0) ans="(π/2; π)" else if (num1<0&&num2<0) ans="(π; 3π/2)" else if (num1>0&&num2<0) ans="(3π/2; 2π)";n2="$num1";n3="$num2"
         }
         5 -> {ans= (-2..2).random().toString() }
     }
@@ -168,10 +168,19 @@ fun answerMakerForComplexAct1(values: Array<String>, i: Int): Array<String> {
     b[0]=ans
     when(i){
         1->{}
-        2->{val Re=values[2].toInt(); val Im=values[3].toInt();b[1]=if(Im>=0)"$Re+${Im}i" else "$Re${Im}i"; b[2]=if(Im>=0)"-$Re+${Im}i" else "${-Re}${Im}i"; b[3]=if(Im>=0)"-$Re-${Im}i" else "${-Re}+${-Im}i"}
-        4->{b[0]="(0; π/2)";b[1]="(π/2; π)";b[2]="(π; 3π/2)";b[3]="(3π/2;2π)"}
+        2->{val Re=values[2].toInt(); val Im=values[3].toInt();b[1]= complex(Re,Im);b[2]=complex(-Re,Im);b[3]= complex(-Re,-Im)}
+        4->{b[0]="(0; π/2)";b[1]="(π/2; π)";b[2]="(π; 3π/2)";b[3]="(3π/2; 2π)"}
         5->{}
     }
     b.shuffle()
     return arrayOf(b[0],b[1],b[2],b[3],"${b.indexOf(ans)}")
+}
+fun complex(a:Int,b:Int):String{
+    if (a>0 && b>0) return "$a+${abs(b)}i"
+    else if (a>0 && b<0) return "$a-${abs(b)}i"
+    else if (a<0 && b>0) return "$a+${abs(b)}i"
+    else if (a<0 && b<0) return "$a-${abs(b)}i"
+    else if (a==0 && b==0) return "0"
+    else if (b==0) return "$a"
+    else return "${b}i"
 }
