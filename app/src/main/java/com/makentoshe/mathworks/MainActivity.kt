@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         startActivity(Intent(this, MenuTitle::class.java))
         finish()
+        PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusComplexAct1", 0).apply()
     }
 
 }

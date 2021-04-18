@@ -16,7 +16,7 @@ class MenuZoneSelect : AppCompatActivity() {
         val intt=Intent(this,MenuActSelect::class.java)
         intt.putExtra("lives",lives)
         val zoneArray=arrayOf("integer","modulo","combine","stats","float","function","triangle","plain","stereo","deriv","complex")
-        val mask=arrayOf(0,0,0,-1,-1,-1,-1,-1,-1,0,-1)
+        val mask=arrayOf(0,0,0,-1,-1,-1,-1,-1,-1,0,0)
         val zoneNameArray= Array<String>(11){ ""}
         for (i in (0..10)){
             zoneNameArray[i]=(getString(resources.getIdentifier(("zone_${zoneArray[i]}_name"), "string", packageName)))
