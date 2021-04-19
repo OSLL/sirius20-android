@@ -33,7 +33,6 @@ class ComplexAct1Activity : AppCompatActivity() {
             mathview.fontSize = 40.0F
             mathview.textColor = descrText.currentTextColor
             val graph = findViewById<View>(R.id.graph) as GraphView
-            graph.visibility=View.GONE
             graph.gridLabelRenderer.gridColor = mathview.textColor
             graph.gridLabelRenderer.horizontalLabelsColor = mathview.textColor
             graph.gridLabelRenderer.verticalLabelsColor = mathview.textColor
@@ -62,7 +61,6 @@ class ComplexAct1Activity : AppCompatActivity() {
             val max = 4
             var i = 0
             val taskTypes = arrayOf(0, 2, 1, 0, 1, 2)
-            val taskQuantity = arrayOf(0,2,2,0,2,0)
             val taskNames = arrayOf("act_complex_1_descr_1", "act_complex_1_task_1", "act_complex_1_task_2", "act_complex_1_descr_2", "act_complex_1_task_3", "act_complex_1_task_4")
             descrText.text = getText(resources.getIdentifier(taskNames[0], "string", packageName))
             var values=Array(5){""}
@@ -126,7 +124,6 @@ class ComplexAct1Activity : AppCompatActivity() {
                 radioGroupTask.clearCheck()
                 editTextTask.setText("")
                 if (i < taskTypes.size) {
-                    if (taskTypes[i] != 0)
                     when (taskTypes[i]) {
                         0 -> {
                             radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
