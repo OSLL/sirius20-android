@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
@@ -155,10 +156,11 @@ fun valueMakerForComplexAct1(i: Int): Array<String>{
         1 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random();ans="$num2";n1=complex(num1,num2)}
         2 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random();ans=complex(num1,-num2);n2="$num1";n3="$num2"}
         4 -> {num1=((-100..-1)+(1..100)).random();num2=((-100..-1)+(1..100)).random()
-            if(num1>0 && num1>0)ans="(0; π/2)" else if (num1<0&&num2>0) ans="(π/2; π)" else if (num1<0&&num2<0) ans="(π; 3π/2)" else if (num1>0&&num2<0) ans="(3π/2; 2π)";n2="$num1";n3="$num2"
+            ans = if(num1>0 && num2>0) "(0; π/2)" else if (num1<0&&num2>0) "(π/2; π)" else if (num1<0&&num2<0) "(π; 3π/2)" else if (num1>0&&num2<0) "(3π/2; 2π)" else "(3π/2; 2π)";n2="$num1";n3="$num2"
         }
         5 -> {ans= (-2..2).random().toString() }
     }
+    Log.d("ok",ans)
     return arrayOf(ans,n1,n2,n3,passable)
 }
 fun answerMakerForComplexAct1(values: Array<String>, i: Int): Array<String> {
