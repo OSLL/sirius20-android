@@ -175,10 +175,8 @@ fun answerMakerForComplexAct1(values: Array<String>, i: Int): Array<String> {
     return arrayOf(b[0],b[1],b[2],b[3],"${b.indexOf(ans)}")
 }
 fun complex(a:Int,b:Int):String{
-    if (a>0 && b>0) return "$a+${abs(b)}i"
-    else if (a>0 && b<0) return "$a-${abs(b)}i"
-    else if (a<0 && b>0) return "$a+${abs(b)}i"
-    else if (a<0 && b<0) return "$a-${abs(b)}i"
+    if (a!=0 && b>0) {if (b!=1) return "$a+${abs(b)}i" else return "$a+i"}
+    else if (a!=0 && b<0) {if (b!=-1) return "$a-${abs(b)}i" else return "$a-i"}
     else if (a==0 && b==0) return "0"
     else if (b==0) return "$a"
     else return "${b}i"
