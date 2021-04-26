@@ -25,7 +25,7 @@ class ComplexAct2Activity : AppCompatActivity() {
         mathview.textColor = descrText.currentTextColor
 
         val formulas = mapOf(
-            0 to "\\\\(1)a=c;b=d\\Leftrightarrow a+bi=c+di\\\\(2)(a+bi)+(c+di)=\\\\=(a+c)+(b+di)\\\\(3)(a+bi)-(c+di)=\\\\=(a-c)+(b-di)\\\\(4)(a+bi)\\cdot(c+di)=\\\\=(ac-bd)+(ad+bc)i\\\\(5)\\frac{1}{a+bi}=\\frac{a-bi}{a^2+b^2}",
+            0 to "\\\\(1)a=c;b=d\\Leftrightarrow a+bi=c+di\\\\(2)(a+bi)+(c+di)=\\\\=(a+c)+(b+d)i\\\\(3)(a+bi)-(c+di)=\\\\=(a-c)+(b-d)i\\\\(4)(a+bi)\\cdot(c+di)=\\\\=(ac-bd)+(ad+bc)i\\\\(5)\\frac{1}{a+bi}=\\frac{a-bi}{a^2+b^2}",
             3 to "\\\\(1)z^n=r^n(\\cos n\\varphi+i\\sin n\\varphi)\\\\(2)\\sqrt[n]{z}=r^\\frac{1}{n}(\\cos\\frac{\\varphi+2\\pi k}{n}+i\\sin\\frac{\\varphi+2\\pi k}{n}),\\\\k\\in\\mathbb{Z}"
         )
         formulas[0].toString().also { mathview.latex = it }
