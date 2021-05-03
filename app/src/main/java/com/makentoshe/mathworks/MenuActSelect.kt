@@ -218,7 +218,7 @@ class MenuActSelect : AppCompatActivity() {
                 "complex" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",-1)
                 )
         )
