@@ -2,7 +2,6 @@ package com.makentoshe.mathworks.ZoneComplex
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -13,29 +12,8 @@ import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
-import com.jjoe64.graphview.series.PointsGraphSeries
 import com.makentoshe.mathworks.*
-import kotlinx.android.synthetic.main.layout_act_tasks.*
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.continueButtonTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.descrText
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.editTextTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.headSetup
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart1
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart2
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.heart3
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.hearts
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.mathview
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.progressBarTaskTrue
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask1
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask2
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask3
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioButtonTask4
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.radioGroupTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.subheadTask
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskImage
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.taskText
 
 class ComplexBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -271,7 +249,7 @@ class ComplexBossActivity : AppCompatActivity() {
     }
 }
 fun valueMakerForComplexBoss(i: Int): Array<String>{
-    var ans=""; var n1=""; var n2=""; var n3=""; var passable="";var num1: Int; var num2: Int; var num3: Int
+    var ans=""; var n1="";var num1: Int; var num2: Int; var num3: Int
     when(i) {
         1->{ans="${(3..7).random()}"}
         2 -> {num1=(-10..10).random();num2=(-10..10).random();n1="$num1 $num2";ans="${num1*num1+num2*num2}"
@@ -296,12 +274,11 @@ fun valueMakerForComplexBoss(i: Int): Array<String>{
         ans=if (num1-num3>0&&num2-num4>0)"(0; π/2)" else if (num1-num3<0&&num2-num4>0) "(π/2; π)" else if (num1-num3<0&&num2-num4<0) "(π; 3π/2)" else "(3π/2; 2π)"}
     }
     Log.d("ok",ans)
-    return arrayOf(ans,n1,n2,n3,passable)
+    return arrayOf(ans,n1)
 }
 fun answerMakerForComplexBoss(values: Array<String>, i: Int): Array<String> {
     val ans=values[0]
     val b= MutableList(4){""}
-    val pas=values[4]
     b[0]=ans
     when(i){
         1->{}
