@@ -219,7 +219,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct2",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",-1)
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",0)
                 )
         )
         val actArray= Array<String>(acts){""}

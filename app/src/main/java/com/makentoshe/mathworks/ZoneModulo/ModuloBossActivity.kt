@@ -14,25 +14,6 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.makentoshe.mathworks.*
 import kotlinx.android.synthetic.main.layout_act_tasks.*
-import kotlinx.android.synthetic.main.layout_act_tasks.continueButtonTask
-import kotlinx.android.synthetic.main.layout_act_tasks.descrText
-import kotlinx.android.synthetic.main.layout_act_tasks.editTextTask
-import kotlinx.android.synthetic.main.layout_act_tasks.headSetup
-import kotlinx.android.synthetic.main.layout_act_tasks.heart1
-import kotlinx.android.synthetic.main.layout_act_tasks.heart2
-import kotlinx.android.synthetic.main.layout_act_tasks.heart3
-import kotlinx.android.synthetic.main.layout_act_tasks.hearts
-import kotlinx.android.synthetic.main.layout_act_tasks.progressBarTask
-import kotlinx.android.synthetic.main.layout_act_tasks.progressBarTaskTrue
-import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask1
-import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask2
-import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask3
-import kotlinx.android.synthetic.main.layout_act_tasks.radioButtonTask4
-import kotlinx.android.synthetic.main.layout_act_tasks.radioGroupTask
-import kotlinx.android.synthetic.main.layout_act_tasks.subheadTask
-import kotlinx.android.synthetic.main.layout_act_tasks.taskImage
-import kotlinx.android.synthetic.main.layout_act_tasks.taskText
-import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
 import java.util.*
 
 class ModuloBossActivity : AppCompatActivity() {

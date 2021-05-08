@@ -225,7 +225,7 @@ class ComplexAct3Activity : AppCompatActivity() {
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "complex")
                 intt.putExtra("act", 2)
-                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1", 0) < (score.toDouble() / max.toDouble() * 100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusComplexAct1", (score.toDouble() / max.toDouble() * 100.0).toInt()).apply()
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3", 0) < (score.toDouble() / max.toDouble() * 100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusComplexAct3", (score.toDouble() / max.toDouble() * 100.0).toInt()).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
