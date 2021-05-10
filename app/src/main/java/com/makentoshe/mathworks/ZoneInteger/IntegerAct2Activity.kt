@@ -10,6 +10,7 @@ import android.view.View
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.hideKeyboard
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
 //Импорт библиотек и разметок
@@ -81,6 +82,7 @@ class IntegerAct2Activity : AppCompatActivity() {
                 Log.d("Act1","Proceeding to next task, step=${step}, score=${score}")
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             if (i==taskTypes.size) {
                 Log.d("Act1","The act is over, launching to the start menu")
                 val intt= Intent(this, ActResult::class.java)

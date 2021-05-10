@@ -157,6 +157,7 @@ class ModuloBossActivity : AppCompatActivity() {
                 if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "modulo");startActivity(intt_)}
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)

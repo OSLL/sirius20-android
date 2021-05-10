@@ -2,18 +2,21 @@ package com.makentoshe.mathworks.ZoneComplex
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.View.OnFocusChangeListener
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 import com.makentoshe.mathworks.*
 import kotlinx.android.synthetic.main.layout_act_tasks_graph.*
+
 
 class ComplexBossActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -140,6 +143,7 @@ class ComplexBossActivity : AppCompatActivity() {
                 step++
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             values= valueMakerForComplexBoss(i)
             variants= answerMakerForComplexBoss(values,i)
             graph.run{

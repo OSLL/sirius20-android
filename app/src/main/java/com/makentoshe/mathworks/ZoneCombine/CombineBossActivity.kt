@@ -146,6 +146,7 @@ class CombineBossActivity : AppCompatActivity() {
                 step++
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)

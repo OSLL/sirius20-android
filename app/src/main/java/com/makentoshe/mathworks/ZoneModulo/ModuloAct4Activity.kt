@@ -9,6 +9,7 @@ import android.view.View
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.hideKeyboard
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.shuffle
 
@@ -68,6 +69,7 @@ class ModuloAct4Activity : AppCompatActivity() {
                 step++
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)

@@ -11,6 +11,7 @@ import androidx.preference.PreferenceManager
 import com.jjoe64.graphview.GraphView
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.hideKeyboard
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
 class ComplexAct2Activity : AppCompatActivity() {
@@ -68,6 +69,7 @@ class ComplexAct2Activity : AppCompatActivity() {
                 step++
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             values= valueMakerForComplexAct2(i)
             variants= answerMakerForComplexAct2(values,i)
             mathview.latex=when(i){

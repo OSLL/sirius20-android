@@ -10,6 +10,7 @@ import android.view.View
 import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.hideKeyboard
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
 
@@ -71,6 +72,7 @@ class IntegerAct3Activity : AppCompatActivity() {
                 Log.d("Act3","Proceeding to navigation_forth task, step=${step}, score=${score}")
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             radioGroupTask.clearCheck()
             if (i==taskTypes.size) {
                 Log.d("Act3", "The act is over, launching to the start menu")
