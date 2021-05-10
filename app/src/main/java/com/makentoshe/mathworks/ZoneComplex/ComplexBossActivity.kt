@@ -140,6 +140,7 @@ class ComplexBossActivity : AppCompatActivity() {
                         }
                     }
                 }
+                if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "complex");startActivity(intt_)}
                 step++
             }
             i++
