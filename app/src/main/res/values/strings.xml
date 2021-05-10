@@ -261,7 +261,7 @@
     <string name="act_complex_3_task_6">Переведите число z, представленное в показательной форме, в алгебраическую форму.</string>
     <string name="act_complex_boss_task_2">Найдите квадрат модуля числа:</string>
     <string name="act_complex_boss_task_5">Укажите мнимую часть произведения:</string>
-    <string name="act_complex_boss_task_6">В каком диапазоне лежит аргумент разности чисел (x₁-x₂)?</string>
+    <string name="act_complex_boss_task_6">В каком диапазоне лежит аргумент разности чисел (z₁-z₂)?</string>
     <string name="navigation_forth">Дальше</string>
     <string name="navigation_back">Назад</string>
     <string name="navigation_to_main">На главную</string>
