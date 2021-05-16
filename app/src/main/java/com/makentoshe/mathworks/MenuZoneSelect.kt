@@ -16,17 +16,63 @@ class MenuZoneSelect : AppCompatActivity() {
         val intt=Intent(this,MenuActSelect::class.java)
         intt.putExtra("lives",lives)
         val zoneArray=arrayOf("integer","modulo","combine","stats","float","function","triangle","plain","stereo","deriv","complex")
-        val mask=arrayOf(0,0,0,-1,-1,-1,-1,-1,-1,0,0)
+        if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct1",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct3",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct4",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",0)==100)
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusInteger",1).apply()
+        if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct1",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct2",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct4",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",0)==100)
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModulo",1).apply()
+        if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct1",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct2",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct3",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct4",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineBoss",0)==100)
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombine",1).apply()
+        //Do the exact same thing when new zones are added
+        if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct1",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct2",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct3",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct4",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct5",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivBoss",0)==100)
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDeriv",1).apply()
+        if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct2",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",0)==100 &&
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",0)==100)
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusComplex",1).apply()
+        val mask=arrayOf(
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusInteger",0),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModulo",-1),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombine",-1),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStats",-2),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloat",-2),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunction",-2),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangle",-2),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlain",-2),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStereo",-2),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDeriv",-1),
+            PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplex",-1)
+        )
         val zoneNameArray= Array<String>(11){ ""}
         for (i in (0..10)){
             zoneNameArray[i]=(getString(resources.getIdentifier(("zone_${zoneArray[i]}_name"), "string", packageName)))
         }
-        val adapt= CustomArrayAdapter(this,zoneNameArray,mask)
+        val maskFiltered =mask.filter { it>-2 }.toTypedArray()
+        val ZoneNameArrayFiltered =zoneNameArray.filterIndexed { index, s ->  mask[index]>-2}.toTypedArray()
+        val ZoneArrayFiltered=zoneArray.filterIndexed { index, s ->  mask[index]>-2}.toTypedArray()
+        val adapt= CustomArrayAdapter(this,ZoneNameArrayFiltered,maskFiltered)
         list1.adapter=adapt
         list1.setOnItemClickListener { _, _, position, _ ->
-            if (mask[position]!=-1)
+            if (mask[position]>-1)
             {val intent= Intent(this,MenuActSelect::class.java)
-            intent.putExtra("zone",zoneArray[position])
+            intent.putExtra("zone",ZoneArrayFiltered[position])
             startActivity(intent)}
         }
         toMainButtonZoneSelect.setOnClickListener { startActivity(Intent(this,MainActivity::class.java));finish() }

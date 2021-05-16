@@ -41,8 +41,8 @@ class DerivAct1Activity : AppCompatActivity() {
         val taskTypes=arrayOf(0, 1, 2, 0, 2, 1)
         val taskNames=arrayOf("act_deriv_1_descr_1", "act_deriv_1_task_1", "act_deriv_1_task_1", "act_deriv_1_descr_2", "act_deriv_1_task_3", "act_deriv_1_task_4")
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
-        var values=Array<String>(4) { "" }
-        var variants=Array<String>(5) { "" }
+        var values=Array(4) { "" }
+        var variants=Array(5) { "" }
         var choice: String
         var a=""
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
@@ -79,6 +79,7 @@ class DerivAct1Activity : AppCompatActivity() {
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 0)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct1",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct1",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct2",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct2",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

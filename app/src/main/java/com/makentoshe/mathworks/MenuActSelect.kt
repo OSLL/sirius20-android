@@ -135,27 +135,27 @@ class MenuActSelect : AppCompatActivity() {
         val linksActMask=mapOf(
                 "integer" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct1",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct3",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct4",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",0)
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct4",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",-1)
                 ),
                 "modulo" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct1",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct4",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",0)
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct2",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct4",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",-1)
                 ),
                 "combine" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct1",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct3",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct4",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineBoss",0)
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct2",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct4",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineBoss",-1)
                 ),
                 "stats" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStatsAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStatsAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStatsAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStatsAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStatsAct4",-1),
@@ -163,7 +163,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStatsBoss",-1)
                 ),
                 "float" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloatAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloatAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloatAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloatAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloatAct4",-1),
@@ -173,7 +173,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFloatBoss",-1)
                 ),
                 "function" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunctionAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunctionAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunctionAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunctionAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunctionAct4",-1),
@@ -183,7 +183,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusFunctionBoss",-1)
                 ),
                 "triangle" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangleAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangleAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangleAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangleAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangleAct4",-1),
@@ -191,7 +191,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusTriangleBoss",-1)
                 ),
                 "plain" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlainAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlainAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlainAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlainAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlainAct4",-1),
@@ -201,7 +201,7 @@ class MenuActSelect : AppCompatActivity() {
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusPlainBoss",-1)
                 ),
                 "stereo" to arrayOf(
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStereoAct1",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStereoAct1",0),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStereoAct2",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStereoAct3",-1),
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusStereoAct4",-1),
@@ -209,17 +209,17 @@ class MenuActSelect : AppCompatActivity() {
                 ),
                 "deriv" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct1",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct3",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct4",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct5",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivBoss",0)
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct2",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct4",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct5",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivBoss",-1)
                 ),
                 "complex" to arrayOf(
                         PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct1",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct2",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",0),
-                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",0)
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct2",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexAct3",-1),
+                        PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplexBoss",-1)
                 )
         )
         val actArray= Array<String>(acts){""}

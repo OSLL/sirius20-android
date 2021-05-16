@@ -165,6 +165,7 @@ class ModuloBossActivity : AppCompatActivity() {
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 4)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombine",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombine",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

@@ -105,6 +105,7 @@ class DerivAct3Activity : AppCompatActivity() {
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 2)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct3",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct3",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivAct4",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivAct4",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

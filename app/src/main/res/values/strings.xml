@@ -10,7 +10,7 @@
     <string name="menu_zone_percentage">Пройдено:</string>
     <string name="menu_act_select">Выберите акт</string>
     <string name="zone_integer_name">Арифметика целых чисел</string>
-    <string name="zone_modulo_name">Модульная арифметика</string>
+    <string name="zone_modulo_name">Модульная арифметика и информатика</string>
     <string name="zone_combine_name">Комбинаторика</string>
     <string name="zone_stats_name">Вероятность и статистика</string>
     <string name="zone_float_name">Арифметика вещественных чисел</string>

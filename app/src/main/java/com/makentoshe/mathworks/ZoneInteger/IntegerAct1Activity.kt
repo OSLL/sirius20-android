@@ -20,8 +20,7 @@ class IntegerAct1Activity : AppCompatActivity() {
         setContentView(R.layout.layout_act_tasks)
         headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
-        val lives: Int
-        lives=intent.getIntExtra("lives",3)
+        val lives: Int = intent.getIntExtra("lives",3)
         var score=0
         val taskNames=arrayOf("act_integer_1_descr_1","act_integer_1_task_1","act_integer_1_task_2","act_integer_1_task_3","act_integer_1_descr_2","act_integer_1_task_4","act_integer_1_task_5","act_integer_1_task_6")
         val taskTypes=arrayOf(0,1,1,2,0,1,1,2)
@@ -79,6 +78,7 @@ class IntegerAct1Activity : AppCompatActivity() {
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 0)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct1",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct1",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct2",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

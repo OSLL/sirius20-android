@@ -165,6 +165,7 @@ class DerivBossActivity : AppCompatActivity() {
                 intt.putExtra("zone", "deriv")
                 intt.putExtra("act", 5)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusDerivBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusDerivBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusComplex",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusComplex",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

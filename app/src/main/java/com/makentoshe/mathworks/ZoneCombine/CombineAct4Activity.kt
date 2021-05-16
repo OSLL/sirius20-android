@@ -74,7 +74,7 @@ class CombineAct4Activity : AppCompatActivity() {
                 intt.putExtra("zone", "combine")
                 intt.putExtra("act", 3)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineAct4",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombineAct4",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
-
+                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusCombineBoss",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusCombineBoss",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
