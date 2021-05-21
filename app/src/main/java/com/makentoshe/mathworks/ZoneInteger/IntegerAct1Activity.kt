@@ -78,7 +78,7 @@ class IntegerAct1Activity : AppCompatActivity() {
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 0)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct1",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct1",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
-                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct2",0).apply()
+                if ((score.toDouble()/max.toDouble()*100.0).toInt()>=50 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct2",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct2",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()

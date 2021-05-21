@@ -184,7 +184,8 @@ class IntegerBossActivity : AppCompatActivity() {
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 4)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
-                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModulo",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModulo",0).apply()
+                if ((score.toDouble()/max.toDouble()*100.0).toInt()>=50 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModulo",-1)<0)
+                {PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModulo",0).putInt("statusCombine",0).putInt("statusDeriv",0).putInt("statusComplex",0).apply()}
                 startActivity(intt)
             }
 

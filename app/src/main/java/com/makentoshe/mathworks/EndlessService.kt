@@ -79,7 +79,7 @@ class EndlessService : Service() {
         // we're starting a loop in a coroutine
         GlobalScope.launch(Dispatchers.IO) {
             while (isServiceStarted) {
-                delay(1 * 10 * 1000)
+                delay(1200000)
                 launch(Dispatchers.IO) {
                     increaseUserHealth()
                 }

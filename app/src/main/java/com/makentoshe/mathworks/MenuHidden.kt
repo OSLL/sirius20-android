@@ -25,7 +25,7 @@ class MenuHidden : AppCompatActivity() {
         val notificationName=getString(R.string.app_name)
         val notificationText=getString(R.string.result_good)
         val prefs = getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
-        var lives= prefs.getInt("lives", 0)
+        var lives= prefs.getInt("lives", 3)
         when(lives){
             3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
                 heart2.setImageResource(R.drawable.ic_favorite_24px)
@@ -130,10 +130,12 @@ class MenuHidden : AppCompatActivity() {
         }
         resetButton.setOnClickListener {
             if(permitReset){
-                PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().clear().commit()
+                PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().clear().apply()
                 finish()
                 startActivity(intent)}
         }
+        switch1.isChecked=PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowWandering",false)
+        switch1.setOnCheckedChangeListener { _, isChecked ->  PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putBoolean("allowWandering",isChecked).apply()}
     }
     private fun actionOnService(context: Context,action: Actions) {
         if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return

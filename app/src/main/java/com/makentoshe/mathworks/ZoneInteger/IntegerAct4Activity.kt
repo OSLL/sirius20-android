@@ -78,7 +78,7 @@ class IntegerAct4Activity : AppCompatActivity() {
                 intt.putExtra("zone", "integer")
                 intt.putExtra("act", 3)
                 if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerAct4",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerAct4",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
-                if (score>=max/2 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerBoss",0).apply()
+                if ((score.toDouble()/max.toDouble()*100.0).toInt()>=50 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusIntegerBoss",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusIntegerBoss",0).apply()
                 startActivity(intt)
             }
 

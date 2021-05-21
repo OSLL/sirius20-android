@@ -233,8 +233,8 @@ class MenuActSelect : AppCompatActivity() {
             val pendActivity= linksAct[zone!!]?.get(position)
             val lives=getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE).getInt("lives",-1)
             val pose= linksActMask[zone]!!.toIntArray()[position]
-            if ((position!= acts-1 || lives!=0)){
-                if (pose!=-1)
+            if ((position!= acts-1 || lives!=0)||PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowWandering",false)){
+                if ((pose!=-1) || PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowWandering",false))
                 {val intent= Intent(this,pendActivity)
                 intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zone}_name"), "string", packageName)))
                 intent.putExtra("act",actArray[position])
