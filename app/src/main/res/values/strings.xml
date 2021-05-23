@@ -274,7 +274,7 @@
     <string name="navigation_previous">Предыдущий</string>
     <string name="task_theory_image">Картинка</string>
     <string name="filler">Заполнитель</string>
-    <string name="theme_name">Тема приложения</string>
+    <string name="theme_name">Цветовая тема приложения</string>
     <string name="theme_apptheme">Стандартная тема</string>
     <string name="theme_darktheme">Тёмная тема</string>
     <string name="theme_inverttheme">Инвертированная тема</string>

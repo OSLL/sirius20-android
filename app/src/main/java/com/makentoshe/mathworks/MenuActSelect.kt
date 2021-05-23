@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.get
@@ -233,6 +234,7 @@ class MenuActSelect : AppCompatActivity() {
             val pendActivity= linksAct[zone!!]?.get(position)
             val lives=getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE).getInt("lives",-1)
             val pose= linksActMask[zone]!!.toIntArray()[position]
+            Log.d("MenuAS","$zone $position $pose")
             if ((position!= acts-1 || lives!=0)||PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowWandering",false)){
                 if ((pose!=-1) || PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("allowWandering",false))
                 {val intent= Intent(this,pendActivity)

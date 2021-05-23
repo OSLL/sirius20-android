@@ -5,5 +5,9 @@
         <attr name="colorProgressBarTaskGreen" format="color"/>
         <attr name="colorProgressBarTaskRed" format="color"/>
         <attr name="colorOnBackgroundInactive" format="color"/>
+        <attr name="fontSizeMedium" format="dimension"/>
+        <attr name="fontSizeBig" format="dimension"/>
+        <attr name="fontSizeHuge" format="dimension"/>
+        <attr name="fontSizeTitle" format="dimension"/>
     </declare-styleable>
 </resources>

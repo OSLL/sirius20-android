@@ -30,7 +30,7 @@
         android:gravity="start"
         android:text="@string/filler"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="20sp"
+        android:textSize="@dimen/font_size_regular_big"
         android:visibility="visible" />
 
     <TextView

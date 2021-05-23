@@ -17,6 +17,10 @@
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
         <item name="colorProgressBarTaskGreen">@color/colorGreenProgress</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
     </style>
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -34,6 +38,10 @@
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
         <item name="colorProgressBarTaskGreen">@color/colorGreenProgress</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
     </style>
     <style name="InvertTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -51,6 +59,10 @@
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgressInvert</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgressInvert</item>
         <item name="colorProgressBarTaskGreen">@color/colorGreenProgressInvert</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
     </style>
     <style name="AntiqueTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryAntique</item>
@@ -67,5 +79,9 @@
         <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgressAntique</item>
         <item name="colorProgressBarTaskRed">@color/colorRedProgressAntique</item>
         <item name="colorProgressBarTaskGreen">@color/colorGreenProgressAntique</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
     </style>
 </resources>

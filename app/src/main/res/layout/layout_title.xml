@@ -14,7 +14,7 @@
         android:text="@string/app_name"
         android:textColor="?attr/colorPrimary"
         android:textIsSelectable="false"
-        android:textSize="40sp"
+        android:textSize="@dimen/font_size_regular_title"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:background="?attr/colorSurface"
         android:text="@string/title_continue"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="26sp"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
@@ -41,7 +41,7 @@
         android:background="?attr/colorSurface"
         android:text="@string/title_settings"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="26sp"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/continueButton" />
@@ -54,7 +54,7 @@
         android:background="?attr/colorSurface"
         android:text="@string/title_info"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="26sp"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsButton" />

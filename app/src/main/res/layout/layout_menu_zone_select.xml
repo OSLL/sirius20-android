@@ -17,7 +17,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/menu_zone_select"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="20sp"
+        android:textSize="@dimen/font_size_regular_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
         android:paddingRight="10sp"
         android:text="@string/navigation_to_main"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="25sp"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -14,7 +14,7 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="?attr/colorPrimary"
-        android:textSize="20sp"
+        android:textSize="@dimen/font_size_regular_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:text="@string/act_integer_1_name"
         android:textAlignment="center"
         android:textColor="?attr/colorSecondary"
-        android:textSize="15sp"
+        android:textSize="@dimen/font_size_regular_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headSetup" />
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/act_integer_1_task_1"
                 android:textColor="?attr/colorOnBackground"
-                android:textSize="15sp"
+                android:textSize="@dimen/font_size_regular_medium"
                 android:visibility="visible" />
 
             <com.agog.mathdisplay.MTMathView
@@ -174,7 +174,8 @@
                 android:importantForAutofill="no"
                 android:inputType="numberSigned|number|numberDecimal"
                 android:textColor="?attr/colorOnBackground"
-                android:textColorHint="?attr/colorProgressBarTaskBackground" />
+                android:textColorHint="?attr/colorProgressBarTaskBackground"
+                android:textSize="@dimen/font_size_regular_big" />
 
             <RadioGroup
                 android:id="@+id/radioGroupTask"
@@ -189,7 +190,7 @@
                     android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
                     android:textColor="?attr/colorOnBackground"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/font_size_regular_medium" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask2"
@@ -198,7 +199,7 @@
                     android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
                     android:textColor="?attr/colorOnBackground"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/font_size_regular_medium" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask3"
@@ -207,7 +208,7 @@
                     android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
                     android:textColor="?attr/colorOnBackground"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/font_size_regular_medium" />
 
                 <RadioButton
                     android:id="@+id/radioButtonTask4"
@@ -216,7 +217,7 @@
                     android:buttonTint="?attr/colorOnBackground"
                     android:text="@string/filler"
                     android:textColor="?attr/colorOnBackground"
-                    android:textSize="15sp" />
+                    android:textSize="@dimen/font_size_regular_medium" />
             </RadioGroup>
         </LinearLayout>
     </ScrollView>
@@ -230,7 +231,7 @@
         android:paddingRight="10sp"
         android:text="@string/navigation_forth"
         android:textColor="?attr/colorOnSurface"
-        android:textSize="25sp"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
