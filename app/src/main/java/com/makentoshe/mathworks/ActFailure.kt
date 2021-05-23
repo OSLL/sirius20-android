@@ -11,7 +11,7 @@ class ActFailure : AppCompatActivity() {
         setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_failure)
-        continueButtonFailure.setOnClickListener {
+        continueButtonResult.setOnClickListener {
             val intt=Intent(this,MenuActSelect::class.java); intt.putExtra("zone",intent.getStringExtra("zone"));startActivity(intt)
         }
     }

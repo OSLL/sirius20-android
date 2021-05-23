@@ -32,13 +32,13 @@
         android:layout_marginEnd="16dp"
         android:text="@string/result_worse"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headResult" />
 
     <Button
-        android:id="@+id/continueButtonFailure"
+        android:id="@+id/continueButtonResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"

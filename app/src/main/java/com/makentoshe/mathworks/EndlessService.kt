@@ -3,10 +3,15 @@ package com.makentoshe.mathworks
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.IBinder
 import android.os.PowerManager
 import android.os.SystemClock
 import android.util.Log
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import kotlinx.android.synthetic.main.layout_hidden.*
 import kotlinx.coroutines.*
 
 
@@ -25,11 +30,11 @@ class EndlessService : Service() {
         Log.d("EndlS","onStartCommand executed with startId: $startId")
         if (intent != null) {
             val action = intent.action
-            Log.d("ES","using an intent with action $action")
+            Log.d("EndlS","using an intent with action $action")
             when (action) {
                 Actions.START.name -> startService()
                 Actions.STOP.name -> stopService()
-                else -> Log.d("ES","This should never happen. No action in the received intent")
+                else -> Log.wtf("EndlS","This should never happen. No action in the received intent")
             }
         } else {
             Log.d("EndlS",
@@ -122,6 +127,29 @@ class EndlessService : Service() {
             }
             if (prefs.getInt("lives", -1) == 3){
                 Log.d("EndlS","health == 3")
+                val notificationManager =
+                    getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                val builder = NotificationCompat.Builder(this, "OVER9000")
+                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setContentTitle(getString(R.string.app_name))
+                    .setContentText(getString(R.string.notification_lives3))
+                    .setAutoCancel(true)
+                    .setContentIntent(PendingIntent.getActivity(this,0,Intent(this,MenuZoneSelect::class.java),PendingIntent.FLAG_UPDATE_CURRENT))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val channel = NotificationChannel(
+                        "OVER9000", "My channel",
+                        NotificationManager.IMPORTANCE_DEFAULT
+                    )
+                    channel.description = "My channel deserves no description"
+                    channel.enableLights(true)
+                    channel.lightColor = Color.GREEN
+                    channel.enableVibration(true)
+                    notificationManager.createNotificationChannel(channel)
+                }
+                    with(NotificationManagerCompat.from(this)) {
+                        notify(15, builder.build())
+                    }
                 stopService()
 
             }

@@ -265,6 +265,7 @@
     <string name="navigation_forth">Дальше</string>
     <string name="navigation_back">Назад</string>
     <string name="navigation_to_main">На главную</string>
+    <string name="navigation_replay">Повторить</string>
     <string name="task_input_txt">Введите ответ…</string>
     <string name="check">Проверить</string>
     <string name="result_good">Молодец!\nПродолжайте в том же духе!</string>
@@ -278,5 +279,5 @@
     <string name="theme_darktheme">Тёмная тема</string>
     <string name="theme_inverttheme">Инвертированная тема</string>
     <string name="theme_antiquetheme">Античная тема</string>
-    <string name="allow_unfinished_zones">Открыть незаконченные зоны</string>
+    <string name="notification_lives3">Жизни восполнены. Пройдите битву с боссом!</string>
 </resources>

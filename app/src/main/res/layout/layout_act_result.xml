@@ -47,7 +47,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/result_bad"
         android:textColor="?attr/colorOnBackground"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheadResult" />
@@ -61,24 +61,10 @@
         android:progress="5"
         android:progressDrawable="@drawable/circle"
         android:progressTint="?attr/colorProgressBarTaskGreen"
-        app:layout_constraintBottom_toTopOf="@+id/continueButtonFailure"
+        app:layout_constraintBottom_toTopOf="@+id/replayButtonResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCongratulations" />
-
-    <Button
-        android:id="@+id/continueButtonFailure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorSurface"
-        android:paddingLeft="10sp"
-        android:paddingRight="10sp"
-        android:text="@string/navigation_forth"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textResultPC"
@@ -91,5 +77,41 @@
         app:layout_constraintEnd_toEndOf="@+id/resultProgressBar"
         app:layout_constraintStart_toStartOf="@+id/resultProgressBar"
         app:layout_constraintTop_toTopOf="@+id/resultProgressBar" />
+
+    <Button
+        android:id="@+id/replayButtonResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/navigation_replay"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/space"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/continueButtonResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/navigation_forth"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/space" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

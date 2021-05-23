@@ -128,10 +128,18 @@ class ActResult : AppCompatActivity() {
         resultProgressBar.progress=score
         resultProgressBar.max=max
         if (rate==100) {textCongratulations.text=getString(resources.getIdentifier("result_good", "string", packageName))}
-        continueButtonFailure.setOnClickListener {
+        continueButtonResult.setOnClickListener {
             val intent= Intent(this,MenuActSelect::class.java)
             intent.putExtra("zone",zoneIndex)
             startActivity(intent)
+            finish()
+        }
+        replayButtonResult.setOnClickListener {
+            val intent= Intent(this,linksAct[zoneIndex]?.get(actIndex))
+            intent.putExtra("zone",getString(resources.getIdentifier(("zone_${zoneIndex}_name"), "string", packageName)))
+            intent.putExtra("act",getString(resources.getIdentifier(("act_${zoneIndex}_${actIndex+1}_name"), "string", packageName)))
+            startActivity(intent)
+            finish()
         }
     }
 }
