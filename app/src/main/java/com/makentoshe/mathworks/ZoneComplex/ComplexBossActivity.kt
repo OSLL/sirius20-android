@@ -211,7 +211,7 @@ class ComplexBossActivity : AppCompatActivity() {
                 5-> View.VISIBLE
                 else->mathview.visibility
             }
-            if (i == taskTypes.size) {
+            if (i == taskTypes.size && (prefs.getInt("lives",-1)!=0)) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)

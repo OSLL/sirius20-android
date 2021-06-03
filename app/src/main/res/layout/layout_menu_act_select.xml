@@ -15,7 +15,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/menu_act_select"
+        android:text="@string/filler"
         android:textColor="?attr/colorOnBackground"
         android:textSize="@dimen/font_size_regular_big"
         app:layout_constraintEnd_toEndOf="parent"

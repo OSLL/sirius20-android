@@ -127,7 +127,7 @@ class EndlessService : Service() {
             }
             if (prefs.getInt("lives", -1) == 3){
                 Log.d("EndlS","health == 3")
-                val notificationManager =
+                    /*val notificationManager =
                     getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
                 val builder = NotificationCompat.Builder(this, "OVER9000")
                     .setSmallIcon(R.drawable.ic_launcher_foreground)
@@ -149,7 +149,7 @@ class EndlessService : Service() {
                 }
                     with(NotificationManagerCompat.from(this)) {
                         notify(15, builder.build())
-                    }
+                    }*/
                 stopService()
 
             }

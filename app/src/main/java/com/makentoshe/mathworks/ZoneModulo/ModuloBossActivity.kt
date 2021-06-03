@@ -158,7 +158,7 @@ class ModuloBossActivity : AppCompatActivity() {
             }
             i++
             if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
-            if (i==taskTypes.size) {
+            if (i==taskTypes.size && (prefs.getInt("lives",-1)!=0)) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)

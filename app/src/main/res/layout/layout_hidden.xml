@@ -121,6 +121,17 @@
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="20sp" />
 
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:checked="false"
+                android:text="Доступ ко всем зонам и актам"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_regular_big" />
+
             <Button
                 android:id="@+id/hiddenUnlockResetButton"
                 android:layout_width="match_parent"
@@ -130,13 +141,6 @@
                 android:text="Разблокировать опасное действие"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="20sp" />
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="Доступ ко всем зонам и актам" />
 
             <Button
                 android:id="@+id/hiddenToMainButton"

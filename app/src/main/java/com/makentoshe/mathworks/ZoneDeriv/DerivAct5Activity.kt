@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
@@ -99,7 +100,7 @@ class DerivAct5Activity : AppCompatActivity() {
                             "-2" -> {
                                 when ((0..1).random()) {
                                     0-> mathview.latex="\\\\f(x)=x^2\\\\\\xi=-1"
-                                    1-> mathview.latex="\\\\f(x)=\\-sin 2x\\\\\\xi=0"
+                                    1-> mathview.latex="\\\\f(x)=-\\sin 2x\\\\\\xi=0"
                                 }
                             }
                             "-1" -> {
@@ -230,6 +231,7 @@ class DerivAct5Activity : AppCompatActivity() {
                         }
                     }
                 }
+                Log.d("DerivAct5Activity.kt","$i "+mathview.latex)
                 variants = answerMakerForDerivAct5(values,i)
                 when (taskTypes[i]) {
                     0 -> {
