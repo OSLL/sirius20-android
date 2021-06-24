@@ -1,35 +1,61 @@
 package com.makentoshe.mathworks.ZoneModulo
 
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.preference.PreferenceManager
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
-import com.makentoshe.mathworks.ActResult
-import com.makentoshe.mathworks.R
+import androidx.annotation.RequiresApi
+import com.makentoshe.mathworks.*
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.*
 
 class ModuloBossActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
+        val prefs = getSharedPreferences("SHARED_PREFS", Context.MODE_PRIVATE)
+        var lives= prefs.getInt("lives", 0)
         var step =0
         var score =0
-        var max =5
+        val max =5
+        hearts.visibility=View.VISIBLE
+        when(lives){
+            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_24px)
+            }
+            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+            }
+            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+        }
         progressBarTask.max=100
         progressBarTaskTrue.max=100
         var i=0
-        var taskTypes=arrayOf(0,2,2,1,2,1)
-        var taskNames=arrayOf("boss_descr","act_modulo_boss_task_1","act_modulo_boss_task_2","act_modulo_boss_task_3","act_modulo_boss_task_4","act_modulo_boss_task_5")
-        descrText.text=getString(R.string.boss_descr,headTask.text)
+        val taskTypes=arrayOf(0,2,2,1,2,1)
+        val taskNames=arrayOf("boss_descr","act_modulo_boss_task_1","act_modulo_boss_task_2","act_modulo_boss_task_3","act_modulo_boss_task_4","act_modulo_boss_task_5")
+        descrText.text=getString(R.string.boss_descr,headSetup.text)
         var values=arrayOf("","","","")
         var variants=arrayOf("","","","","")
-        var choice=""
+        var choice: String
         var a=""
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -48,7 +74,28 @@ class ModuloBossActivity : AppCompatActivity() {
 
         })
         editTextTask.inputType=InputType.TYPE_NUMBER_FLAG_DECIMAL
+        hearts.setOnClickListener {
+            Log.d("BOSS","Lives is now ${prefs.getInt("lives",-1)}")
+        }
         continueButtonTask.setOnClickListener {
+            lives= prefs.getInt("lives", 0)
+            when(lives){
+                3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_24px)
+                }
+                2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_24px)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                }
+                0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                    heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+            }
             taskImage.visibility= View.GONE
             if (taskTypes[i]!=0) {
                 if (taskTypes[i]==1){
@@ -57,20 +104,67 @@ class ModuloBossActivity : AppCompatActivity() {
                     else if (radioButtonTask3.isChecked) choice="2"
                     else if (radioButtonTask4.isChecked) choice="3"
                     else choice=editTextTask.toString()
-                    if (choice==variants[4]) score++
+                    if (choice==variants[4]) score++ else  {
+                        lives--
+                        prefs.edit().putInt("lives",lives).apply()
+                        actionOnService(applicationContext,Actions.START)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }
+                    }
+
                 }
                 if (taskTypes[i]==2){
-                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++
+                    if (a.toLowerCase(Locale.ROOT) == values[0]) score++ else  {
+                        lives--
+                        prefs.edit().putInt("lives",lives).apply()
+                        actionOnService(applicationContext,Actions.START)
+                        when(lives){
+                            3->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_24px)
+                            }
+                            2->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_24px)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            1->{heart1.setImageResource(R.drawable.ic_favorite_24px)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                            }
+                            0->{heart1.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart2.setImageResource(R.drawable.ic_favorite_border_black_18dp)
+                                heart3.setImageResource(R.drawable.ic_favorite_border_black_18dp)}
+                        }
+                    }
                 }
+
                 step++
+                if (prefs.getInt("lives",-1)==0){finish();val intt_=(Intent(this, ActFailure::class.java)); intt_.putExtra("zone", "modulo");startActivity(intt_)}
             }
             i++
-            if (i==taskTypes.size) {
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
+            if (i==taskTypes.size && (prefs.getInt("lives",-1)!=0)) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 4)
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloBoss",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
@@ -80,7 +174,7 @@ class ModuloBossActivity : AppCompatActivity() {
                 variants = answerMakerForModuloBoss(values,i)
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -95,17 +189,24 @@ class ModuloBossActivity : AppCompatActivity() {
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2], values[3])
+                val name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2], values[3])
                 taskText.text=name
             }
         }
     }
+    private fun actionOnService(context: Context,action: Actions) {
+        if (getServiceState(context) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(context, EndlessService::class.java).also {
+            it.action = action.name
+            startService(it)
+        }
+    }
 }
 fun valueMakerForModuloBoss(i: Int): Array<String>{
-    var ans="";var n1=""; var n2=""; var n3=""; var num1=0; var num2=0; var num3=0; var temp=0;
+    var ans="";var n1=""; var n2=""; var n3=""; val num1: Int; var num2: Int; var num3: Int; val temp: Int
     when(i){
         1->{temp=(22..51).random(); num1=temp*(3..10).random(); do{num2=temp*(2..9).random()}while(num2==num1); do{num3=temp*(2..5).random()} while(num3==num2||num3==num1); n1="$num1"; n2="$num2"; n3="$num3"; ans="${GCD(GCD(num1,num2),num3)}";}
-        2->{num3=((8..9)+(11..16)).random();num1=(21..55).random();do{num2=((20..num1-1)+(num1+1..56)).random()}while((num1+num2)%num3==0);ans=(num1+num2).toString(radix=num3);n3="$num3";n1="$num1";n2="$num2"}
+        2->{num3=((8..9)+(11..16)).random();num1=(21..55).random();do{num2=((20 until num1)+(num1+1..56)).random()}while((num1+num2)%num3==0);ans=(num1+num2).toString(radix=num3);n3="$num3";n1="$num1";n2="$num2"}
         3->{
             num1=(11..20).random()
             do{num2=(11..20).random()} while (num2==num1)
@@ -128,8 +229,8 @@ fun valueMakerForModuloBoss(i: Int): Array<String>{
     return arrayOf(ans,n1,n2,n3)
 }
 fun answerMakerForModuloBoss(values: Array<String>, i: Int): Array<String> {
-    var ans=values[0]
-    var b= mutableListOf<String>("","","","")
+    val ans=values[0]
+    val b= mutableListOf<String>("","","","")
     b[0]=ans
     when(i){
         3->{
@@ -145,6 +246,5 @@ fun answerMakerForModuloBoss(values: Array<String>, i: Int): Array<String> {
         }
     }
     b.shuffle()
-    var p="${b.indexOf(ans)}"
-    return arrayOf(b[0],b[1],b[2],b[3],p)
+    return arrayOf(b[0],b[1],b[2],b[3],"${b.indexOf(ans)}")
 }

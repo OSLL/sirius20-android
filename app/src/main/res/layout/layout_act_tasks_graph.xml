@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <TextView
+        android:id="@+id/headSetup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/zone_integer_name"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="@dimen/font_size_regular_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subheadTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/act_integer_1_name"
+        android:textAlignment="center"
+        android:textColor="?attr/colorSecondary"
+        android:textSize="@dimen/font_size_regular_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headSetup" />
+
+    <ProgressBar
+        android:id="@+id/progressBarTask"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="219dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="?attr/colorProgressBarTaskBackground"
+        android:progressTint="?attr/colorProgressBarTaskRed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
+
+    <ProgressBar
+        android:id="@+id/progressBarTaskTrue"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="219dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/colorTransparent"
+        android:backgroundTintMode="add"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="@color/colorTransparent"
+        android:progressTint="?attr/colorProgressBarTaskGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subheadTask" />
+
+    <LinearLayout
+        android:id="@+id/hearts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarTask"
+        app:layout_constraintStart_toStartOf="@+id/progressBarTask"
+        app:layout_constraintTop_toBottomOf="@id/progressBarTask">
+
+        <ImageView
+            android:id="@+id/heart1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+        <ImageView
+            android:id="@+id/heart2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+        <ImageView
+            android:id="@+id/heart3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/filler"
+            android:tint="?attr/colorProgressBarTaskRed"
+            app:srcCompat="@drawable/ic_favorite_24px" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/taskScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/continueButtonTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hearts">
+
+        <LinearLayout
+            android:id="@+id/taskLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/graph"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/descrText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/act_integer_1_descr_1"
+                android:textColor="?attr/colorOnBackground"
+                android:textIsSelectable="false"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/taskText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/act_integer_1_task_1"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="@dimen/font_size_regular_medium"
+                android:visibility="visible" />
+
+            <com.agog.mathdisplay.MTMathView
+                android:id="@+id/mathview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnBackground"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <ImageView
+                android:id="@+id/taskImage"
+                android:layout_width="match_parent"
+                android:layout_height="384dp"
+                android:background="?android:attr/colorBackground"
+                android:contentDescription="@string/task_theory_image"
+                android:padding="0dp"
+                android:scaleX="1"
+                android:scaleY="1"
+                android:visibility="gone"
+                app:srcCompat="@drawable/table_multiple" />
+
+            <EditText
+                android:id="@+id/editTextTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center_horizontal|center_vertical"
+                android:hint="@string/task_input_txt"
+                android:importantForAccessibility="no"
+                android:importantForAutofill="no"
+                android:inputType="numberSigned|number|numberDecimal"
+                android:textColor="?attr/colorOnBackground"
+                android:textColorHint="?attr/colorProgressBarTaskBackground"
+                android:textSize="@dimen/font_size_regular_big" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupTask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="@dimen/font_size_regular_medium" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="@dimen/font_size_regular_medium" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="@dimen/font_size_regular_medium" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTask4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="?attr/colorOnBackground"
+                    android:foregroundTint="?attr/colorOnBackground"
+                    android:text="@string/filler"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="@dimen/font_size_regular_medium" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/continueButtonTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:text="@string/navigation_forth"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/font_size_regular_huge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

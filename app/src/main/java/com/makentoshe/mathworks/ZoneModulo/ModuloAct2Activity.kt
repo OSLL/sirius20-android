@@ -6,15 +6,18 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.hideKeyboard
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 
 class ModuloAct2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var step =0
         var score =0
@@ -64,12 +67,15 @@ class ModuloAct2Activity : AppCompatActivity() {
                 step++
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 1)
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct2",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct2",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if ((score.toDouble()/max.toDouble()*100.0).toInt()>=50 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct3",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct3",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
@@ -109,22 +115,22 @@ class ModuloAct2Activity : AppCompatActivity() {
     }
 }
 fun GCD (A: Int, B: Int): Int {
-    var a=A; var b=B; var c: Int;
-    if (b>a) {a+=b; b=a-b; a-=b};
-    while(a>0 && b>0){c=a; a=b; b=c%b;};
+    var a=A; var b=B; var c: Int
+    if (b>a) {a+=b; b=a-b; a-=b}
+    while(a>0 && b>0){c=a; a=b; b=c%b;}
     return a
 }
 fun LCM (A: Int, B: Int): Int {
     return A*B/GCD(A,B)
 }
 fun correctNumberMakerForModuloAct2(i: Int): IntArray {
-    var num1:Int; var num2:Int; var num3=0; var ans:Int; val hid:Int;
+    var num1:Int; var num2:Int; var num3=0; var ans:Int; val hid:Int
     when (i) {
         1->{
             do {num1=(20..120).random();num2=(20..120).random()} while (num1==num2 || GCD (num1,num2)<10); ans= GCD(num1,num2)
         }
         2->{
-            hid=(2..5).random()*10; num1=(2..9).random()*hid; num2=(2..9).random()*hid; while (num3<2 || ((num1+num2+num3)/GCD(GCD(num1,num2),num3)%2==0)) {num3=(2..9).random()*hid}; ans=(num1+num2+num3)/GCD(GCD(num1,num2),num3);
+            hid=(2..5).random()*10; num1=(2..9).random()*hid; num2=(2..9).random()*hid; while (num3<2 || ((num1+num2+num3)/GCD(GCD(num1,num2),num3)%2==0)) {num3=(2..9).random()*hid}; ans=(num1+num2+num3)/GCD(GCD(num1,num2),num3)
         }
         4->{
             do {num1=(4..7).random()*25; num2=(2..9).random()*25; num3=(3..8).random()*25;} while ((num1==num2) or (num2==num3) or (num1==num3)); ans=LCM(LCM(num1,num2),num3)
@@ -133,7 +139,7 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
             num2=(5..9).random()*10; num1=num2+(1..4).random()*10; ans=LCM(num1,num2)
         }
         7->{
-            num1=(2..15).random(); do num2=(2..15).random() while (num2==num1); do num3=(2..15).random() while (num2==num3 || num1==num3); ans=LCM(LCM(num1,num2),num3)*GCD(GCD(num1,num2),num3);
+            num1=(2..15).random(); do num2=(2..15).random() while (num2==num1); do num3=(2..15).random() while (num2==num3 || num1==num3); ans=LCM(LCM(num1,num2),num3)*GCD(GCD(num1,num2),num3)
         }
         8->{
             num1=(10..100).random(); num2=(11..100).random(); ans=num1+1; while(GCD(num2,ans)>1 || ans<=num1) {ans++}
@@ -143,8 +149,8 @@ fun correctNumberMakerForModuloAct2(i: Int): IntArray {
     return intArrayOf(ans,num1,num2,num3)
 }
 fun answerMakerForModuloAct2 (a: IntArray): IntArray {
-    var ans=a[0]
-    var b = mutableListOf<Int>(ans,0,0,0)
+    val ans=a[0]
+    val b = mutableListOf<Int>(ans,0,0,0)
     do{b[1]=b[0]+(-25..25).random()}while(b[1]==b[0]||b[1]<=0);do{b[2]=b[0]+(-25..25).random()}while(b[2]==b[0]||b[2]==b[1]||b[2]<=0);do{b[3]=b[0]+(-25..25).random()}while(b[3]==b[0]||b[3]==b[1]||b[3]==b[2]||b[3]<=0)
     b.shuffle()
     val i_corr=b.indexOf(ans)

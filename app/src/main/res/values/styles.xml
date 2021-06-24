@@ -5,7 +5,83 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorTransitionButton</item>
+        <item name="colorOnBackground">@color/colorText</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactive</item>
+        <item name="colorOnSurface">@color/colorWhite</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhite</item>
+        <item name="android:colorForeground">@color/colorBackgroundProgress</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgress</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
     </style>
-
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDarker</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkDarker</item>
+        <item name="colorSecondary">@color/colorPrimaryDarker</item>
+        <item name="colorAccent">@color/colorAccentDarker</item>
+        <item name="android:colorBackground">@color/colorBackgroundDarker</item>
+        <item name="colorSurface">@color/colorPrimary</item>
+        <item name="colorOnBackground">@color/colorTextDarker</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactiveDarker</item>
+        <item name="colorOnSurface">@color/colorWhite</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhite</item>
+        <item name="android:colorForeground">@color/colorBackgroundProgress</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgress</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgress</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgress</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
+    </style>
+    <style name="InvertTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryInvert</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkInvert</item>
+        <item name="colorSecondary">@color/colorPrimaryInvert</item>
+        <item name="colorAccent">@color/colorAccentInvert</item>
+        <item name="android:colorBackground">@color/colorBackgroundInvert</item>
+        <item name="colorSurface">@color/colorTransitionButtonInvert</item>
+        <item name="colorOnBackground">@color/colorTextInvert</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactiveInvert</item>
+        <item name="colorOnSurface">@color/colorWhiteInvert</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhiteInvert</item>
+        <item name="android:colorForeground">@color/colorBackgroundProgressInvert</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgressInvert</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgressInvert</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgressInvert</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
+    </style>
+    <style name="AntiqueTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryAntique</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkAntique</item>
+        <item name="colorSecondary">@color/colorSecondaryAntique</item>
+        <item name="colorAccent">@color/colorAccentAntique</item>
+        <item name="android:colorBackground">@color/colorBackgroundAntique</item>
+        <item name="colorSurface">@color/colorTransitionButtonAntique</item>
+        <item name="colorOnBackground">@color/colorTextAntique</item>
+        <item name="colorOnBackgroundInactive">@color/colorTextInactiveAntique</item>
+        <item name="colorOnSurface">@color/colorWhiteAntique</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhiteAntique</item>
+        <item name="android:colorForeground">@color/colorBackgroundProgressAntique</item>
+        <item name="colorProgressBarTaskBackground">@color/colorBackgroundProgressAntique</item>
+        <item name="colorProgressBarTaskRed">@color/colorRedProgressAntique</item>
+        <item name="colorProgressBarTaskGreen">@color/colorGreenProgressAntique</item>
+        <item name="fontSizeMedium">@dimen/font_size_regular_medium</item>
+        <item name="fontSizeBig">@dimen/font_size_regular_big</item>
+        <item name="fontSizeHuge">@dimen/font_size_regular_huge</item>
+        <item name="fontSizeTitle">@dimen/font_size_regular_title</item>
+    </style>
 </resources>

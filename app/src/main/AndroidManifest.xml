@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.makentoshe.mathworks">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TestBossActivity"></activity>
+        <activity android:name=".ActFailure" />
+        <activity android:name=".MenuSetup" />
+        <activity android:name=".MenuInfo" />
+        <activity android:name=".MenuHidden" />
         <activity android:name=".ZoneInteger.IntegerAct1Activity" />
-        <activity android:name=".ZoneInteger.IntegerAct2Activity"/>
+        <activity android:name=".ZoneInteger.IntegerAct2Activity" />
         <activity android:name=".ZoneInteger.IntegerAct3Activity" />
         <activity android:name=".ZoneInteger.IntegerAct4Activity" />
         <activity android:name=".ZoneInteger.IntegerBossActivity" />
-        <activity android:name=".ZoneModulo.ModuloAct1Activity"/>
+        <activity android:name=".ZoneModulo.ModuloAct1Activity" />
         <activity android:name=".ZoneModulo.ModuloAct2Activity" />
         <activity android:name=".ZoneModulo.ModuloAct3Activity" />
         <activity android:name=".ZoneModulo.ModuloAct4Activity" />
@@ -69,15 +77,17 @@
         <activity android:name=".ZoneDeriv.DerivAct2Activity" />
         <activity android:name=".ZoneDeriv.DerivAct3Activity" />
         <activity android:name=".ZoneDeriv.DerivAct4Activity" />
+        <activity android:name=".ZoneDeriv.DerivAct5Activity" />
         <activity android:name=".ZoneDeriv.DerivBossActivity" />
         <activity android:name=".ZoneComplex.ComplexAct1Activity" />
         <activity android:name=".ZoneComplex.ComplexAct2Activity" />
         <activity android:name=".ZoneComplex.ComplexAct3Activity" />
         <activity android:name=".ZoneComplex.ComplexBossActivity" />
-        <activity android:name=".MenuTitle"></activity>
+        <activity android:name=".MenuTitle" />
         <activity android:name=".MenuActSelect" />
         <activity android:name=".MenuZoneSelect" />
         <activity android:name=".ActResult" />
+        <activity android:name=".ActResultTest" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -85,6 +95,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".StartReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".EndlessService" />
     </application>
 
 </manifest>

@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="@string/app_name"
-        android:textColor="@color/colorHeads"
-        android:textSize="40sp"
+        android:textColor="?attr/colorPrimary"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/font_size_regular_title"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,23 +25,23 @@
         android:layout_width="220dp"
         android:layout_height="70dp"
         android:layout_marginTop="100dp"
-        android:background="@color/colorBackButton"
+        android:background="?attr/colorSurface"
         android:text="@string/title_continue"
-        android:textColor="@color/colorWhite"
-        android:textSize="26sp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="220dp"
         android:layout_height="70dp"
         android:layout_marginTop="50dp"
-        android:background="@color/colorBackButton"
+        android:background="?attr/colorSurface"
         android:text="@string/title_settings"
-        android:textColor="@color/colorWhite"
-        android:textSize="26sp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/continueButton" />
@@ -49,10 +51,10 @@
         android:layout_width="220dp"
         android:layout_height="70dp"
         android:layout_marginTop="50dp"
-        android:background="@color/colorBackButton"
+        android:background="?attr/colorSurface"
         android:text="@string/title_info"
-        android:textColor="@color/colorWhite"
-        android:textSize="26sp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/font_size_regular_huge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsButton" />

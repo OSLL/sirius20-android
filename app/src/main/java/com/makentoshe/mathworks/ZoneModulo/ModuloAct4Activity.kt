@@ -6,30 +6,33 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.preference.PreferenceManager
 import com.makentoshe.mathworks.ActResult
 import com.makentoshe.mathworks.R
+import com.makentoshe.mathworks.hideKeyboard
 import kotlinx.android.synthetic.main.layout_act_tasks.*
 import java.util.Collections.shuffle
 
 class ModuloAct4Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("themeid",R.style.AppTheme))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_act_tasks)
-        headTask.text=intent.getStringExtra("zone")
+        headSetup.text=intent.getStringExtra("zone")
         subheadTask.text=intent.getStringExtra("act")
         var step =0
         var score =0
-        var max =6
+        val max =6
         progressBarTask.max=100
         progressBarTaskTrue.max=100
         var i=0
-        var taskTypes=arrayOf(0,1,1,0,1,2,0,2,2)
-        var taskQuantity=arrayOf(0,0,0,0,1,3,0,1,2)
-        var taskNames=arrayOf("act_modulo_4_descr_1","act_modulo_4_task_1","act_modulo_4_task_2","act_modulo_4_descr_2","act_modulo_4_task_3","act_modulo_4_task_4","act_modulo_4_descr_3","act_modulo_4_task_5","act_modulo_4_task_6")
+        val taskTypes=arrayOf(0,1,1,0,1,2,0,2,2)
+        val taskQuantity=arrayOf(0,0,0,0,1,3,0,1,2)
+        val taskNames=arrayOf("act_modulo_4_descr_1","act_modulo_4_task_1","act_modulo_4_task_2","act_modulo_4_descr_2","act_modulo_4_task_3","act_modulo_4_task_4","act_modulo_4_descr_3","act_modulo_4_task_5","act_modulo_4_task_6")
         descrText.text=getText(resources.getIdentifier(taskNames[0], "string", packageName))
         var values=arrayOf("","","","")
         var variants=arrayOf("","","","","")
-        var choice=""
+        var choice: String
         var a=""
         taskText.visibility = View.GONE; descrText.visibility= View.VISIBLE
         radioGroupTask.visibility = View.GONE; editTextTask.visibility= View.GONE
@@ -66,12 +69,15 @@ class ModuloAct4Activity : AppCompatActivity() {
                 step++
             }
             i++
+            if(i<taskTypes.size) if(taskTypes[i]!=2) hideKeyboard(this)
             if (i==taskTypes.size) {
                 val intt = Intent(this, ActResult::class.java)
                 intt.putExtra("score", score)
                 intt.putExtra("max", max)
                 intt.putExtra("zone", "modulo")
                 intt.putExtra("act", 3)
+                if (PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloAct4",0)<(score.toDouble()/max.toDouble()*100.0).toInt()) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloAct4",(score.toDouble()/max.toDouble()*100.0).toInt()).apply()
+                if ((score.toDouble()/max.toDouble()*100.0).toInt()>=50 && PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt("statusModuloBoss",-1)<0) PreferenceManager.getDefaultSharedPreferences(applicationContext).edit().putInt("statusModuloBoss",0).apply()
                 startActivity(intt)
             }
             radioGroupTask.clearCheck()
@@ -81,7 +87,7 @@ class ModuloAct4Activity : AppCompatActivity() {
                 variants = answerMakerForModuloAct4(values,i)
                 when (taskTypes[i]) {
                     0 -> {
-                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE;
+                        radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.GONE; descrText.visibility = View.VISIBLE; taskText.visibility = View.GONE
                     }
                     2 -> {
                         radioGroupTask.visibility = View.GONE; editTextTask.visibility = View.VISIBLE; descrText.visibility = View.GONE; taskText.visibility = View.VISIBLE
@@ -96,25 +102,39 @@ class ModuloAct4Activity : AppCompatActivity() {
                 }
                 if (step <= max) progressBarTaskTrue.progress = ((score.toDouble() / max.toDouble()) * 100.0).toInt()
                 if (step <= max) progressBarTask.progress = ((step.toDouble() / max.toDouble()) * 100.0).toInt()
-                var name = ""
                 descrText.text = getText((resources.getIdentifier(taskNames[i], "string", packageName)))
-                if (taskQuantity[i] == 1) {
-                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1])
+                val name = if (taskQuantity[i] == 1) {
+                    getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1])
                 } else if (taskQuantity[i] == 3) {
-                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2], values[3])
+                    getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2], values[3])
                 } else if (taskQuantity[i] == 2) {
-                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2])
-                }
-                else {
-                    name = getString(resources.getIdentifier(taskNames[i], "string", packageName))
+                    getString(resources.getIdentifier(taskNames[i], "string", packageName), values[1], values[2])
+                } else {
+                    getString(resources.getIdentifier(taskNames[i], "string", packageName))
                 }
                 taskText.text = name
             }
         }
     }
 }
+
+fun answerMakerForModuloAct4(values: Array<String>, i: Int): Array<String> {
+    val ans=values[0]
+    val b= mutableListOf("","","","")
+    b[0]=ans
+    when(i){
+        1->{b[1]="A⋀B"; b[2]="A∨B"; b[3]="A"}
+        2->{b[1]="A=1; B=0"; b[2]="A=0; B=1"; b[3]="A=0; B=0"}
+        4->{b[1]="A";b[2]="${b[0]}∨A";b[3]="${b[0]}⊕A"}
+        5->{b[1]="${1-ans.toInt()}";b[2]="M";b[3]="N"}
+        7->{b[1]="X"; b[2]="1"; b[3]="~X"}
+        8->{b[1]="${ans.toInt()+(1..5).random()}"; b[2]="${ans.toInt()-(1..5).random()}";b[3]="${ans.toInt()+(6..15).random()}"}
+    }
+    shuffle(b)
+    return arrayOf(b[0],b[1],b[2],b[3],"${b.indexOf(ans)}")
+}
 fun valueMakerForModuloAct4(i: Int): Array<String>{
-    var ans="";var n1=""; var n2=""; var n3=""; var num1=0; var num2=0; var num3=0
+    var ans="";var n1=""; var n2=""; var n3=""; val num1: Int; var num2=0; var num3=0
     when(i){
         1->{ans="A⊕B"}
         2->{ans="A=1; B=1"}
@@ -137,20 +157,4 @@ fun valueMakerForModuloAct4(i: Int): Array<String>{
         8->{num1=(0..15).random();do{num2=(1..15).random()}while(num2==num1); n1="$num1"; n2="$num2"; n3="$num3"; ans="${(num1 or num2)}"}
     }
     return arrayOf(ans,n1,n2,n3)
-}
-fun answerMakerForModuloAct4(values: Array<String>, i: Int): Array<String> {
-    var ans=values[0]
-    var b= mutableListOf<String>("","","","")
-    b[0]=ans
-    when(i){
-        1->{b[1]="A⋀B"; b[2]="A∨B"; b[3]="A"}
-        2->{b[1]="A=1; B=0"; b[2]="A=0; B=1"; b[3]="A=0; B=0"}
-        4->{b[1]="A";b[2]="${b[0]}∨A";b[3]="${b[0]}⊕A"}
-        5->{b[1]="${1-ans.toInt()}";b[2]="M";b[3]="N"}
-        7->{b[1]="X"; b[2]="1"; b[3]="~X"}
-        8->{b[1]="${ans.toInt()+(1..5).random()}"; b[2]="${ans.toInt()-(1..5).random()}";b[3]="${ans.toInt()+(6..15).random()}"}
-    }
-    shuffle(b)
-    var p="${b.indexOf(ans)}"
-    return arrayOf(b[0],b[1],b[2],b[3],p)
 }
